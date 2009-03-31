@@ -1,0 +1,3 @@
+#name : tal:repeat-children
+# --
+tal:repeat-children="${1:name}: ${2:value}"

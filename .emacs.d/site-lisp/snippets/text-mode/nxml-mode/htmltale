@@ -1,0 +1,6 @@
+#name : html skeleton with TALE namespace
+# --
+<html xmlns:tal="http://axiomstack.com/tale">
+	  <head><title></title></head>
+	  <body></body>
+</html>

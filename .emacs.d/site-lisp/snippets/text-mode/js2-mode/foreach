@@ -1,0 +1,5 @@
+#name : for each in loop
+# --
+for each(${1:i} in ${2:obj}){
+
+}

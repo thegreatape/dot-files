@@ -1,0 +1,5 @@
+#name : for in loop
+# --
+for(var ${1:i} in ${2:obj}){
+
+}

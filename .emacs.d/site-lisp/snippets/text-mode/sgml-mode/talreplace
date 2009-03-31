@@ -1,0 +1,3 @@
+#name : tal:replace
+# --
+tal:replace="${1:value}"

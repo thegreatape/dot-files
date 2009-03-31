@@ -1,0 +1,3 @@
+#name : TALE namespace declaration
+# --
+xmlns:tal="http://axiomstack.com/tale"
