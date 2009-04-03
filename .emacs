@@ -6,8 +6,8 @@
 ;; Don't create backup files
 (setq make-backup-files nil)
 
-;; Set tab distance 
-(setq default-tab-width 4)
+;; Set tab distance in spaces
+(setq c-basic-offset 4)
 
 ;; Syntax highlighting
 (global-font-lock-mode t)
