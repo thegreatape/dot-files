@@ -17,6 +17,7 @@
 
 ; Load editing modes
 (autoload 'python-mode "python-mode" "Python editing mode." t)
+(autoload 'django-html-mode "django-html-mode" "Django template mode" t)
 (autoload 'js2-mode "js2" nil t)
 (autoload 'ruby-mode "ruby-mode" "Ruby mode" t)
 (autoload 'css-mode "css-mode" "CSS mode" t)
@@ -30,6 +31,7 @@
 			  '(("\\.css$"   . css-mode))
 			  '(("\\.rb$"    . ruby-mode))
 			  '(("\\.py$"    . python-mode))
+			  '(("\\.djhtml$"    . django-html-mode))
 			  auto-mode-alist))
 
 ; Lose the GUI
