@@ -6,7 +6,7 @@ alias console="ssh thomas@console.axiomstack.seoversite.com"
 alias proxy="ssh thomas@axiomstack.seoversite.com"
 function parse_git_branch {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  echo " ("${ref#refs/heads/$(num_git_commits_ahead)}")"
+  echo " ("${ref#refs/heads/}$(num_git_commits_ahead)")"
 }
 
 function num_git_commits_ahead {
