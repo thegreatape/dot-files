@@ -58,7 +58,6 @@
 
 ;; Custon functional keybindings
 (global-set-key "\C-n" 'setnu-mode)
-(global-set-key "\C-r" 'query-replace)
 (global-set-key "\M-g" 'goto-line)
 (global-set-key "\M-/" 'hippie-expand)
 
