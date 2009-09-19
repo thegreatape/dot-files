@@ -65,6 +65,7 @@
 ;; Set hippie-expand functions
 (setq hippie-expand-try-functions-list '( yas/hippie-try-expand 
 					  try-expand-all-abbrevs
+					  ;;try-expand-list
 					  try-expand-dabbrev
 					  try-expand-dabbrev-all-buffers
 					  try-expand-dabbrev-from-kill
@@ -114,6 +115,32 @@
 (defun tal-uri-fix()
   (interactive)
   (query-replace-regexp "\\(<span tal:replace=\"\[^\"]*getURI\"/>\\|${[^}]*URI}\\)" "\\1/"))
+
+
+;;
+;; WIP - mimicking vim's delete between delimiters thingy
+;;
+(defun delete-between (start-delim end-delim include-delims)
+    (let (start end)
+      (search-backward start-delim)
+      (if (not include-delims) (forward-char))
+      (setq start (point))
+      (forward-char)
+      (search-forward end-delim)
+      (if (not include-delims) (backward-char))
+      (setq end (point))
+      (delete-region start end)))
+
+(defun delete-between-excluding (delim)
+  (interactive "s")
+  (delete-between delim delim nil))
+
+(defun delete-between-including (delim)
+  (interactive "s")
+  (delete-between delim delim t))
+
+(global-set-key "\M-u" 'delete-between-excluding)
+(global-set-key "\M-U" 'delete-between-including)
 
 ;; custom macros
 (fset 'jsdoc-comment
