@@ -53,8 +53,8 @@
 (global-set-key "\M-p" 'delete-char)
 
 ;; Custom navigation keybindings
-(global-set-key [(hyper right)] 'forward-word)
-(global-set-key [(hyper left)] 'backward-word)
+(global-set-key "\C-\M-l" 'forward-word)
+(global-set-key "\C-\M-j" 'backward-word)
 
 ;; Custon functional keybindings
 (global-set-key "\C-n" 'setnu-mode)
@@ -64,15 +64,14 @@
 
 ;; Set hippie-expand functions
 (setq hippie-expand-try-functions-list '( yas/hippie-try-expand 
-										 try-expand-all-abbrevs
-										 ;;try-expand-list
-										 try-expand-dabbrev
-										 try-expand-dabbrev-all-buffers
-										 try-expand-dabbrev-from-kill
-										 try-complete-file-name-partially
-										 try-complete-file-name
-										 try-complete-lisp-symbol-partially 
-										 try-complete-lisp-symbol))
+					  try-expand-all-abbrevs
+					  try-expand-dabbrev
+					  try-expand-dabbrev-all-buffers
+					  try-expand-dabbrev-from-kill
+					  try-complete-file-name-partially
+					  try-complete-file-name
+					  try-complete-lisp-symbol-partially 
+					  try-complete-lisp-symbol))
 
 ;; Set default font
 (if w32 (set-face-font 'default "-outline-Monaco-normal-r-normal-normal-12-90-96-96-c-*-iso8859-1"))
