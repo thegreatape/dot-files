@@ -27,12 +27,12 @@
 ;; Associate file extensions with major modes
 (setq auto-mode-alist
       (append '(("\\.tal$"   . sgml-mode))
-			  '(("\\.js$"    . js2-mode))
-			  '(("\\.css$"   . css-mode))
-			  '(("\\.rb$"    . ruby-mode))
-			  '(("\\.py$"    . python-mode))
-			  '(("\\.djhtml$"    . django-html-mode))
-			  auto-mode-alist))
+	      '(("\\.js$"    . js2-mode))
+	      '(("\\.css$"   . css-mode))
+	      '(("\\.rb$"    . ruby-mode))
+	      '(("\\.py$"    . python-mode))
+	      '(("\\.djhtml$"    . django-html-mode))
+	      auto-mode-alist))
 
 ; Lose the GUI
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
