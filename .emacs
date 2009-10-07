@@ -53,8 +53,8 @@
 (global-set-key "\M-p" 'delete-char)
 
 ;; Custom navigation keybindings
-(global-set-key [(hyper right)] 'forward-word)
-(global-set-key [(hyper left)] 'backward-word)
+(global-set-key "\C-\M-l" 'forward-word)
+(global-set-key "\C-\M-j" 'backward-word)
 
 ;; Custon functional keybindings
 (global-set-key "\C-n" 'setnu-mode)
