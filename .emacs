@@ -44,7 +44,7 @@
 
 ;; MacOS X specific stuff
 (setq mac-option-modifier 'hyper)
-;;(setq mac-command-modifier 'meta)
+(setq mac-command-modifier 'meta)
 
 ;; Custom delete keybinds
 (global-set-key "\C-h" 'backward-kill-word)
@@ -53,8 +53,10 @@
 (global-set-key "\M-p" 'delete-char)
 
 ;; Custom navigation keybindings
-(global-set-key "\C-\M-l" 'forward-word)
-(global-set-key "\C-\M-j" 'backward-word)
+(global-set-key [(hyper right)] 'forward-word)
+(global-set-key [(hyper left)] 'backward-word)
+(global-set-key [(hyper down)] 'next-line)
+(global-set-key [(hyper up)] 'previous-line)
 
 ;; Custon functional keybindings
 (global-set-key "\C-n" 'setnu-mode)
