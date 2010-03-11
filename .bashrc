@@ -1,9 +1,12 @@
-alias emacs="open -a Emacs.app"
-alias src="cd ~/Code/e4x-src/stack"
-alias cuervo="cd ~/Code/cuervo"
 alias desk="cd ~/Desktop"
-alias console="ssh thomas@console.axiomstack.seoversite.com"
-alias proxy="ssh thomas@axiomstack.seoversite.com"
+if [[ `uname -a` =~ "Darwin" ]]
+then
+    alias emacs="open -a Emacs.app"
+    alias start_mysql="sudo /usr/local/mysql/support-files/mysql.server start"
+    alias stop_mysql="sudo /usr/local/mysql/support-files/mysql.server stop"
+    alias restart_mysql="sudo /usr/local/mysql/support-files/mysql.server restart"
+fi
+
 function parse_git_branch {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
   echo " ("${ref#refs/heads/}$(num_git_commits_ahead)")"
@@ -20,6 +23,7 @@ RED="\[\033[0;31m\]"
 YELLOW="\[\033[0;33m\]" 
 GREEN="\[\033[0;32m\]"
 WHITE="\[\033[0;37m\]"
-PS1="\u@\h $GREEN\w$YELLOW\$(parse_git_branch) $GREEN\$ $WHITE"
+PS1="[\u@\h] $GREEN\w$YELLOW\$(parse_git_branch) $GREEN\$ $WHITE"
 EDITOR=emacs
 PATH=/opt/subversion/bin:$PATH:/usr/local/mysql/bin:/opt/local/lib/erlang/lib/rabbitmq_server-1.7.0/sbin/:/opt/local/lib/erlang/lib/rabbitmq_server-1.7.0/bin/:/opt/local/bin
+
