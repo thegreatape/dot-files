@@ -104,3 +104,9 @@ set expandtab
 
 " Load colorscheme
 colors zenburn
+
+" Lose the GUI
+if has("gui_running")
+    set guioptions=egmrt
+endif
+
