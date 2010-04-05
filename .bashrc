@@ -5,6 +5,7 @@ then
     alias start_mysql="sudo /usr/local/mysql/support-files/mysql.server start"
     alias stop_mysql="sudo /usr/local/mysql/support-files/mysql.server stop"
     alias restart_mysql="sudo /usr/local/mysql/support-files/mysql.server restart"
+    alias vim="mvim"
 fi
 
 function parse_git_branch {
@@ -26,4 +27,3 @@ WHITE="\[\033[0;37m\]"
 PS1="[\u@\h] $GREEN\w$YELLOW\$(parse_git_branch) $GREEN\$ $WHITE"
 EDITOR=emacs
 PATH=/opt/subversion/bin:$PATH:/usr/local/mysql/bin:/opt/local/lib/erlang/lib/rabbitmq_server-1.7.0/sbin/:/opt/local/lib/erlang/lib/rabbitmq_server-1.7.0/bin/:/opt/local/bin
-
