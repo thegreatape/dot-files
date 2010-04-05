@@ -28,6 +28,7 @@
 (setq auto-mode-alist
       (append '(("\\.tal$"   . sgml-mode))
 	      '(("\\.js$"    . js2-mode))
+	      '(("\\.json$"    . js2-mode))
 	      '(("\\.css$"   . css-mode))
 	      '(("\\.rb$"    . ruby-mode))
 	      '(("\\.py$"    . python-mode))
@@ -62,6 +63,8 @@
 (global-set-key "\C-n" 'setnu-mode)
 (global-set-key "\M-g" 'goto-line)
 (global-set-key "\M-/" 'hippie-expand)
+(global-set-key "\M-r" 'replace-string)
+
 
 ;; Set hippie-expand functions
 (setq hippie-expand-try-functions-list '( yas/hippie-try-expand 
@@ -172,3 +175,22 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  )
+
+
+;; run Django shell when editing Django Python code
+
+(defun get-file-in-upstream-dir (location filename)
+  (let* ((dir (file-name-directory location))
+         (path (concat dir filename)))
+    (if (file-exists-p path)
+        path
+      (if (not (equal dir "/"))
+        (get-file-in-upstream-dir (expand-file-name (concat dir "../")) filename)))))
+
+(defadvice run-python (before possibly-setup-django-project-environment)
+  (let* ((settings-py (get-file-in-upstream-dir buffer-file-name "settings.py"))
+         (project-dir (file-name-directory settings-py)))
+    (if settings-py
+        (progn
+          (setenv "DJANGO_SETTINGS_MODULE" "settings")
+          (setenv "PYTHONPATH" project-dir)))))

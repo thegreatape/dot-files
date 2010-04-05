@@ -6,6 +6,7 @@ then
     alias stop_mysql="sudo /usr/local/mysql/support-files/mysql.server stop"
     alias restart_mysql="sudo /usr/local/mysql/support-files/mysql.server restart"
     alias vim="mvim"
+    export PATH=/Library/Frameworks/Python.framework/Versions/2.6/bin/:$PATH
 fi
 
 function parse_git_branch {
