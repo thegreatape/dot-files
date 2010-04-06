@@ -1,4 +1,21 @@
+" Use all-space indentation, width of 4 spaces
+set tabstop=4
+set softtabstop=4   
+set shiftwidth=4
+set expandtab
 
+" Load colorscheme
+colors zenburn
+
+" Lose the GUI
+if has("gui_running")
+    set guioptions=egmrt
+endif
+
+" Show line numbers
+set number
+
+" ---- begin sample vimrc ----
 " An example for a vimrc file.
 "
 " Maintainer:	Bram Moolenaar <Bram@vim.org>
@@ -96,17 +113,4 @@ if !exists(":DiffOrig")
 		  \ | wincmd p | diffthis
 endif
 
-" Use all-space indentation, width of 4 spaces
-set tabstop=4
-set softtabstop=4   
-set shiftwidth=4
-set expandtab
-
-" Load colorscheme
-colors zenburn
-
-" Lose the GUI
-if has("gui_running")
-    set guioptions=egmrt
-endif
 
