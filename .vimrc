@@ -14,6 +14,7 @@ colors zenburn
 " Lose the GUI
 if has("gui_running")
     set guioptions=egmrt
+    set guifont=Menlo:h12
 endif
 
 " Show line numbers
