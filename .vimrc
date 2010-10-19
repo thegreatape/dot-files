@@ -45,6 +45,12 @@ set smartcase
 " map leader to ,
 let mapleader = ","
 
+" Shortcut to rapidly toggle `set list`
+nmap <leader>l :set list!<CR>
+ 
+" Use the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:▸\ ,eol:¬
+
 " Eclim settings
 nnoremap <silent> <buffer> <leader>i :JavaImport<cr>
 nnoremap <silent> <buffer> <leader>d :JavaDocSearch -x declarations<cr>
