@@ -29,3 +29,4 @@ PS1="[\u@\h] $GREEN\w$YELLOW\$(parse_git_branch) $GREEN\$ $WHITE"
 EDITOR=emacs
 PATH=/opt/subversion/bin:$PATH:/usr/local/mysql/bin:/opt/local/lib/erlang/lib/rabbitmq_server-1.7.0/sbin/:/opt/local/lib/erlang/lib/rabbitmq_server-1.7.0/bin/:/opt/local/bin:/usr/local/git/bin:/usr/local/android-sdk/tools
 alias t=todo.sh
+export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home
