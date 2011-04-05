@@ -1,3 +1,0 @@
-#name : tal:if
-# --
-tal:if="${1:expr}"

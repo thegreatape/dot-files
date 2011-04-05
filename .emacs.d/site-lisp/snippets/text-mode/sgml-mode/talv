@@ -1,3 +1,0 @@
-#name : tal:var
-# --
-tal:var="${1:name} : ${2:value}"

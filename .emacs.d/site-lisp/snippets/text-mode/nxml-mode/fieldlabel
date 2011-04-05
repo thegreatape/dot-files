@@ -1,3 +1,0 @@
-#name: field for html form
-# --
-<label for="${1:$(downcase text)}">${1:name}:</label><input name="${1:$(downcase text)}"/><br/>

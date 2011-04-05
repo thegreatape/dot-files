@@ -1,3 +1,0 @@
-#name : tal:repeat-content
-# --
-tal:repeat-content="${1:i} : ${2:collection}"

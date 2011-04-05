@@ -1,3 +1,0 @@
-#name : tal:text
-# --
-tal:text="${1:symbol}"
