@@ -8,6 +8,11 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 
+" Set indentation for Ruby to 2 spaces
+autocmd BufRead *.rb, set tabstop=2
+autocmd BufRead *.rb, set softtabstop=2
+autocmd BufRead *.rb, set shiftwidth=2
+
 " Load colorscheme
 colors zenburn
 
@@ -84,6 +89,7 @@ augroup mkd
   autocmd BufRead *.md  set ai formatoptions=tcroqn2 comments=n:>
   autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:>
 augroup END
+
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
 
