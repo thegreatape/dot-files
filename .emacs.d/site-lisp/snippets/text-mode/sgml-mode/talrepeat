@@ -1,3 +1,0 @@
-#name : tal:repeat
-# --
-tal:repeat="${1:i} : ${2:collection}"

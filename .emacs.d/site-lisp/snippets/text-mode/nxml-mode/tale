@@ -1,3 +1,0 @@
-#name : tal:eval
-# --
-tal:eval="${1:expr}"

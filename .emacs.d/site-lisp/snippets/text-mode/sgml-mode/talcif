@@ -1,3 +1,0 @@
-#name : tal:content-if
-# --
-tal:content-if="${1:value}"

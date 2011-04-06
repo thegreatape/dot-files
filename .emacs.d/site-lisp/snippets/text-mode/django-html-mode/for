@@ -1,5 +1,0 @@
-#name : for loop
-# --
-{% for ${1:var} in ${2:list} %}
-$0
-{% endfor %}

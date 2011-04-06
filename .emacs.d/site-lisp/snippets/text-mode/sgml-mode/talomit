@@ -1,3 +1,0 @@
-#name : tal:repeat-content
-# --
-tal:omit="${1:i} : ${2:collection}"

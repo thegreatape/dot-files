@@ -1,3 +1,0 @@
-#name : tal:attr
-# --
-tal:attr="${1:name} : ${2:value}"

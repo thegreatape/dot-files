@@ -90,6 +90,15 @@ augroup mkd
   autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:>
 augroup END
 
+" Pig stuff
+augroup filetypedetect 
+  au BufNewFile,BufRead *.pig set filetype=pig syntax=pig 
+augroup END 
+
+" Thrift stuff
+au BufRead,BufNewFile *.thrift set filetype=thrift
+au! Syntax thrift source ~/.vim/thrift.vim
+
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
 

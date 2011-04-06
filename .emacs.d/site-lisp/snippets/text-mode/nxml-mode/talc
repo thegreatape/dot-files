@@ -1,3 +1,0 @@
-#name : tal:content
-# --
-tal:content="${1:expr}"

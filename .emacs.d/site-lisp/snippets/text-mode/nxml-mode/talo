@@ -1,3 +1,0 @@
-#name : tal:omit
-# --
-tal:omit="${1:expr}"
