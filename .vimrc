@@ -2,6 +2,10 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+" Initialize pathogen for loading plugins as bundles
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
 " Use all-space indentation, width of 4 spaces
 set tabstop=4
 set softtabstop=4   
