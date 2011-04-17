@@ -1,3 +1,30 @@
 [submodule ".vim/bundle/nerdcommenter"]
 	path = .vim/bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
+[submodule ".vim/bundle/sparkup"]
+	path = .vim/bundle/sparkup
+	url = https://github.com/bingaman/vim-sparkup
+[submodule ".vim/bundle/jade"]
+	path = .vim/bundle/jade
+	url = https://github.com/vim-scripts/jade.vim
+[submodule ".vim/bundle/pig"]
+	path = .vim/bundle/pig
+	url = https://github.com/vim-scripts/pig.vim
+[submodule ".vim/bundle/markdown"]
+	path = .vim/bundle/markdown
+	url = https://github.com/tpope/vim-markdown
+[submodule ".vim/bundle/bufkill"]
+	path = .vim/bundle/bufkill
+	url = https://github.com/vim-scripts/bufkill.vim
+[submodule ".vim/bundle/LustyExplorer"]
+	path = .vim/bundle/LustyExplorer
+	url = https://github.com/vim-scripts/LustyExplorer
+[submodule ".vim/bundle/csapprox"]
+	path = .vim/bundle/csapprox
+	url = https://github.com/godlygeek/csapprox
+[submodule ".vim/bundle/ack"]
+	path = .vim/bundle/ack
+	url = https://github.com/mileszs/ack.vim
+[submodule ".vim/bundle/surround"]
+	path = .vim/bundle/surround
+	url = https://github.com/tpope/vim-surround
