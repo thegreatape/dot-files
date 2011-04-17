@@ -38,10 +38,10 @@ set backspace=indent,eol,start
 " disable audible error bell
 set visualbell
 
-set history=50		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
+set history=50      " keep 50 lines of command line history
+set ruler           " show the cursor position all the time
+set showcmd         " display incomplete commands
+set incsearch       " do incremental searching
 
 " Allow flipping between dirty buffers 
 set hidden
@@ -60,20 +60,8 @@ nmap <leader>l :set list!<CR>
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
 
-" Eclim settings
-nnoremap <silent> <buffer> <leader>i :JavaImport<cr>
-nnoremap <silent> <buffer> <leader>d :JavaDocSearch -x declarations<cr>
-nnoremap <silent> <buffer> <cr> :JavaSearchContext<cr>
-
-" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
-" let &guioptions = substitute(&guioptions, "t", "", "g")
-
 " Don't use Ex mode, use Q for formatting
 map Q gq
-
-" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
-" so that you can undo CTRL-U after inserting a line break.
-inoremap <C-U> <C-G>u<C-U>
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
@@ -101,7 +89,7 @@ augroup END
 
 " Thrift stuff
 au BufRead,BufNewFile *.thrift set filetype=thrift
-au! Syntax thrift source ~/.vim/thrift.vim
+au! Syntax thrift source ~/.vim/bundle/thrift/thrift.vim
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
