@@ -37,3 +37,6 @@
 [submodule "vim/bundle/jshint"]
 	path = vim/bundle/jshint
 	url = https://github.com/wookiehangover/jshint.vim
+[submodule "vim/bundle/rails"]
+	path = vim/bundle/rails
+	url = https://github.com/tpope/vim-rails
