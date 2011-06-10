@@ -8,6 +8,11 @@ then
     alias vim="mvim"
     export PATH=/Library/Frameworks/Python.framework/Versions/2.6/bin/:$PATH
 fi
+alias gg="git grep -n $1"
+alias gch="git checkout $1"
+alias gpr="git pull --rebase"
+alias gpoh="git push origin HEAD"
+
 
 function parse_git_branch {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return

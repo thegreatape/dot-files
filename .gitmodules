@@ -40,3 +40,12 @@
 [submodule "vim/bundle/rails"]
 	path = vim/bundle/rails
 	url = https://github.com/tpope/vim-rails
+[submodule "vim/bundle/fugitive"]
+	path = vim/bundle/fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "vim/bundle/ruby"]
+	path = vim/bundle/ruby
+	url = https://github.com/vim-ruby/vim-ruby
+[submodule "vim/bundle/matchit"]
+	path = vim/bundle/matchit
+	url = https://github.com/tsaleh/vim-matchit
