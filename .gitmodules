@@ -52,3 +52,6 @@
 [submodule "vim/bundle/zoomwin"]
 	path = vim/bundle/zoomwin
 	url = https://github.com/vim-scripts/ZoomWin
+[submodule "vim/bundle/command-t"]
+	path = vim/bundle/command-t
+	url = https://github.com/vim-scripts/Command-T
