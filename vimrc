@@ -60,6 +60,9 @@ nmap <leader>l :set list!<CR>
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
 
+" Use smaller than default height commant-t window
+let g:CommandTMaxHeight=15
+
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
