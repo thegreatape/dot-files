@@ -1,1 +1,3 @@
 --type-set=cucumber=.feature
+--type-set=haml=.haml
+--type-set=sass=.sass

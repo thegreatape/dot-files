@@ -7,9 +7,9 @@ call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
 " Use all-space indentation, width of 4 spaces
-set tabstop=4
-set softtabstop=4   
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2   
+set shiftwidth=2
 set expandtab
 
 " Set indentation for Ruby to 2 spaces
