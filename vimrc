@@ -32,6 +32,9 @@ set number
 " bash-style tab completion
 set wildmode=longest,list
 
+" add node_modules to completion ignore
+set wildignore+=node_modules/**
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
