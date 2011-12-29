@@ -45,4 +45,5 @@ files.each do |from|
 
   FileUtils.symlink(from, to)
 end
+`git submodule update --init`
 
