@@ -36,6 +36,8 @@ PATH=./bin:$PATH:/usr/local/mysql/bin:/opt/local/lib/erlang/lib/rabbitmq_server-
 alias t=todo.sh
 export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home
 
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
 source ~/.git-completion.bash
 alias start_postgres="pg_ctl -D /usr/local/var/postgres9 -l /usr/local/var/postgres9/server.log start"
 alias stop_postgres=" pg_ctl -D /usr/local/var/postgres9 stop -s -m fast"
