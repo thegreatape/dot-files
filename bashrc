@@ -41,3 +41,4 @@ export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home
 source ~/.git-completion.bash
 alias start_postgres="pg_ctl -D /usr/local/var/postgres9 -l /usr/local/var/postgres9/server.log start"
 alias stop_postgres=" pg_ctl -D /usr/local/var/postgres9 stop -s -m fast"
+alias bake="bundle exec rake"
