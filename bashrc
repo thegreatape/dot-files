@@ -20,7 +20,7 @@ PS1="[\u@\h] $GREEN\w$YELLOW\$(parse_git_branch) $GREEN\$ $WHITE"
 
 # general environment variable setup
 EDITOR=vim
-PATH=./bin:$PATH:/usr/local/bin
+PATH=./bin:/usr/local/bin:$PATH
 
 # RVM setup
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
