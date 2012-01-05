@@ -1,0 +1,17 @@
+[user]
+    email = Thomas.Mayfield@gmail.com
+    name = Thomas Mayfield
+[core]
+    editor = vim
+    excludesfile = ~/.gitignore
+[color]
+    status = auto
+    diff = auto
+    branch = auto
+[alias]
+    co = checkout
+    st = status
+    ci = commit
+    df = !git diff | mate
+[push]
+    default = tracking
