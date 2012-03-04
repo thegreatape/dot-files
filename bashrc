@@ -25,6 +25,9 @@ PATH=./bin:/usr/local/bin:$PATH
 # RVM setup
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
+# NVM setup
+[[ -s "$HOME/.nvm/nvm.sh" ]] && . "$HOME/.nvm/nvm.sh"
+
 # git bash completion
 source ~/.git-completion.bash
 
