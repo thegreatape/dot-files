@@ -56,6 +56,13 @@ set smartcase
 
 " map leader to ,
 let mapleader = ","
+let maplocalleader="\\"
+
+" shortcut to edit vimrc
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
+" shortcut to source vimrc
+nnoremap <leader>sv :source $MYVIMRC<cr> 
 
 " Shortcut to rapidly toggle `set list`
 nmap <leader>l :set list!<CR>
@@ -138,4 +145,3 @@ if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 		  \ | wincmd p | diffthis
 endif
-

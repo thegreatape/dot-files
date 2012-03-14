@@ -61,3 +61,6 @@
 [submodule "nvm"]
 	path = nvm
 	url = git://github.com/creationix/nvm.git
+[submodule "vim/bundle/taglist"]
+	path = vim/bundle/taglist
+	url = https://github.com/vim-scripts/taglist.vim
