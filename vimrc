@@ -6,16 +6,18 @@ set nocompatible
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
-" Use all-space indentation, width of 4 spaces
+" Use all-space indentation, width of 2 spaces
 set tabstop=2
 set softtabstop=2   
 set shiftwidth=2
 set expandtab
 
-" Set indentation for Ruby to 2 spaces
-autocmd BufRead *.rb, set tabstop=2
-autocmd BufRead *.rb, set softtabstop=2
-autocmd BufRead *.rb, set shiftwidth=2
+" Markdown or text editing settings
+autocmd BufRead *\.markdown,*\.md,*\.txt setlocal formatoptions=l
+autocmd BufRead *\.markdown,*\.md,*\.txt setlocal lbr
+autocmd BufRead *\.markdown,*\.md,*\.txt map j gj
+autocmd BufRead *\.markdown,*\.md,*\.txt map k gk
+autocmd BufRead *\.markdown,*\.md,*\.txt setlocal smartindent
 
 " Load colorscheme
 colors zenburn
