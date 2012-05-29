@@ -40,6 +40,16 @@ alias gg="git grep --color -n $1"
 alias gch="git checkout $1"
 alias gpr="git pull --rebase"
 alias gpoh="git push origin HEAD"
+alias pru="rvm 1.9.3 exec pru"
 
 # only set vim to mvim if we're actually on OS X
 [[ `uname -a` =~ "Darwin" ]] && alias vim="mvim"
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+# Ruby performance tweaks
+export RUBY_HEAP_MIN_SLOTS=1000000
+export RUBY_HEAP_SLOTS_INCREMENT=1000000
+export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
+export RUBY_GC_MALLOC_LIMIT=1000000000
+export RUBY_HEAP_FREE_MIN=500000
