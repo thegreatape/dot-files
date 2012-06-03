@@ -64,3 +64,6 @@
 [submodule "vim/bundle/taglist"]
 	path = vim/bundle/taglist
 	url = https://github.com/vim-scripts/taglist.vim
+[submodule "vim/bundle/prolog"]
+	path = vim/bundle/prolog
+	url = https://github.com/adimit/prolog.vim.git
