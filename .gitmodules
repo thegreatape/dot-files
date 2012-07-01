@@ -67,3 +67,6 @@
 [submodule "vim/bundle/prolog"]
 	path = vim/bundle/prolog
 	url = https://github.com/adimit/prolog.vim.git
+[submodule "vim/bundle/clojure"]
+	path = vim/bundle/clojure
+	url = https://github.com/vim-scripts/VimClojure
