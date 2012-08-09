@@ -20,6 +20,9 @@ autocmd BufRead *\.markdown,*\.md,*\.txt map k gk
 autocmd BufRead *\.markdown,*\.md,*\.txt setlocal smartindent
 autocmd BufRead *\.markdown,*\.md,*\.txt nnoremap <leader>sp :setlocal spell! spelllang=en_gb<cr>
 
+" treat hamlc the same as haml
+au BufRead,BufNewFile *.hamlc set ft=haml
+
 " Load colorscheme
 colors zenburn
 
