@@ -8,7 +8,7 @@ call pathogen#helptags()
 
 " Use all-space indentation, width of 2 spaces
 set tabstop=2
-set softtabstop=2   
+set softtabstop=2
 set shiftwidth=2
 set expandtab
 
@@ -19,6 +19,9 @@ autocmd BufRead *\.markdown,*\.md,*\.txt map j gj
 autocmd BufRead *\.markdown,*\.md,*\.txt map k gk
 autocmd BufRead *\.markdown,*\.md,*\.txt setlocal smartindent
 autocmd BufRead *\.markdown,*\.md,*\.txt nnoremap <leader>sp :setlocal spell! spelllang=en_gb<cr>
+
+" SCSS
+au BufRead,BufNewFile *.scss set filetype=scss
 
 " treat hamlc the same as haml
 au BufRead,BufNewFile *.hamlc set ft=haml
@@ -52,12 +55,12 @@ set ruler           " show the cursor position all the time
 set showcmd         " display incomplete commands
 set incsearch       " do incremental searching
 
-" Allow flipping between dirty buffers 
+" Allow flipping between dirty buffers
 set hidden
 
 " Make searches case-insensive unless there is a capitalized char in the
 " search
-set ignorecase 
+set ignorecase
 set smartcase
 
 " map leader to ,
@@ -68,11 +71,11 @@ let maplocalleader="\\"
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
 " shortcut to source vimrc
-nnoremap <leader>sv :source $MYVIMRC<cr> 
+nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " Shortcut to rapidly toggle `set list`
 nmap <leader>l :set list!<CR>
- 
+
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
 
@@ -102,13 +105,22 @@ augroup mkd
 augroup END
 
 " Pig stuff
-augroup filetypedetect 
-  au BufNewFile,BufRead *.pig set filetype=pig syntax=pig 
-augroup END 
+augroup filetypedetect
+  au BufNewFile,BufRead *.pig set filetype=pig syntax=pig
+augroup END
 
 " Thrift stuff
 au BufRead,BufNewFile *.thrift set filetype=thrift
 au! Syntax thrift source ~/.vim/bundle/thrift/thrift.vim
+
+" Automatically trim trailing whitespace
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
