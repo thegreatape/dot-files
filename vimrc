@@ -26,6 +26,9 @@ au BufRead,BufNewFile *.scss set filetype=scss
 " treat hamlc the same as haml
 au BufRead,BufNewFile *.hamlc set ft=haml
 
+" highlight zsh-theme files as shell
+au BufNewFile,BufRead *.zsh-theme set filetype=zsh
+
 " Load colorscheme
 colors zenburn
 
