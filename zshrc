@@ -46,11 +46,7 @@ PATH=./bin:/usr/local/bin:$PATH
 
 # RVM setup
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-
-# only set vim to mvim if we're actually on OS X
-[[ `uname -a` =~ "Darwin" ]] && alias vim="mvim"
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:$HOME/.rvm/bin
 
 # Ruby performance tweaks
 export RUBY_HEAP_MIN_SLOTS=1000000

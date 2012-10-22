@@ -124,6 +124,13 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
+" change cursor shape in insert mode. requires building master of
+" iTerm2, at least as of 11-22-12
+let &t_SI .= "\e[6 q"
+let &t_EI .= "\e[2 q"
+inoremap <special> <Esc> <Esc>hl
+set guicursor+=i:blinkwait0
+
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
