@@ -131,6 +131,10 @@ let &t_EI .= "\e[2 q"
 inoremap <special> <Esc> <Esc>hl
 set guicursor+=i:blinkwait0
 
+" Enable 256 colors to stop the CSApprox warning and make xterm vim shine
+if &term == 'xterm' || &term == 'screen'
+  set t_Co=256
+endif
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
