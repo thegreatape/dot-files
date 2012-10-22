@@ -1,6 +1,6 @@
 [user]
     email = Thomas.Mayfield@gmail.com
-    name = Thomas Mayfield
+	name = Thomas.Mayfield@gmail.com
 [core]
     editor = vim
     excludesfile = ~/.gitignore
@@ -15,3 +15,6 @@
     df = !git diff | mate
 [push]
     default = tracking
+[heroku]
+[merge]
+  tool = opendiff
