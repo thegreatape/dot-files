@@ -2,3 +2,5 @@
 *.swp
 *.swo
 log/diagnostic.txt
+*.swn
+.powrc

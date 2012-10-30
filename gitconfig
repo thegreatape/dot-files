@@ -1,6 +1,6 @@
 [user]
-    email = Thomas.Mayfield@gmail.com
-	name = Thomas.Mayfield@gmail.com
+  email = Thomas.Mayfield@gmail.com
+  name = Thomas Mayfield
 [core]
     editor = vim
     excludesfile = ~/.gitignore
