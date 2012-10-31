@@ -129,12 +129,9 @@ autocmd BufWinLeave * call clearmatches()
 if exists('$TMUX')
   let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
   let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-else
-  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+  inoremap <special> <Esc> <Esc>hl
+  set guicursor+=i:blinkwait0
 endif
-inoremap <special> <Esc> <Esc>hl
-set guicursor+=i:blinkwait0
 
 " Enable 256 colors to stop the CSApprox warning 
 if &term == 'xterm' || &term == 'screen'
