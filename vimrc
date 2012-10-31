@@ -126,12 +126,17 @@ autocmd BufWinLeave * call clearmatches()
 
 " change cursor shape in insert mode. requires building master of
 " iTerm2, at least as of 11-22-12
-let &t_SI .= "\e[6 q"
-let &t_EI .= "\e[2 q"
+if exists('$TMUX')
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
 inoremap <special> <Esc> <Esc>hl
 set guicursor+=i:blinkwait0
 
-" Enable 256 colors to stop the CSApprox warning and make xterm vim shine
+" Enable 256 colors to stop the CSApprox warning 
 if &term == 'xterm' || &term == 'screen'
   set t_Co=256
 endif
