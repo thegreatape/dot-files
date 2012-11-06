@@ -11,6 +11,10 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
+set list listchars=tab:\ \ ,trail:·
+
+" clear trailing spaces
+nnoremap <silent> <space><space> :silent! %s/\s\+$//<CR>
 
 " Markdown or text editing settings
 autocmd BufRead *\.markdown,*\.md,*\.txt setlocal formatoptions=l
@@ -80,7 +84,7 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 nmap <leader>l :set list!<CR>
 
 " Use the same symbols as TextMate for tabstops and EOLs
-set listchars=tab:▸\ ,eol:¬
+"set listchars=tab:▸\ ,eol:¬
 
 " Use smaller than default height commant-t window
 let g:CommandTMaxHeight=15
@@ -133,7 +137,7 @@ if exists('$TMUX')
   set guicursor+=i:blinkwait0
 endif
 
-" Enable 256 colors to stop the CSApprox warning 
+" Enable 256 colors to stop the CSApprox warning
 if &term == 'xterm' || &term == 'screen'
   set t_Co=256
 endif
