@@ -4,3 +4,5 @@
 log/diagnostic.txt
 *.swn
 .powrc
+*.swn
+*.swm
