@@ -41,12 +41,15 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # general environment variable setup
-EDITOR=vim
-PATH=./bin:/usr/local/bin:$PATH
+export EDITOR=vim
+export PATH=./bin:/usr/local/bin:$PATH
 
 # RVM setup
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-PATH=$PATH:$HOME/.rvm/bin
+export PATH=$PATH:$HOME/.rvm/bin
+
+# tmuxinator setup
+[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
 # Ruby performance tweaks
 export RUBY_HEAP_MIN_SLOTS=1000000
