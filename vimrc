@@ -27,8 +27,9 @@ autocmd BufRead *\.markdown,*\.md,*\.txt nnoremap <leader>sp :setlocal spell! sp
 " SCSS
 au BufRead,BufNewFile *.scss set filetype=scss
 
-" axlsx is just ruby
+" Guardfiles and axlsx are just ruby
 au BufRead,BufNewFile *.axlsx set filetype=ruby
+au BufRead,BufNewFile Guardfile set filetype=ruby
 
 " treat hamlc the same as haml
 au BufRead,BufNewFile *.hamlc set ft=haml
