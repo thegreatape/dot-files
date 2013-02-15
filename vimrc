@@ -146,6 +146,18 @@ if &term == 'xterm' || &term == 'screen'
   set t_Co=256
 endif
 
+" renaming files in-place
+function! RenameFile()
+  let old_name = expand('%')
+  let new_name = input('New file name: ', expand('%'), 'file')
+  if new_name != '' && new_name != old_name
+    exec ':saveas ' . new_name
+    exec ':silent !rm ' . old_name
+    redraw!
+  endif
+endfunction
+map <leader>n :call RenameFile()<cr>
+
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
 
