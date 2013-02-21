@@ -85,12 +85,6 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 " shortcut to source vimrc
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
-" Shortcut to rapidly toggle `set list`
-nmap <leader>l :set list!<CR>
-
-" Use the same symbols as TextMate for tabstops and EOLs
-"set listchars=tab:▸\ ,eol:¬
-
 " Use smaller than default height commant-t window
 let g:CommandTMaxHeight=15
 
@@ -115,15 +109,6 @@ augroup mkd
   autocmd BufRead *.md  set ai formatoptions=tcroqn2 comments=n:>
   autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:>
 augroup END
-
-" Pig stuff
-augroup filetypedetect
-  au BufNewFile,BufRead *.pig set filetype=pig syntax=pig
-augroup END
-
-" Thrift stuff
-au BufRead,BufNewFile *.thrift set filetype=thrift
-au! Syntax thrift source ~/.vim/bundle/thrift/thrift.vim
 
 " Automatically trim trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
