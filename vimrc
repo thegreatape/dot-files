@@ -85,8 +85,8 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 " shortcut to source vimrc
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
-" Use smaller than default height commant-t window
-let g:CommandTMaxHeight=15
+" open ctrl-p with leader-t
+let g:ctrlp_map = '<leader>t'
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
