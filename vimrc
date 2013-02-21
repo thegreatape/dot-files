@@ -31,8 +31,9 @@ au BufRead,BufNewFile *.scss set filetype=scss
 au BufRead,BufNewFile *.axlsx set filetype=ruby
 au BufRead,BufNewFile Guardfile set filetype=ruby
 
-" treat hamlc the same as haml
+" treat hamlbars and hamlc the same as haml
 au BufRead,BufNewFile *.hamlc set ft=haml
+au BufRead,BufNewFile *.hamlbars set ft=haml
 
 " highlight zsh-theme files as shell
 au BufNewFile,BufRead *.zsh-theme set filetype=zsh
