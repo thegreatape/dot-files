@@ -87,6 +87,7 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " open ctrl-p with leader-t
 let g:ctrlp_map = '<leader>t'
+let g:ctrlp_cmd = 'CtrlPMixed'
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
