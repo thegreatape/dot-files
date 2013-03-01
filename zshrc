@@ -46,7 +46,7 @@ export PATH=./bin:/usr/local/bin:$PATH
 
 # RVM setup
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-export PATH=$PATH:$HOME/.rvm/bin
+export PATH=$PATH:$HOME/.rvm/bin:/usr/local/share/npm/bin
 
 # tmuxinator setup
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
