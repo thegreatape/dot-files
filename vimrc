@@ -50,8 +50,12 @@ endif
 " Show line numbers
 set number
 
-" bash-style tab completion
-set wildmode=longest,list
+" zsh-style tab completion
+set wildmenu
+set wildmode=full
+
+" have Ctrl-l clear highlights
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
 " add node_modules to completion ignore
 set wildignore+=node_modules/**
@@ -62,7 +66,7 @@ set backspace=indent,eol,start
 " disable audible error bell
 set visualbell
 
-set history=50      " keep 50 lines of command line history
+set history=2000    " keep 2000 lines of command line history
 set ruler           " show the cursor position all the time
 set showcmd         " display incomplete commands
 set incsearch       " do incremental searching
@@ -78,6 +82,9 @@ set smartcase
 " map leader to ,
 let mapleader = ","
 let maplocalleader="\\"
+
+" map \ to reverse character search
+noremap \ ,
 
 " shortcut to edit vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -144,6 +151,9 @@ function! RenameFile()
   endif
 endfunction
 map <leader>n :call RenameFile()<cr>
+
+" expand %% to current buffer's path in command line mode
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
