@@ -6,3 +6,5 @@ log/diagnostic.txt
 .powrc
 *.swn
 *.swm
+.env
+.rspec
