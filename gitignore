@@ -8,3 +8,6 @@ log/diagnostic.txt
 *.swm
 .env
 .rspec
+custom_plan.rb
+zeus.json
+tags
