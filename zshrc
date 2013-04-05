@@ -17,6 +17,7 @@ alias gch="git checkout $1"
 alias gpr="git pull --rebase"
 alias gpoh="git push origin HEAD"
 alias pru="rvm 1.9.3 exec pru"
+alias heroku_restore="pg_restore --verbose --clean --no-acl --no-owner"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
