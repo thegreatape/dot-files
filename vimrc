@@ -1,10 +1,39 @@
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
+filetype off
 
-" Initialize pathogen for loading plugins as bundles
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+"let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+" My plugins, let me show you them
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'bingaman/vim-sparkup'
+Bundle 'vim-scripts/jade.vim'
+Bundle 'vim-scripts/pig.vim'
+Bundle 'tpope/vim-markdown'
+Bundle 'vim-scripts/bufkill.vim'
+Bundle 'godlygeek/csapprox'
+Bundle 'mileszs/ack.vim'
+Bundle 'tpope/vim-surround'
+Bundle 'juvenn/mustache.vim'
+Bundle 'pangloss/vim-javascript'
+Bundle 'wookiehangover/jshint.vim'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-fugitive'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tsaleh/vim-matchit'
+Bundle 'vim-scripts/ZoomWin'
+Bundle 'kchmck/vim-coffee-script.git'
+Bundle 'vim-scripts/taglist.vim'
+Bundle 'adimit/prolog.vim.git'
+Bundle 'vim-scripts/VimClojure'
+Bundle 'godlygeek/tabular.git'
+Bundle 'kien/ctrlp.vim.git'
+Bundle 'vim-scripts/AutoTag'
 
 " Use all-space indentation, width of 2 spaces
 set tabstop=2
