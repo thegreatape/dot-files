@@ -47,6 +47,16 @@ Bundle 'tpope/vim-fireplace.git'
 Bundle 'tpope/vim-classpath.git'
 Bundle 'guns/vim-clojure-static.git'
 
+" Vimux
+Bundle 'benmills/vimux'
+Bundle 'pgr0ss/vimux-ruby-test'
+" Ruby test running shortcuts
+autocmd Filetype ruby nnoremap <leader>rl :RunRubyFocusedTest<cr>
+autocmd Filetype ruby nnoremap <leader>rf :RunAllRubyTests<cr>
+autocmd Filetype ruby nnoremap <leader>rc :VimuxClosePanes<cr>
+let g:VimuxOrientation = "h"
+let g:VimuxHeight = "30"
+
 " Utility plugins
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'vim-scripts/bufkill.vim'
@@ -60,8 +70,6 @@ Bundle 'vim-scripts/taglist.vim'
 Bundle 'godlygeek/tabular.git'
 Bundle 'kien/ctrlp.vim.git'
 Bundle 'vim-scripts/AutoTag'
-Bundle 'benmills/vimux'
-Bundle 'pgr0ss/vimux-ruby-test'
 
 filetype plugin indent on
 
