@@ -3,30 +3,56 @@
 set nocompatible
 filetype off
 
+" Vundle setup
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-
-"let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 
-" Language plugins
+" Jade templating
 Bundle 'vim-scripts/jade.vim'
+
+" Javascript
 Bundle 'pangloss/vim-javascript'
 Bundle 'wookiehangover/jshint.vim'
+
+" Markdown
 Bundle 'tpope/vim-markdown'
+augroup mkd
+  autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
+  autocmd BufRead *.md  set ai formatoptions=tcroqn2 comments=n:>
+  autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:>
+  autocmd BufRead *\.markdown,*\.md,*\.txt setlocal formatoptions=l
+  autocmd BufRead *\.markdown,*\.md,*\.txt setlocal lbr
+  autocmd BufRead *\.markdown,*\.md,*\.txt map j gj
+  autocmd BufRead *\.markdown,*\.md,*\.txt map k gk
+  autocmd BufRead *\.markdown,*\.md,*\.txt setlocal smartindent
+  autocmd BufRead *\.markdown,*\.md,*\.txt nnoremap <leader>sp :setlocal spell! spelllang=en_gb<cr>
+augroup END
+
+" Ruby and Rails
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'kchmck/vim-coffee-script.git'
+Bundle 'tpope/vim-rails'
+" SCSS
+au BufRead,BufNewFile *.scss set filetype=scss
+" Guardfiles and axlsx are just ruby
+au BufRead,BufNewFile *.axlsx set filetype=ruby
+au BufRead,BufNewFile Guardfile set filetype=ruby
+" treat hamlbars and hamlc the same as haml
+au BufRead,BufNewFile *.hamlc set ft=haml
+au BufRead,BufNewFile *.hamlbars set ft=haml
+
+" Clojure
 Bundle 'tpope/vim-fireplace.git'
 Bundle 'tpope/vim-classpath.git'
 Bundle 'guns/vim-clojure-static.git'
 
-" Utiltiy plugins
+" Utility plugins
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'vim-scripts/bufkill.vim'
 Bundle 'godlygeek/csapprox'
 Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tsaleh/vim-matchit'
 Bundle 'vim-scripts/ZoomWin'
@@ -39,6 +65,9 @@ Bundle 'pgr0ss/vimux-ruby-test'
 
 filetype plugin indent on
 
+" highlight zsh-theme files as shell
+au BufNewFile,BufRead *.zsh-theme set filetype=zsh
+
 " Use all-space indentation, width of 2 spaces
 set tabstop=2
 set softtabstop=2
@@ -46,38 +75,13 @@ set shiftwidth=2
 set expandtab
 set list listchars=tab:\ \ ,trail:·
 
-" clear trailing spaces
-nnoremap <silent> <space><space> :silent! %s/\s\+$//<CR>
-
-" Markdown or text editing settings
-autocmd BufRead *\.markdown,*\.md,*\.txt setlocal formatoptions=l
-autocmd BufRead *\.markdown,*\.md,*\.txt setlocal lbr
-autocmd BufRead *\.markdown,*\.md,*\.txt map j gj
-autocmd BufRead *\.markdown,*\.md,*\.txt map k gk
-autocmd BufRead *\.markdown,*\.md,*\.txt setlocal smartindent
-autocmd BufRead *\.markdown,*\.md,*\.txt nnoremap <leader>sp :setlocal spell! spelllang=en_gb<cr>
-
-" SCSS
-au BufRead,BufNewFile *.scss set filetype=scss
-
-" Guardfiles and axlsx are just ruby
-au BufRead,BufNewFile *.axlsx set filetype=ruby
-au BufRead,BufNewFile Guardfile set filetype=ruby
-
-" treat hamlbars and hamlc the same as haml
-au BufRead,BufNewFile *.hamlc set ft=haml
-au BufRead,BufNewFile *.hamlbars set ft=haml
-
-" highlight zsh-theme files as shell
-au BufNewFile,BufRead *.zsh-theme set filetype=zsh
-
 " Load colorscheme
 colors zenburn
 
 " Lose the GUI
 if has("gui_running")
-    set guioptions=egmrt
-    set guifont=Menlo:h12
+  set guioptions=egmrt
+  set guifont=Menlo:h12
 endif
 
 " Show line numbers
@@ -89,9 +93,6 @@ set wildmode=longest,list
 
 " have Ctrl-l clear highlights
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
-
-" add node_modules to completion ignore
-set wildignore+=node_modules/**
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -144,20 +145,16 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
-" Markdown stuff
-augroup mkd
-  autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
-  autocmd BufRead *.md  set ai formatoptions=tcroqn2 comments=n:>
-  autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:>
-augroup END
-
-" Automatically trim trailing whitespace
+" Deal with trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+" clear trailing spaces with <space><space>
+nnoremap <silent> <space><space> :silent! %s/\s\+$//<CR>
+
 
 " change cursor shape in insert mode. requires building master of
 " iTerm2, at least as of 11-22-12
@@ -188,44 +185,12 @@ map <leader>n :call RenameFile()<cr>
 " expand %% to current buffer's path in command line mode
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
-
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
-  filetype plugin indent on
-
-  " Put these in an autocmd group, so that we can delete them easily.
-  augroup vimrcEx
-  au!
-
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
-
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  " Also don't do it when the mark is in the first line, that is the default
-  " position when opening a file.
-  autocmd BufReadPost *
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
-
-  augroup END
-
-else
-
-  set autoindent		" always set autoindenting on
-
-endif " has("autocmd")
-
-" Convenient command to see the difference between the current buffer and the
-" file it was loaded from, thus the changes you made.
-" Only define it when not defined already.
-if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
-endif
+" Reopen to last position in file.
+" Don't do it when the position is invalid or when inside an event handler
+" (happens when dropping a file on gvim).
+" Also don't do it when the mark is in the first line, that is the default
+" position when opening a file.
+autocmd BufReadPost *
+  \ if line("'\"") > 1 && line("'\"") <= line("$") |
+  \   exe "normal! g`\"" |
+  \ endif
