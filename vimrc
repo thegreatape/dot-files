@@ -9,31 +9,35 @@ call vundle#rc()
 "let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 
-" My plugins, let me show you them
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'bingaman/vim-sparkup'
+" Language plugins
 Bundle 'vim-scripts/jade.vim'
-Bundle 'vim-scripts/pig.vim'
+Bundle 'pangloss/vim-javascript'
+Bundle 'wookiehangover/jshint.vim'
 Bundle 'tpope/vim-markdown'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'kchmck/vim-coffee-script.git'
+Bundle 'tpope/vim-fireplace.git'
+Bundle 'tpope/vim-classpath.git'
+Bundle 'guns/vim-clojure-static.git'
+
+" Utiltiy plugins
+Bundle 'scrooloose/nerdcommenter'
 Bundle 'vim-scripts/bufkill.vim'
 Bundle 'godlygeek/csapprox'
 Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-surround'
-Bundle 'juvenn/mustache.vim'
-Bundle 'pangloss/vim-javascript'
-Bundle 'wookiehangover/jshint.vim'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-fugitive'
-Bundle 'vim-ruby/vim-ruby'
 Bundle 'tsaleh/vim-matchit'
 Bundle 'vim-scripts/ZoomWin'
-Bundle 'kchmck/vim-coffee-script.git'
 Bundle 'vim-scripts/taglist.vim'
-Bundle 'adimit/prolog.vim.git'
-Bundle 'vim-scripts/VimClojure'
 Bundle 'godlygeek/tabular.git'
 Bundle 'kien/ctrlp.vim.git'
 Bundle 'vim-scripts/AutoTag'
+Bundle 'benmills/vimux'
+Bundle 'pgr0ss/vimux-ruby-test'
+
+filetype plugin indent on
 
 " Use all-space indentation, width of 2 spaces
 set tabstop=2
