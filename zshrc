@@ -18,12 +18,13 @@ alias gpr="git pull --rebase"
 alias gpoh="git push origin HEAD"
 alias pru="rvm 1.9.3 exec pru"
 alias heroku_restore="pg_restore --verbose --clean --no-acl --no-owner"
+alias git_local_cleanup="git branch --merged | grep -v "\*" | xargs -n 1 git branch -d"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
 # Comment this out to disable weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment following line if you want to disable colors in ls
 # DISABLE_LS_COLORS="true"
@@ -58,3 +59,6 @@ export RUBY_HEAP_SLOTS_INCREMENT=1000000
 export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
 export RUBY_GC_MALLOC_LIMIT=1000000000
 export RUBY_HEAP_FREE_MIN=500000
+
+# disable zsh autocorrect
+unsetopt correct
