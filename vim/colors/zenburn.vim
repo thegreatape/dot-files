@@ -428,7 +428,7 @@ if exists("g:zenburn_high_Contrast") && g:zenburn_high_Contrast
     hi PMenuSel        guibg=#353a37 guifg=#ccdc90 gui=bold
     hi PmenuSbar       guibg=#2e3330 guifg=#000000
     hi PMenuThumb      guibg=#a0afa0 guifg=#040404
-    hi MatchParen      guifg=#f0f0c0 guibg=#383838 gui=bold
+    hi MatchParen      guifg=#f0f0c0 guibg=#383838 gui=bold ctermfg=255 ctermbg=242 cterm=bold
     hi SignColumn      guifg=#9fafaf guibg=#181818 gui=bold
     hi NonText         guifg=#404040 gui=bold
 
@@ -448,7 +448,7 @@ else
     hi PMenuSel        guibg=#242424 guifg=#d0d0a0 gui=bold
     hi PmenuSbar       guibg=#2e3330 guifg=#000000
     hi PMenuThumb      guibg=#a0afa0 guifg=#040404
-    hi MatchParen      guifg=#b2b2a0 guibg=#2e2e2e gui=bold
+    hi MatchParen      guifg=#b2b2a0 guibg=#2e2e2e gui=bold ctermfg=255 ctermbg=242 cterm=bold
     hi SignColumn      guifg=#9fafaf guibg=#343434 gui=bold
     hi NonText         guifg=#5b605e gui=bold
 
