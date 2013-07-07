@@ -57,6 +57,9 @@ autocmd Filetype ruby nnoremap <leader>rc :VimuxClosePanes<cr>
 let g:VimuxOrientation = "h"
 let g:VimuxHeight = "30"
 
+" Go
+Bundle 'jnwhiteh/vim-golang'
+
 " Utility plugins
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'vim-scripts/bufkill.vim'
