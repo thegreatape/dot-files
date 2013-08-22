@@ -200,6 +200,9 @@ map <leader>n :call RenameFile()<cr>
 " expand %% to current buffer's path in command line mode
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
+" remap W to save
+command! -bang W w<bang>
+
 " Reopen to last position in file.
 " Don't do it when the position is invalid or when inside an event handler
 " (happens when dropping a file on gvim).
