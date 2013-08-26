@@ -105,6 +105,7 @@ set number
 " zsh-style tab completion
 set wildmenu
 set wildmode=longest,list
+set wildignore+=*/vendor/*,*/build/*
 
 " have Ctrl-l clear highlights
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
