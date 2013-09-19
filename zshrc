@@ -18,7 +18,7 @@ alias gpr="git pull --rebase"
 alias gpoh="git push origin HEAD"
 alias pru="rvm 1.9.3 exec pru"
 alias heroku_restore="pg_restore --verbose --clean --no-acl --no-owner"
-alias git_local_cleanup="git branch --merged | grep -v "\*" | xargs -n 1 git branch -d"
+alias git_local_cleanup="git branch --merged | grep -v \"\*\" | xargs -n 1 git branch -d"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
