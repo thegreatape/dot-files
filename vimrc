@@ -77,6 +77,7 @@ Bundle 'godlygeek/tabular.git'
 Bundle 'kien/ctrlp.vim.git'
 Bundle 'vim-scripts/AutoTag'
 Bundle 'ervandew/supertab'
+Bundle 'tpope/vim-abolish'
 
 filetype plugin indent on
 
