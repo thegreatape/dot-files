@@ -11,3 +11,6 @@ log/diagnostic.txt
 custom_plan.rb
 zeus.json
 tags
+.dat*
+.rvmrc
+.repl_history
