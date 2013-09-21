@@ -56,6 +56,7 @@ autocmd Filetype ruby nnoremap <leader>rf :RunAllRubyTests<cr>
 autocmd Filetype ruby nnoremap <leader>rc :VimuxClosePanes<cr>
 let g:VimuxOrientation = "h"
 let g:VimuxHeight = "30"
+let g:VimuxUseNearestPane = 1
 
 " Navigating tmux/vim splits seamlessly
 Bundle 'christoomey/vim-tmux-navigator'
