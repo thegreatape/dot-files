@@ -49,7 +49,7 @@ Bundle 'guns/vim-clojure-static.git'
 
 " Vimux
 Bundle 'benmills/vimux'
-Bundle 'pgr0ss/vimux-ruby-test'
+Bundle 'thegreatape/vimux-ruby-test'
 " Ruby test running shortcuts
 autocmd Filetype ruby nnoremap <leader>rl :RunRubyFocusedTest<cr>
 autocmd Filetype ruby nnoremap <leader>rf :RunAllRubyTests<cr>
@@ -57,6 +57,7 @@ autocmd Filetype ruby nnoremap <leader>rc :VimuxClosePanes<cr>
 let g:VimuxOrientation = "h"
 let g:VimuxHeight = "30"
 let g:VimuxUseNearestPane = 1
+let g:vimux_ruby_clear_console_on_run = 0
 
 " Navigating tmux/vim splits seamlessly
 Bundle 'christoomey/vim-tmux-navigator'
