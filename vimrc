@@ -108,9 +108,6 @@ set wildmenu
 set wildmode=longest,list
 set wildignore+=*/vendor/*,*/build/*
 
-" have Ctrl-l clear highlights
-nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
-
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
