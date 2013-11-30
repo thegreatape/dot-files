@@ -69,6 +69,7 @@ Bundle 'christoomey/vim-tmux-navigator'
 
 " Go
 Bundle 'jnwhiteh/vim-golang'
+Bundle 'Blackrush/vim-gocode'
 au FileType go au BufWritePre <buffer> Fmt " format on save
 
 " Less
@@ -77,6 +78,15 @@ Bundle "groenewege/vim-less"
 " Ctags
 Bundle 'vim-scripts/AutoTag'
 Bundle 'vim-scripts/taglist.vim'
+
+" Autocompletion
+Bundle 'ervandew/supertab'
+" attempt to guess type of best completion from current context
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabMappingForward = '<c-p>'
+let g:SuperTabMappingBackward = '<c-n>'
+let g:SuperTabLongestEnhanced = 1
+let g:SuperTabClosePreviewOnPopupClose = 1
 
 " Utility plugins
 Bundle 'scrooloose/nerdcommenter'
@@ -89,7 +99,6 @@ Bundle 'tsaleh/vim-matchit'
 Bundle 'vim-scripts/ZoomWin'
 Bundle 'godlygeek/tabular.git'
 Bundle 'kien/ctrlp.vim.git'
-Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-abolish'
 
 filetype plugin indent on
