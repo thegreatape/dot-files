@@ -3,6 +3,8 @@
 set nocompatible
 filetype off
 
+set shell=bash\ -i
+
 " Vundle setup
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -68,6 +70,10 @@ au FileType go au BufWritePre <buffer> Fmt " format on save
 " Less
 Bundle "groenewege/vim-less"
 
+" Ctags
+Bundle 'vim-scripts/AutoTag'
+Bundle 'vim-scripts/taglist.vim'
+
 " Utility plugins
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'vim-scripts/bufkill.vim'
@@ -77,10 +83,8 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tsaleh/vim-matchit'
 Bundle 'vim-scripts/ZoomWin'
-Bundle 'vim-scripts/taglist.vim'
 Bundle 'godlygeek/tabular.git'
 Bundle 'kien/ctrlp.vim.git'
-Bundle 'vim-scripts/AutoTag'
 Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-abolish'
 
