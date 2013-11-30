@@ -13,7 +13,6 @@ Bundle 'vim-scripts/jade.vim'
 
 " Javascript
 Bundle 'pangloss/vim-javascript'
-Bundle 'wookiehangover/jshint.vim'
 
 " Markdown
 Bundle 'tpope/vim-markdown'
