@@ -3,7 +3,11 @@
 set nocompatible
 filetype off
 
+" Get correct $PATH from .bashrc
 set shell=bash\ -i
+
+" Disable .swp file creation
+set noswapfile
 
 " Vundle setup
 set rtp+=~/.vim/bundle/vundle/
