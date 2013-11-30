@@ -65,6 +65,9 @@ Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'jnwhiteh/vim-golang'
 au FileType go au BufWritePre <buffer> Fmt " format on save
 
+" Less
+Bundle "groenewege/vim-less"
+
 " Utility plugins
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'vim-scripts/bufkill.vim'
