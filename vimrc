@@ -72,7 +72,7 @@ Bundle "groenewege/vim-less"
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'vim-scripts/bufkill.vim'
 Bundle 'godlygeek/csapprox'
-Bundle 'mileszs/ack.vim'
+Bundle 'rking/ag.vim'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tsaleh/vim-matchit'
