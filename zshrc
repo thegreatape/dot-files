@@ -65,4 +65,4 @@ export GOPATH=$HOME/Code/go
 export PATH=$PATH:$GOPATH/bin
 
 # disable zsh autocorrect
-unsetopt correct
+unsetopt correct_all
