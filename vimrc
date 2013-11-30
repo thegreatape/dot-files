@@ -64,6 +64,7 @@ Bundle 'christoomey/vim-tmux-navigator'
 
 " Go
 Bundle 'jnwhiteh/vim-golang'
+au FileType go au BufWritePre <buffer> Fmt " format on save
 
 " Utility plugins
 Bundle 'scrooloose/nerdcommenter'
