@@ -101,6 +101,7 @@ Bundle 'vim-scripts/ZoomWin'
 Bundle 'godlygeek/tabular.git'
 Bundle 'kien/ctrlp.vim.git'
 Bundle 'tpope/vim-abolish'
+Bundle 'tommcdo/vim-lion'
 
 filetype plugin indent on
 
