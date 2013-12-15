@@ -70,7 +70,8 @@ Bundle 'christoomey/vim-tmux-navigator'
 " Go
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'Blackrush/vim-gocode'
-au FileType go au BufWritePre <buffer> Fmt " format on save
+autocmd FileType go autocmd BufWritePre <buffer> Fmt
+let g:gofmt_command="goimports"
 
 " Less
 Bundle "groenewege/vim-less"
