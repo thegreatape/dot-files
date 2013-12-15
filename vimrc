@@ -116,7 +116,8 @@ set expandtab
 set list listchars=tab:\ \ ,trail:·
 
 " Load colorscheme
-colors zenburn
+colors jellybeans
+
 
 " Lose the GUI
 if has("gui_running")
