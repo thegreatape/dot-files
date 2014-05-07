@@ -14,3 +14,8 @@ tags
 .dat*
 .rvmrc
 .repl_history
+*.dump
+.rbenv-vars
+.bundle
+*.dSYM
+vendor/TestFlight/build-iPhoneOS/

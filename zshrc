@@ -43,8 +43,6 @@ source $ZSH/oh-my-zsh.sh
 
 # general environment variable setup
 export EDITOR=vim
-export PATH=./bin:/usr/local/bin:$PATH
-
 export PATH=~/.bin:./bin:$HOME/.rbenv/bin:/usr/local/bin:$PATH
 eval "$(rbenv init -)"
 
@@ -60,7 +58,13 @@ export RUBY_HEAP_FREE_MIN=500000
 
 # Go source path
 export GOPATH=$HOME/Code/go
-export PATH=$PATH:$GOPATH/bin
+export PATH=~/.bin/:$PATH:$GOPATH/bin
 
 # disable zsh autocorrect
 unsetopt correct_all
+
+# use updated ssl certs
+export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
+
+# added by travis gem
+[ -f /Users/tmayfield/.travis/travis.sh ] && source /Users/tmayfield/.travis/travis.sh

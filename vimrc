@@ -3,6 +3,8 @@
 set nocompatible
 filetype off
 
+set autowriteall
+
 " Get correct $PATH from .bashrc
 set shell=bash\ -i
 
@@ -79,15 +81,12 @@ Bundle "groenewege/vim-less"
 " Ctags
 Bundle 'vim-scripts/AutoTag'
 Bundle 'vim-scripts/taglist.vim'
+set tags+=./tags
 
 " Autocompletion
-Bundle 'ervandew/supertab'
-" attempt to guess type of best completion from current context
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabMappingForward = '<c-p>'
-let g:SuperTabMappingBackward = '<c-n>'
-let g:SuperTabLongestEnhanced = 1
-let g:SuperTabClosePreviewOnPopupClose = 1
+"Bundle 'Valloric/YouCompleteMe'
+"set completeopt=menuone
+let g:ycm_complete_in_strings=0
 
 " Utility plugins
 Bundle 'scrooloose/nerdcommenter'
@@ -102,6 +101,11 @@ Bundle 'godlygeek/tabular.git'
 Bundle 'kien/ctrlp.vim.git'
 Bundle 'tpope/vim-abolish'
 Bundle 'tommcdo/vim-lion'
+Bundle 'malkomalko/projections.vim'
+
+Bundle 'terryma/vim-expand-region'
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
 filetype plugin indent on
 
@@ -118,6 +122,8 @@ set list listchars=tab:\ \ ,trail:·
 " Load colorscheme
 colors jellybeans
 
+" use system clipboard
+set clipboard=unnamed
 
 " Lose the GUI
 if has("gui_running")
