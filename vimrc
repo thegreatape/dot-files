@@ -40,6 +40,13 @@ augroup END
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'kchmck/vim-coffee-script.git'
 Bundle 'tpope/vim-rails'
+
+Bundle 'vim-scripts/ruby-matchit'
+runtime macros/matchit.vim
+
+Bundle 'kana/vim-textobj-user'
+Bundle 'nelstrom/vim-textobj-rubyblock'
+
 " SCSS
 au BufRead,BufNewFile *.scss set filetype=scss
 " Guardfiles and axlsx are just ruby
@@ -95,7 +102,6 @@ Bundle 'godlygeek/csapprox'
 Bundle 'rking/ag.vim'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
-Bundle 'tsaleh/vim-matchit'
 Bundle 'vim-scripts/ZoomWin'
 Bundle 'godlygeek/tabular.git'
 Bundle 'kien/ctrlp.vim.git'
