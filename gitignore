@@ -19,3 +19,5 @@ tags
 .bundle
 *.dSYM
 vendor/TestFlight/build-iPhoneOS/
+.ruby-version
+projections.json
