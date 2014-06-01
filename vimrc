@@ -63,6 +63,13 @@ au BufRead,BufNewFile *.hamlc set ft=haml
 au BufRead,BufNewFile *.hamlbars set ft=haml
 
 " Clojure
+let g:slime_target = "tmux"
+let g:slime_default_config = {"socket_name": "default", "target_pane": "2"}
+NeoBundle 'jpalardy/vim-slime'
+xmap <leader>f <Plug>SlimeRegionSend
+nmap <leader>f <Plug>SlimeParagraphSend
+
+NeoBundle 'tpope/vim-leiningen'
 NeoBundle 'tpope/vim-fireplace.git'
 NeoBundle 'guns/vim-clojure-static.git'
 NeoBundle 'kien/rainbow_parentheses.vim'
