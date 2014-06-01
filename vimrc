@@ -1,7 +1,13 @@
-" Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
+ if has('vim_starting')
+   set nocompatible
+   set runtimepath+=~/.vim/bundle/neobundle.vim/
+ endif
 filetype off
+
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 set autowriteall
 
@@ -11,19 +17,14 @@ set shell=bash\ -i
 " Disable .swp file creation
 set noswapfile
 
-" Vundle setup
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
-
 " Jade templating
-Bundle 'vim-scripts/jade.vim'
+NeoBundle 'vim-scripts/jade.vim'
 
 " Javascript
-Bundle 'pangloss/vim-javascript'
+NeoBundle 'pangloss/vim-javascript'
 
 " Markdown
-Bundle 'tpope/vim-markdown'
+NeoBundle 'tpope/vim-markdown'
 augroup mkd
   autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
   autocmd BufRead *.md  set ai formatoptions=tcroqn2 comments=n:>
@@ -37,15 +38,20 @@ augroup mkd
 augroup END
 
 " prose
-Bundle "mikewest/vimroom"
+NeoBundle "mikewest/vimroom"
 
 " Ruby and Rails
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'kchmck/vim-coffee-script.git'
-Bundle 'tpope/vim-rails'
-"Bundle 'vim-scripts/ruby-matchit'
-Bundle 'kana/vim-textobj-user'
-Bundle 'nelstrom/vim-textobj-rubyblock'
+NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'kchmck/vim-coffee-script.git'
+NeoBundle 'tpope/vim-rails'
+
+" ruby-matchit seems to be trying to match stuff in clojure
+" so only load when opening ruby files
+NeoBundleLazy 'vim-scripts/ruby-matchit'
+autocmd FileType ruby NeoBundleSource ruby-matchit
+
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'nelstrom/vim-textobj-rubyblock'
 
 " SCSS
 au BufRead,BufNewFile *.scss set filetype=scss
@@ -57,13 +63,13 @@ au BufRead,BufNewFile *.hamlc set ft=haml
 au BufRead,BufNewFile *.hamlbars set ft=haml
 
 " Clojure
-Bundle 'tpope/vim-fireplace.git'
-Bundle 'tpope/vim-classpath.git'
-Bundle 'guns/vim-clojure-static.git'
+NeoBundle 'tpope/vim-fireplace.git'
+NeoBundle 'tpope/vim-classpath.git'
+NeoBundle 'guns/vim-clojure-static.git'
 
 " Vimux
-Bundle 'benmills/vimux'
-Bundle 'thegreatape/vimux-ruby-test'
+NeoBundle 'benmills/vimux'
+NeoBundle 'thegreatape/vimux-ruby-test'
 " Ruby test running shortcuts
 autocmd Filetype ruby nnoremap <leader>rl :RunRubyFocusedTest<cr>
 autocmd Filetype ruby nnoremap <leader>rf :RunAllRubyTests<cr>
@@ -74,36 +80,36 @@ let g:VimuxUseNearestPane = 1
 let g:vimux_ruby_clear_console_on_run = 0
 
 " Navigating tmux/vim splits seamlessly
-Bundle 'christoomey/vim-tmux-navigator'
+NeoBundle 'christoomey/vim-tmux-navigator'
 
 " Go
-Bundle 'jnwhiteh/vim-golang'
-Bundle 'Blackrush/vim-gocode'
+NeoBundle 'jnwhiteh/vim-golang'
+NeoBundle 'Blackrush/vim-gocode'
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
 let g:gofmt_command="goimports"
 
 " Less
-Bundle "groenewege/vim-less"
+NeoBundle "groenewege/vim-less"
 
 " Ctags
-Bundle 'vim-scripts/AutoTag'
-Bundle 'vim-scripts/taglist.vim'
+NeoBundle 'vim-scripts/AutoTag'
+NeoBundle 'vim-scripts/taglist.vim'
 set tags+=./tags
 
 " Utility plugins
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'vim-scripts/bufkill.vim'
-Bundle 'godlygeek/csapprox'
-Bundle 'rking/ag.vim'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-fugitive'
-Bundle 'godlygeek/tabular.git'
-Bundle 'kien/ctrlp.vim.git'
-Bundle 'tpope/vim-abolish'
-Bundle 'tommcdo/vim-lion'
-Bundle 'malkomalko/projections.vim'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'vim-scripts/bufkill.vim'
+NeoBundle 'godlygeek/csapprox'
+NeoBundle 'rking/ag.vim'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'godlygeek/tabular.git'
+NeoBundle 'kien/ctrlp.vim.git'
+NeoBundle 'tpope/vim-abolish'
+NeoBundle 'tommcdo/vim-lion'
+NeoBundle 'malkomalko/projections.vim'
 
-Bundle 'terryma/vim-expand-region'
+NeoBundle 'terryma/vim-expand-region'
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
@@ -245,3 +251,11 @@ autocmd BufReadPost *
   \ if line("'\"") > 1 && line("'\"") <= line("$") |
   \   exe "normal! g`\"" |
   \ endif
+
+call neobundle#end()
+ filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+
