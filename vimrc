@@ -128,6 +128,9 @@ set list listchars=tab:\ \ ,trail:·
 " Load colorscheme
 colors jellybeans
 
+" for outside high-contrast use
+"colors github
+
 " use system clipboard
 set clipboard=unnamed
 
