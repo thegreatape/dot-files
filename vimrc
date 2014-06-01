@@ -64,8 +64,32 @@ au BufRead,BufNewFile *.hamlbars set ft=haml
 
 " Clojure
 NeoBundle 'tpope/vim-fireplace.git'
-NeoBundle 'tpope/vim-classpath.git'
 NeoBundle 'guns/vim-clojure-static.git'
+NeoBundle 'kien/rainbow_parentheses.vim'
+let g:rbpt_colorpairs = [
+  \ ['blue',      '#FF6000'],
+  \ ['cyan',      '#00FFFF'],
+  \ ['darkgreen', '#00FF00'],
+  \ ['LightYellow',     '#c0c0c0'],
+  \ ['blue',      '#FF6000'],
+  \ ['cyan',      '#00FFFF'],
+  \ ['darkgreen', '#00FF00'],
+  \ ['LightYellow',     '#c0c0c0'],
+  \ ['blue',      '#FF6000'],
+  \ ['cyan',      '#00FFFF'],
+  \ ['darkgreen', '#00FF00'],
+  \ ['LightYellow',     '#c0c0c0'],
+  \ ['blue',      '#FF6000'],
+  \ ['cyan',      '#00FFFF'],
+  \ ['darkgreen', '#00FF00'],
+  \ ['LightYellow',     '#c0c0c0'],
+  \ ]
+let g:rbpt_max = 16
+
+au VimEnter *.clj RainbowParenthesesToggle
+au Syntax *.clj RainbowParenthesesLoadRound
+au Syntax *.clj RainbowParenthesesLoadSquare
+au Syntax *.clj RainbowParenthesesLoadBraces
 
 " Vimux
 NeoBundle 'benmills/vimux'
