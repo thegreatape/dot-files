@@ -36,14 +36,14 @@ augroup mkd
   autocmd BufRead *\.markdown,*\.md,*\.txt nnoremap <leader>sp :setlocal spell! spelllang=en_gb<cr>
 augroup END
 
+" prose
+Bundle "mikewest/vimroom"
+
 " Ruby and Rails
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'kchmck/vim-coffee-script.git'
 Bundle 'tpope/vim-rails'
-
-Bundle 'vim-scripts/ruby-matchit'
-runtime macros/matchit.vim
-
+"Bundle 'vim-scripts/ruby-matchit'
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 
