@@ -90,11 +90,6 @@ Bundle 'vim-scripts/AutoTag'
 Bundle 'vim-scripts/taglist.vim'
 set tags+=./tags
 
-" Autocompletion
-"Bundle 'Valloric/YouCompleteMe'
-"set completeopt=menuone
-let g:ycm_complete_in_strings=0
-
 " Utility plugins
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'vim-scripts/bufkill.vim'
@@ -102,7 +97,6 @@ Bundle 'godlygeek/csapprox'
 Bundle 'rking/ag.vim'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
-Bundle 'vim-scripts/ZoomWin'
 Bundle 'godlygeek/tabular.git'
 Bundle 'kien/ctrlp.vim.git'
 Bundle 'tpope/vim-abolish'
