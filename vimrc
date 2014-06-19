@@ -42,14 +42,9 @@ NeoBundle "mikewest/vimroom"
 
 " Ruby and Rails
 NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'kchmck/vim-coffee-script.git'
+NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'tpope/vim-rails'
-
-" ruby-matchit seems to be trying to match stuff in clojure
-" so only load when opening ruby files
-NeoBundleLazy 'vim-scripts/ruby-matchit'
-autocmd FileType ruby NeoBundleSource ruby-matchit
-
+NeoBundle 'tmhedberg/matchit'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'nelstrom/vim-textobj-rubyblock'
 
