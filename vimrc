@@ -34,6 +34,7 @@ augroup mkd
   autocmd BufRead *\.markdown,*\.md,*\.txt map j gj
   autocmd BufRead *\.markdown,*\.md,*\.txt map k gk
   autocmd BufRead *\.markdown,*\.md,*\.txt setlocal smartindent
+  autocmd BufRead *\.markdown,*\.md,*\.txt setlocal nolist
   autocmd BufRead *\.markdown,*\.md,*\.txt nnoremap <leader>sp :setlocal spell! spelllang=en_gb<cr>
 augroup END
 
