@@ -1,13 +1,11 @@
- if has('vim_starting')
-   set nocompatible
-   set runtimepath+=~/.vim/bundle/neobundle.vim/
- endif
+set nocompatible
 filetype off
 
-call neobundle#begin(expand('~/.vim/bundle/'))
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-" Let NeoBundle manage NeoBundle
-NeoBundleFetch 'Shougo/neobundle.vim'
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
 
 set autowriteall
 
@@ -18,13 +16,13 @@ set shell=bash\ -i
 set noswapfile
 
 " Jade templating
-NeoBundle 'vim-scripts/jade.vim'
+Plugin 'vim-scripts/jade.vim'
 
 " Javascript
-NeoBundle 'pangloss/vim-javascript'
+Plugin 'pangloss/vim-javascript'
 
 " Markdown
-NeoBundle 'tpope/vim-markdown'
+Plugin 'tpope/vim-markdown'
 augroup mkd
   autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
   autocmd BufRead *.md  set ai formatoptions=tcroqn2 comments=n:>
@@ -39,15 +37,15 @@ augroup mkd
 augroup END
 
 " prose
-NeoBundle "mikewest/vimroom"
+Plugin 'mikewest/vimroom'
 
 " Ruby and Rails
-NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'tpope/vim-rails'
-NeoBundle 'tmhedberg/matchit'
-NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'nelstrom/vim-textobj-rubyblock'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'tpope/vim-rails'
+Plugin 'tmhedberg/matchit'
+Plugin 'kana/vim-textobj-user'
+Plugin 'nelstrom/vim-textobj-rubyblock'
 
 " SCSS
 au BufRead,BufNewFile *.scss set filetype=scss
@@ -61,14 +59,14 @@ au BufRead,BufNewFile *.hamlbars set ft=haml
 " Clojure
 let g:slime_target = "tmux"
 let g:slime_default_config = {"socket_name": "default", "target_pane": "2"}
-NeoBundle 'jpalardy/vim-slime'
+Plugin 'jpalardy/vim-slime'
 xmap <leader>f <Plug>SlimeRegionSend
 nmap <leader>f <Plug>SlimeParagraphSend
 
-NeoBundle 'tpope/vim-leiningen'
-NeoBundle 'tpope/vim-fireplace.git'
-NeoBundle 'guns/vim-clojure-static.git'
-NeoBundle 'kien/rainbow_parentheses.vim'
+Plugin 'tpope/vim-leiningen'
+Plugin 'tpope/vim-fireplace.git'
+Plugin 'guns/vim-clojure-static.git'
+Plugin 'kien/rainbow_parentheses.vim'
 let g:rbpt_colorpairs = [
   \ ['blue',      '#FF6000'],
   \ ['cyan',      '#00FFFF'],
@@ -95,8 +93,8 @@ au Syntax *.clj RainbowParenthesesLoadSquare
 au Syntax *.clj RainbowParenthesesLoadBraces
 
 " Vimux
-NeoBundle 'benmills/vimux'
-NeoBundle 'thegreatape/vimux-ruby-test'
+Plugin 'benmills/vimux'
+Plugin 'thegreatape/vimux-ruby-test'
 " Ruby test running shortcuts
 autocmd Filetype ruby nnoremap <leader>rl :RunRubyFocusedTest<cr>
 autocmd Filetype ruby nnoremap <leader>rf :RunAllRubyTests<cr>
@@ -107,40 +105,35 @@ let g:VimuxUseNearestPane = 1
 let g:vimux_ruby_clear_console_on_run = 0
 
 " Navigating tmux/vim splits seamlessly
-NeoBundle 'christoomey/vim-tmux-navigator'
+Plugin 'christoomey/vim-tmux-navigator'
 
 " Go
-NeoBundle 'jnwhiteh/vim-golang'
-NeoBundle 'Blackrush/vim-gocode'
-autocmd FileType go autocmd BufWritePre <buffer> Fmt
-let g:gofmt_command="goimports"
+Plugin 'fatih/vim-go'
 
 " Less
-NeoBundle "groenewege/vim-less"
+Plugin 'groenewege/vim-less'
 
 " Ctags
-NeoBundle 'vim-scripts/AutoTag'
-NeoBundle 'vim-scripts/taglist.vim'
+Plugin 'vim-scripts/AutoTag'
+Plugin 'vim-scripts/taglist.vim'
 set tags+=./tags
 
 " Utility plugins
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'vim-scripts/bufkill.vim'
-NeoBundle 'godlygeek/csapprox'
-NeoBundle 'rking/ag.vim'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'godlygeek/tabular.git'
-NeoBundle 'kien/ctrlp.vim.git'
-NeoBundle 'tpope/vim-abolish'
-NeoBundle 'tommcdo/vim-lion'
-NeoBundle 'malkomalko/projections.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'vim-scripts/bufkill.vim'
+Plugin 'godlygeek/csapprox'
+Plugin 'rking/ag.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
+Plugin 'godlygeek/tabular.git'
+Plugin 'kien/ctrlp.vim.git'
+Plugin 'tpope/vim-abolish'
+Plugin 'tommcdo/vim-lion'
+Plugin 'malkomalko/projections.vim'
 
-NeoBundle 'terryma/vim-expand-region'
+Plugin 'terryma/vim-expand-region'
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
-
-filetype plugin indent on
 
 " highlight zsh-theme files as shell
 au BufNewFile,BufRead *.zsh-theme set filetype=zsh
@@ -219,12 +212,6 @@ if has('mouse')
   set mouse=a
 endif
 
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
-  syntax on
-  set hlsearch
-endif
 
 " Deal with trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -279,10 +266,7 @@ autocmd BufReadPost *
   \   exe "normal! g`\"" |
   \ endif
 
-call neobundle#end()
- filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
-
+call vundle#end()
+filetype plugin indent on
+syntax on
+set hlsearch
