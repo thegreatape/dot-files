@@ -37,7 +37,7 @@ augroup mkd
 augroup END
 
 " prose
-Plugin 'mikewest/vimroom'
+Plugin 'junegunn/goyo.vim'
 
 " Ruby and Rails
 Plugin 'vim-ruby/vim-ruby'
