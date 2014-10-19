@@ -107,8 +107,12 @@ let g:vimux_ruby_clear_console_on_run = 0
 " Navigating tmux/vim splits seamlessly
 Plugin 'christoomey/vim-tmux-navigator'
 
+" Elixir
+Plugin 'elixir-lang/vim-elixir'
+
 " Go
 Plugin 'fatih/vim-go'
+autocmd Filetype go inoremap <C-n> <C-x><C-o>
 
 " Less
 Plugin 'groenewege/vim-less'
