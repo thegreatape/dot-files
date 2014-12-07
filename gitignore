@@ -21,3 +21,6 @@ tags
 vendor/TestFlight/build-iPhoneOS/
 .ruby-version
 projections.json
+config/database.yml
+todos.txt
+.sass-cache*
