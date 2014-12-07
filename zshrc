@@ -68,3 +68,6 @@ export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 
 # added by travis gem
 [ -f /Users/tmayfield/.travis/travis.sh ] && source /Users/tmayfield/.travis/travis.sh
+
+# for ssh-agent
+ssh-add
