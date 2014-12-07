@@ -15,6 +15,9 @@ set shell=bash\ -i
 " Disable .swp file creation
 set noswapfile
 
+" RTF copying for Keynote copy + paste
+Plugin 'vagmi/rtf-highlight'
+
 " Jade templating
 Plugin 'vim-scripts/jade.vim'
 
