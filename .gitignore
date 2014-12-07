@@ -1,3 +1,4 @@
 *.swp
 emacs.d/elpa
+vim/bundle
 *~
