@@ -1,6 +1,13 @@
 ; show line numbers
 (global-linum-mode t)
 
+; disable infernal beeping
+(setq ring-bell-function 'ignore)
+
+; disable toolbar
+(tool-bar-mode -1)
+
+
 ; set up package management with use-package
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
