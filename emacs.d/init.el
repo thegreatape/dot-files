@@ -24,3 +24,6 @@
     (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
 
     (evil-mode t)))
+
+(use-package markdown-mode
+  :ensure t)
