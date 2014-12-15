@@ -72,3 +72,4 @@ export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 
 # for ssh-agent
 ssh-add
+unset SSL_CERT_FILE
