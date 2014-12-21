@@ -72,3 +72,13 @@
        )
      )
   )
+
+(use-package flx-ido
+  :ensure t
+  :init
+  (flx-ido-mode +1))
+
+(use-package projectile
+  :ensure t
+  :init
+  (projectile-global-mode))
