@@ -7,6 +7,10 @@
 ; disable toolbar
 (tool-bar-mode -1)
 
+; hide splash screen
+(setq inhibit-splash-screen t
+      inhibit-startup-echo-area-message t
+      inhibit-startup-message t)
 
 ; set up package management with use-package
 (require 'package)
