@@ -25,6 +25,18 @@
 (use-package ujelly-theme
 	     :ensure t)
 
+(use-package evil-leader
+  :ensure t
+  :init (global-evil-leader-mode)
+  :config
+  (progn
+    (evil-leader/set-leader ",")
+    (evil-leader/set-key "x" 'execute-extended-command)
+    (evil-leader/set-key "e" 'eval-last-sexp)
+    (evil-leader/set-key "t" 'projectile-find-file)
+    )
+  )
+
 (use-package evil
   :ensure t
   :init
