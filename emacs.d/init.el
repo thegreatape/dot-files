@@ -33,6 +33,8 @@
     (evil-leader/set-leader ",")
     (evil-leader/set-key "x" 'execute-extended-command)
     (evil-leader/set-key "e" 'eval-last-sexp)
+    (evil-leader/set-key "b" 'ibuffer)
+    (evil-leader/set-key "kb" 'kill-buffer)
     (evil-leader/set-key "t" 'projectile-find-file)
     )
   )
