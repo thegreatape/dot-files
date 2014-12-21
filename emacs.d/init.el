@@ -22,9 +22,6 @@
 (push "~/.emacs.d/site-lisp/use-package" load-path)
 (require 'use-package)
 
-(use-package ujelly-theme
-	     :ensure t)
-
 (use-package evil-leader
   :ensure t
   :init (global-evil-leader-mode)
@@ -36,8 +33,6 @@
     (evil-leader/set-key "b" 'ibuffer)
     (evil-leader/set-key "kb" 'kill-buffer)
     (evil-leader/set-key "t" 'projectile-find-file)
-    )
-  )
     (evil-leader/set-key "pp" 'projectile-switch-project)))
 
 (use-package evil
@@ -51,8 +46,9 @@
 
     (evil-mode t)))
 
-(use-package markdown-mode
-  :ensure t)
+(use-package ujelly-theme :ensure t)
+(use-package markdown-mode :ensure t)
+(use-package coffee-mode :ensure t)
 
 (use-package elisp-slime-nav
   :ensure t
@@ -71,10 +67,7 @@
      (evil-set-initial-state 'ibuffer-mode 'normal)
      (evil-define-key 'normal ibuffer-mode-map
        (kbd "j") 'ibuffer-forward-line
-       (kbd "k") 'ibuffer-backward-line
-       )
-     )
-  )
+       (kbd "k") 'ibuffer-backward-line)))
 
 (use-package flx-ido
   :ensure t
