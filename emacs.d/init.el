@@ -34,3 +34,15 @@
 
 (use-package markdown-mode
   :ensure t)
+
+(use-package elisp-slime-nav
+  :ensure t
+  :init
+  (progn
+    (defun elisp-navigation-hook ()
+      (elisp-slime-nav-mode)
+      (turn-on-eldoc-mode))
+    (add-hook 'emacs-lisp-mode-hook 'elisp-navigation-hook)
+    (evil-define-key 'normal emacs-lisp-mode-map (kbd "K")
+      'elisp-slime-nav-describe-elisp-thing-at-point)))
+
