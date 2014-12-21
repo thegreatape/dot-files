@@ -38,6 +38,7 @@
     (evil-leader/set-key "t" 'projectile-find-file)
     )
   )
+    (evil-leader/set-key "pp" 'projectile-switch-project)))
 
 (use-package evil
   :ensure t
