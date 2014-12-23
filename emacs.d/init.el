@@ -69,12 +69,15 @@
        (kbd "j") 'ibuffer-forward-line
        (kbd "k") 'ibuffer-backward-line)))
 
-(use-package flx-ido
-  :ensure t
-  :init
-  (flx-ido-mode +1))
-
 (use-package projectile
   :ensure t
   :init
-  (projectile-global-mode))
+  (progn
+    (projectile-global-mode)
+    (setq projectile-enable-caching t)))
+
+(use-package helm
+  :ensure t
+  :init
+  (progn
+    (setq projectile-completion-system 'helm))
