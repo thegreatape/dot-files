@@ -33,6 +33,7 @@
     (evil-leader/set-key "b" 'ibuffer)
     (evil-leader/set-key "kb" 'kill-buffer)
     (evil-leader/set-key "t" 'projectile-find-file)
+    (evil-leader/set-key "ag" 'projectile-ag)
     (evil-leader/set-key "pp" 'projectile-switch-project)))
 
 (use-package evil
@@ -74,10 +75,9 @@
   :init
   (progn
     (projectile-global-mode)
+    (setq projectile-completion-system 'helm)
     (setq projectile-enable-caching t)))
 
-(use-package helm
-  :ensure t
-  :init
-  (progn
-    (setq projectile-completion-system 'helm))
+(use-package helm :ensure t)
+(use-package helm-projectile :ensure t)
+(use-package ag :ensure t)
