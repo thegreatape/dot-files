@@ -84,3 +84,8 @@
 (use-package helm :ensure t)
 (use-package helm-projectile :ensure t)
 (use-package ag :ensure t)
+
+(use-package exec-path-from-shell
+  :ensure t
+  :init
+  (exec-path-from-shell-initialize))
