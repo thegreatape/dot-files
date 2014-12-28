@@ -12,6 +12,9 @@
       inhibit-startup-echo-area-message t
       inhibit-startup-message t)
 
+; don't create backup~ files
+(setq make-backup-files nil)
+
 ; set up package management with use-package
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
