@@ -15,6 +15,9 @@
 ; don't create backup~ files
 (setq make-backup-files nil)
 
+; soft word wrapping
+(visual-line-mode t)
+
 ; set up package management with use-package
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
