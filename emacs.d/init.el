@@ -92,3 +92,5 @@
   :ensure t
   :init
   (exec-path-from-shell-initialize))
+
+(use-package less-css-mode :ensure t)
