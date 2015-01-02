@@ -35,7 +35,7 @@
   (progn
     (evil-leader/set-leader ",")
     (evil-leader/set-key "x" 'helm-M-x)
-    (evil-leader/set-key "e" 'eval-last-sexp)
+    (evil-leader/set-key-for-mode 'emacs-lisp-mode "e" 'eval-last-sexp)
     (evil-leader/set-key "b" 'ibuffer)
     (evil-leader/set-key "kb" 'kill-buffer)
     (evil-leader/set-key "t" 'projectile-find-file)
@@ -87,6 +87,15 @@
 (use-package helm :ensure t)
 (use-package helm-projectile :ensure t)
 (use-package ag :ensure t)
+
+(use-package clojure-mode :ensure t)
+(use-package cider
+  :ensure t
+  :init
+  (progn
+    (define-key cider-repl-mode-map (kbd "C-h") 'cider-switch-to-last-clojure-buffer)
+    (evil-set-initial-state 'cider-repl-mode 'emacs)
+    (evil-leader/set-key-for-mode 'clojure-mode "e" 'cider-eval-last-sexp-to-repl)))
 
 (use-package exec-path-from-shell
   :ensure t
