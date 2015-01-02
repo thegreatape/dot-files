@@ -43,7 +43,8 @@
     (evil-leader/set-key "kb" 'kill-buffer)
     (evil-leader/set-key "t" 'projectile-find-file)
     (evil-leader/set-key "ag" 'projectile-ag)
-    (evil-leader/set-key "pp" 'projectile-switch-project)))
+    (evil-leader/set-key "pp" 'projectile-switch-project)
+    (evil-leader/set-key "cl" 'evilnc-comment-or-uncomment-lines)))
 
 (use-package evil
   :ensure t
@@ -55,6 +56,8 @@
     (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
 
     (evil-mode t)))
+
+(use-package evil-nerd-commenter :ensure t)
 
 (use-package ujelly-theme :ensure t)
 (use-package markdown-mode :ensure t)
