@@ -18,6 +18,9 @@
 ; soft word wrapping
 (visual-line-mode t)
 
+; treat underscores as word characters everywhere
+(add-hook 'after-change-major-mode-hook (lambda () (modify-syntax-entry ?_ "w")))
+
 ; set up package management with use-package
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
