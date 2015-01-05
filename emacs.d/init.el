@@ -16,7 +16,7 @@
 (setq make-backup-files nil)
 
 ; soft word wrapping
-(visual-line-mode t)
+(global-visual-line-mode t)
 
 ; treat underscores as word characters everywhere
 (add-hook 'after-change-major-mode-hook (lambda () (modify-syntax-entry ?_ "w")))
