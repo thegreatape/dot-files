@@ -73,3 +73,5 @@ export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 # for ssh-agent
 ssh-add
 unset SSL_CERT_FILE
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
