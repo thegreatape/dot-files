@@ -15,6 +15,8 @@ set shell=bash\ -i
 " Disable .swp file creation
 set noswapfile
 
+Plugin 'tpope/vim-repeat'
+
 " RTF copying for Keynote copy + paste
 Plugin 'vagmi/rtf-highlight'
 
@@ -66,10 +68,13 @@ Plugin 'jpalardy/vim-slime'
 xmap <leader>f <Plug>SlimeRegionSend
 nmap <leader>f <Plug>SlimeParagraphSend
 
-Plugin 'tpope/vim-leiningen'
+Plugin 'tpope/vim-classpath'
 Plugin 'tpope/vim-fireplace.git'
 Plugin 'guns/vim-clojure-static.git'
 Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'guns/vim-sexp'
+Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+
 let g:rbpt_colorpairs = [
   \ ['blue',      '#FF6000'],
   \ ['cyan',      '#00FFFF'],
@@ -90,10 +95,11 @@ let g:rbpt_colorpairs = [
   \ ]
 let g:rbpt_max = 16
 
-au VimEnter *.clj RainbowParenthesesToggle
-au Syntax *.clj RainbowParenthesesLoadRound
-au Syntax *.clj RainbowParenthesesLoadSquare
-au Syntax *.clj RainbowParenthesesLoadBraces
+autocmd BufEnter *.cljs,*.clj,*.cljs.hl RainbowParenthesesActivate
+autocmd BufEnter *.cljs,*.clj,*.cljs.hl RainbowParenthesesLoadRound
+autocmd BufEnter *.cljs,*.clj,*.cljs.hl RainbowParenthesesLoadSquare
+autocmd BufEnter *.cljs,*.clj,*.cljs.hl RainbowParenthesesLoadBraces
+" autocmd BufEnter *.cljs,*.clj,*.cljs.hl setlocal iskeyword+=?,-,*,!,+,/,=,<,>,.,:
 
 " Vimux
 Plugin 'benmills/vimux'
