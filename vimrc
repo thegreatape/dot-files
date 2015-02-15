@@ -179,7 +179,7 @@ set number
 " zsh-style tab completion
 set wildmenu
 set wildmode=longest,list
-set wildignore+=*/vendor/*,*/build/*,*/bower_components/*,*/node_modules/*
+set wildignore+=*/vendor/*,*/build/*,*/bower_components/*,*/node_modules/*,*/*.class
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
