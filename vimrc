@@ -43,6 +43,9 @@ augroup END
 
 " prose
 Plugin 'junegunn/goyo.vim'
+Plugin 'reedes/vim-pencil'
+let g:pencil#wrapModeDefault = 'soft'
+map gp :Goyo <bar> :TogglePencil <CR>
 
 " Ruby and Rails
 Plugin 'vim-ruby/vim-ruby'
