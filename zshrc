@@ -69,14 +69,11 @@ export PATH=~/.bin/:$PATH:$GOPATH/bin
 # disable zsh autocorrect
 unsetopt correct_all
 
-# use updated ssl certs
-export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
-
 # added by travis gem
 [ -f /Users/tmayfield/.travis/travis.sh ] && source /Users/tmayfield/.travis/travis.sh
 
-# for ssh-agent
-ssh-add
-unset SSL_CERT_FILE
+# vagrant ssh prefix
+function v { ssh -t default "/bin/bash -l -c '$*'" }
+
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
