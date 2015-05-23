@@ -58,12 +58,41 @@
     (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
     (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
 
+    (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
+    (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
+
     (evil-mode t)))
 
 (use-package evil-nerd-commenter :ensure t)
 
 (use-package ujelly-theme :ensure t)
+
+;;
+;; writing mode stuff to emulate vim's goyo plugin
+;;
+(setq writing-mode-settings-enabled nil)
+
+(defun set-writing-fringe ()
+  (let ((padding (/ (- (window-pixel-width)
+		       (* 80 (frame-char-width)))
+		    2)))
+    (set-window-fringes (selected-window) padding padding)))
+
+(defun toggle-writing-mode-settings ()
+  (interactive)
+  (if writing-mode-settings-enabled
+	(progn
+	  (set-window-fringes nil 10)
+	  (linum-mode 1)
+	  (setq writing-mode-settings-enabled nil))
+	(progn
+	  (set-writing-fringe)
+	  (linum-mode 0)
+	  (setq writing-mode-settings-enabled t))))
+(evil-leader/set-key "gp" 'toggle-writing-mode-settings)
+
 (use-package markdown-mode :ensure t)
+
 (use-package coffee-mode :ensure t)
 
 (use-package elisp-slime-nav
