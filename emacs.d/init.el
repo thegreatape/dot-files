@@ -21,6 +21,9 @@
 ; treat underscores as word characters everywhere
 (add-hook 'after-change-major-mode-hook (lambda () (modify-syntax-entry ?_ "w")))
 
+; remove trailing whitespace on save
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 ; set up package management with use-package
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
