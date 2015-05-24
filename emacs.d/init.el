@@ -7,6 +7,9 @@
 ; disable toolbar
 (tool-bar-mode -1)
 
+; disable scrollbars
+(when (display-graphic-p) (set-scroll-bar-mode nil))
+
 ; hide splash screen
 (setq inhibit-splash-screen t
       inhibit-startup-echo-area-message t
