@@ -24,6 +24,15 @@
 ; remove trailing whitespace on save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+; use spaces instead of tabs for indentation
+(setq-default indent-tabs-mode nil)
+
+; set tab stops every 2 characters
+(setq tab-stop-list (number-sequence 2 120 2))
+
+; default to 2 space indentation
+(setq-default tab-width 2)
+
 ; set up package management with use-package
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
