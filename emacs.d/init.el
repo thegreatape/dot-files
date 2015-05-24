@@ -102,7 +102,31 @@
 
 (use-package markdown-mode :ensure t)
 
-(use-package coffee-mode :ensure t)
+(use-package coffee-mode
+  :ensure t
+  :init
+  (progn
+    (defun coffee-vi-o ()
+      "work-around indentation being broken in coffeescript + evil when inserting a new line below the current line"
+      (interactive)
+      (progn
+        (evil-append-line 1)
+        (coffee-newline-and-indent)
+        (evil-insert 1)
+        ))
+    (defun coffee-vi-O ()
+      "work-around indentation being broken in coffeescript + evil when inserting a new line above the current line"
+      (interactive)
+      (progn
+        (evil-previous-line)
+        (coffee-vi-o)
+        ))
+    (evil-define-key 'normal coffee-mode-map (kbd "o") 'coffee-vi-o)
+    (evil-define-key 'normal coffee-mode-map (kbd "O") 'coffee-vi-O)
+
+    ;; coffee-mode's tab-width has to be set manually for some reason
+    (setq coffee-tab-width 2)))
+  )
 
 (use-package elisp-slime-nav
   :ensure t
