@@ -80,7 +80,7 @@
 
 (use-package evil-nerd-commenter :ensure t)
 
-(use-package ujelly-theme :ensure t)
+(use-package atom-dark-theme :ensure t)
 
 ;;
 ;; writing mode stuff to emulate vim's goyo plugin
