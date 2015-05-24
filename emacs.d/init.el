@@ -62,6 +62,9 @@
   :ensure t
   :init
   (progn
+    ; changing indentation with < and > should use tab-width's worth of indent
+    (custom-set-variables '(evil-shift-width tab-width))
+
     (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
     (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
     (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
