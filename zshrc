@@ -77,3 +77,5 @@ function v { ssh -t default "/bin/bash -l -c '$*'" }
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+export NODE_PATH=/usr/local/lib/node_modules
