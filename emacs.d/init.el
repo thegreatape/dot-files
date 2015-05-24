@@ -131,7 +131,7 @@
     (evil-define-key 'normal coffee-mode-map (kbd "O") 'coffee-vi-O)
 
     ;; coffee-mode's tab-width has to be set manually for some reason
-    (setq coffee-tab-width 2)))
+    (setq coffee-tab-width 2))
   )
 
 (use-package elisp-slime-nav
