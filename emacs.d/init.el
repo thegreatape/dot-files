@@ -122,6 +122,10 @@
     (setq projectile-completion-system 'helm)
     (setq projectile-enable-caching t)))
 
+; always start find-file from projectile-defined project root
+(add-hook 'find-file-hook (lambda ()
+			    (setq default-directory (projectile-project-root))))
+
 (use-package helm :ensure t)
 (use-package helm-projectile :ensure t)
 (use-package ag :ensure t)
