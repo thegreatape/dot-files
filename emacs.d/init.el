@@ -13,6 +13,9 @@
 ; don't blink the cursor
 (blink-cursor-mode 0)
 
+; y/n instead of yes/no
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 ; hide splash screen
 (setq inhibit-splash-screen t
       inhibit-startup-echo-area-message t
