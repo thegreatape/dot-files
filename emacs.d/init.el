@@ -10,6 +10,9 @@
 ; disable scrollbars
 (when (display-graphic-p) (set-scroll-bar-mode nil))
 
+; don't blink the cursor
+(blink-cursor-mode 0)
+
 ; hide splash screen
 (setq inhibit-splash-screen t
       inhibit-startup-echo-area-message t
