@@ -21,9 +21,6 @@
 ; don't create backup~ files
 (setq make-backup-files nil)
 
-; soft word wrapping
-(global-visual-line-mode t)
-
 ; treat underscores as word characters everywhere
 (add-hook 'after-change-major-mode-hook (lambda () (modify-syntax-entry ?_ "w")))
 
@@ -100,12 +97,14 @@
   (interactive)
   (if writing-mode-settings-enabled
 	(progn
-	  (set-window-fringes nil 10)
-	  (linum-mode 1)
+	  (set-window-fringes nil 10) ; reset window margins
+	  (linum-mode 1)              ; enable line numbering
+    (visual-line-mode 0)        ; disable soft word wrapping
 	  (setq writing-mode-settings-enabled nil))
 	(progn
-	  (set-writing-fringe)
-	  (linum-mode 0)
+	  (set-writing-fringe)        ; set nice writing margins
+	  (linum-mode 0)              ; disable line numbering
+    (visual-line-mode 1)        ; enable soft word wrapping
 	  (setq writing-mode-settings-enabled t))))
 (evil-leader/set-key "gp" 'toggle-writing-mode-settings)
 
@@ -187,3 +186,9 @@
   (exec-path-from-shell-initialize))
 
 (use-package less-css-mode :ensure t)
+(use-package haml-mode :ensure t)
+
+(use-package projectile-rails
+  :ensure t
+  :init
+  (add-hook 'projectile-mode-hook 'projectile-rails-on))
