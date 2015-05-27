@@ -8,7 +8,7 @@
 (tool-bar-mode -1)
 
 ; disable scrollbars
-(when (display-graphic-p) (set-scroll-bar-mode nil))
+(set-scroll-bar-mode nil)
 
 ; don't blink the cursor
 (blink-cursor-mode 0)
