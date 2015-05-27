@@ -223,3 +223,8 @@
   :ensure t
   :init
   (add-hook 'projectile-mode-hook 'projectile-rails-on))
+
+(use-package scss-mode
+  :ensure t
+  :init
+   (setq css-indent-offset 2))
