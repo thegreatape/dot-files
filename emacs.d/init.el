@@ -42,6 +42,11 @@
 ; default to 2 space indentation
 (setq-default tab-width 2)
 
+; set up us the font
+(let ((monaco "Monaco:pixelsize=13:weight=normal:slant=normal:width=normal:spacing=100:scalable=true"))
+  (set-face-attribute 'default nil :font monaco)
+  (set-frame-font monaco nil t))
+
 ; set up package management with use-package
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
