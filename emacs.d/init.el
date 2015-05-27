@@ -16,6 +16,9 @@
 ; y/n instead of yes/no
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+; highlight matching parens
+(show-paren-mode)
+
 ; hide splash screen
 (setq inhibit-splash-screen t
       inhibit-startup-echo-area-message t
