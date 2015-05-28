@@ -228,3 +228,8 @@
   :ensure t
   :init
    (setq css-indent-offset 2))
+
+(use-package evil-matchit
+  :ensure t
+  :init
+  (global-evil-matchit-mode 1))
