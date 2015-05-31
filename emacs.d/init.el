@@ -42,10 +42,25 @@
 ; default to 2 space indentation
 (setq-default tab-width 2)
 
-; set up us the font
-(let ((monaco "Monaco:pixelsize=13:weight=normal:slant=normal:width=normal:spacing=100:scalable=true"))
-  (set-face-attribute 'default nil :font monaco)
-  (set-frame-font monaco nil t))
+; set up us the fonts
+(setq my-font-size 13)
+
+(defun set-font (size)
+  (let ((monaco (concat "Monaco:pixelsize=" (number-to-string size) ":weight=normal:slant=normal:width=normal:spacing=100:scalable=true")))
+    (set-face-attribute 'default nil :font monaco)
+    (set-frame-font monaco nil t)))
+(defun embiggen-font ()
+  (interactive)
+  (setq my-font-size (+ my-font-size 1))
+  (set-font my-font-size))
+(defun debiggen-font ()
+  (interactive)
+  (setq my-font-size (- my-font-size 1))
+  (set-font my-font-size))
+
+(global-set-key (kbd "M-=") 'embiggen-font)
+(global-set-key (kbd "M--") 'debiggen-font)
+(set-font my-font-size)
 
 ; set up package management with use-package
 (require 'package)
