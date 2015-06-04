@@ -119,6 +119,7 @@
 
     (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
     (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
+    (define-key evil-insert-state-map (kbd "M-v") 'evil-paste-after)
 
     ; Bind escape to quit minibuffers
     (defun minibuffer-keyboard-quit ()
