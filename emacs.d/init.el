@@ -270,3 +270,10 @@
   :ensure t
   :init
   (global-evil-matchit-mode 1))
+
+(use-package enh-ruby-mode
+  :ensure t
+  :config
+  (progn
+    (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
+    (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))))
