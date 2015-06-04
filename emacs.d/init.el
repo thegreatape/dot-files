@@ -102,6 +102,7 @@
     (evil-leader/set-key "t" 'projectile-find-file)
     (evil-leader/set-key "ag" 'projectile-ag)
     (evil-leader/set-key "pp" 'projectile-switch-project)
+    (evil-leader/set-key "pc" 'projectile-invalidate-cache)
     (evil-leader/set-key "cl" 'evilnc-comment-or-uncomment-lines)
     (evil-leader/set-key "n" 'rename-current-buffer-file)))
 
