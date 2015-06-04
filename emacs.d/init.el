@@ -143,6 +143,9 @@
 
     (evil-mode t)))
 
+; make control-W delete backwards in the minibuffer
+(define-key minibuffer-local-map (kbd "C-w") 'backward-kill-word)
+
 (use-package evil-nerd-commenter :ensure t)
 
 (use-package atom-dark-theme :ensure t)
