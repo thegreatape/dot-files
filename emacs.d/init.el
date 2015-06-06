@@ -322,3 +322,9 @@
   (progn
     (inf-ruby-switch-setup)
     (evil-leader/set-key "ud" 'inf-ruby-switch-from-compilation)))
+
+(use-package magit :ensure t
+  :config
+  (progn
+    (setq magit-auto-revert-mode nil)
+    (setq magit-last-seen-setup-instructions "1.4.0")))
