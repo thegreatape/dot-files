@@ -281,3 +281,23 @@
   (progn
     (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
     (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))))
+
+(use-package rspec-mode
+  :ensure t
+  :config
+  (progn
+    (setq rspec-use-rake-when-possible nil)
+    (evil-leader/set-key-for-mode 'enh-ruby-mode "rl" 'rspec-verify-single)
+    (evil-leader/set-key-for-mode 'enh-ruby-mode "rf" 'rspec-verify)
+
+    (defun vagrant-file-present-p ()
+      (projectile-file-exists-p "Vagrantfile"))
+
+    (defun add-vagrant-runner (orig-fun &rest args)
+      (let ((result (apply orig-fun args)))
+        (if (vagrant-file-present-p)
+            (concat "v " result)
+            result)))
+
+    (advice-add 'rspec-runner :around #'add-vagrant-runner)
+    ))
