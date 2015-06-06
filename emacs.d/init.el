@@ -104,7 +104,11 @@
     (evil-leader/set-key "pp" 'projectile-switch-project)
     (evil-leader/set-key "pc" 'projectile-invalidate-cache)
     (evil-leader/set-key "cl" 'evilnc-comment-or-uncomment-lines)
-    (evil-leader/set-key "n" 'rename-current-buffer-file)))
+    (evil-leader/set-key "n" 'rename-current-buffer-file)
+
+    ; for opening init.el for quick changes
+    (evil-leader/set-key "ev" (lambda () (interactive) (find-file-other-window "~/dot-files/emacs.d/init.el")))
+    ))
 
 (use-package evil
   :ensure t
@@ -215,7 +219,6 @@
     (add-hook 'emacs-lisp-mode-hook 'elisp-navigation-hook)
     (evil-define-key 'normal emacs-lisp-mode-map (kbd "K")
       'elisp-slime-nav-describe-elisp-thing-at-point)))
-
 
 (eval-after-load 'ibuffer
   '(progn
