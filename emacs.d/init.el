@@ -299,5 +299,11 @@
             (concat "v " result)
             result)))
 
-    (advice-add 'rspec-runner :around #'add-vagrant-runner)
-    ))
+    (advice-add 'rspec-runner :around #'add-vagrant-runner)))
+
+(use-package inf-ruby
+  :ensure t
+  :config
+  (progn
+    (inf-ruby-switch-setup)
+    (evil-leader/set-key "ud" 'inf-ruby-switch-from-compilation)))
