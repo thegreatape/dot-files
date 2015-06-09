@@ -299,7 +299,19 @@
             (concat "function v { ssh -t default \"/bin/bash -l -c '$*'\" }; v " result)
             result)))
 
-    (advice-add 'rspec-runner :around #'add-vagrant-runner)))
+    (advice-add 'rspec-runner :around #'add-vagrant-runner)
+
+    (defun make-specs-relative (orig-fun &rest args)
+      (let ((result (apply orig-fun args)))
+          (if (vagrant-file-present-p)
+              (if (listp result)
+                  result
+                  (replace-regexp-in-string (regexp-quote (rspec-project-root)) "" result))
+              result)))
+
+    (advice-add 'rspec-runner-target :around #'make-specs-relative)))
+
+
 
 (use-package inf-ruby
   :ensure t
