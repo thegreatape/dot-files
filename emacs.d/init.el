@@ -1,3 +1,5 @@
+(require 'cl)
+
 ; show line numbers
 (global-linum-mode t)
 
@@ -304,10 +306,11 @@
     (defun make-specs-relative (orig-fun &rest args)
       (let ((result (apply orig-fun args)))
           (if (vagrant-file-present-p)
-              (if (listp result)
-                  result
-                  (replace-regexp-in-string (regexp-quote (rspec-project-root)) "" result))
-              result)))
+              (flet ((root-strip (path) (replace-regexp-in-string (regexp-quote (rspec-project-root)) "" path)))
+                (if (listp result)
+                    (mapcar root-strip result)
+                    (root-strip result)))
+                result)))
 
     (advice-add 'rspec-runner-target :around #'make-specs-relative)))
 
