@@ -285,7 +285,11 @@
   :config
   (progn
     (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
-    (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))))
+    (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
+
+    (setq enh-ruby-check-syntax nil)
+    (setq enh-ruby-deep-indent-paren nil)
+    (setq enh-ruby-add-encoding-comment-on-save nil)))
 
 (use-package rspec-mode
   :ensure t
