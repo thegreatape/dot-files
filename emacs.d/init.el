@@ -109,8 +109,7 @@
     (evil-leader/set-key "n" 'rename-current-buffer-file)
 
     ; for opening init.el for quick changes
-    (evil-leader/set-key "ev" (lambda () (interactive) (find-file-other-window "~/dot-files/emacs.d/init.el")))
-    ))
+    (evil-leader/set-key "ev" (lambda () (interactive) (find-file-other-window "~/dot-files/emacs.d/init.el")))))
 
 (use-package evil
   :ensure t
