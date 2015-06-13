@@ -155,7 +155,10 @@
 
 (use-package evil-nerd-commenter :ensure t)
 
-(use-package atom-dark-theme :ensure t)
+(use-package atom-dark-theme
+  :ensure t
+  :config
+  (set-face-attribute font-lock-variable-name-face nil :foreground "#C6C5FE" ))
 
 ;;
 ;; writing mode stuff to emulate vim's goyo plugin
