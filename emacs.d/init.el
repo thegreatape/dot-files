@@ -314,8 +314,6 @@
 
     (advice-add 'rspec-runner-target :around #'make-specs-relative)))
 
-
-
 (use-package inf-ruby
   :ensure t
   :config
