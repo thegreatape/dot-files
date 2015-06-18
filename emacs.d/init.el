@@ -340,3 +340,8 @@
   (progn
     (setq magit-auto-revert-mode nil)
     (setq magit-last-seen-setup-instructions "1.4.0")))
+
+(use-package web-mode
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode)))
