@@ -88,7 +88,15 @@
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
 (package-initialize)
 
-(push "~/.emacs.d/site-lisp/use-package" load-path)
+;; add every subdir in site-lisp to beginning of load-path
+;; so packages there can override ones pulled in by use-package
+(let ((default-directory "~/.emacs.d/site-lisp/"))
+  (setq load-path
+        (append
+         (let ((load-path (copy-sequence load-path)))
+           (normal-top-level-add-subdirs-to-load-path))
+         load-path)))
+
 (require 'use-package)
 
 (use-package evil-leader
