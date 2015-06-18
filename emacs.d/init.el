@@ -285,7 +285,9 @@
 (use-package evil-matchit
   :ensure t
   :init
-  (global-evil-matchit-mode 1))
+  (progn
+    (global-evil-matchit-mode 1)
+    (plist-put evilmi-plugins 'enh-ruby-mode '((evilmi-ruby-get-tag evilmi-ruby-jump)))))
 
 (use-package enh-ruby-mode
   :ensure t
