@@ -282,13 +282,15 @@
   :init
   (add-hook 'projectile-mode-hook 'projectile-rails-on))
 
+(require 'evil-rails)
+
 (use-package scss-mode
   :ensure t
   :init
    (setq css-indent-offset 2))
 
 (use-package evil-matchit
-  :ensure t
+  ;:ensure t
   :init
   (progn
     (global-evil-matchit-mode 1)
