@@ -219,6 +219,8 @@
 
     ;; coffee-mode's tab-width has to be set manually for some reason
     (setq coffee-tab-width 2))
+
+    (add-to-list 'auto-mode-alist '("\\.cjsx$" . coffee-mode))
   )
 
 (use-package elisp-slime-nav
@@ -354,3 +356,21 @@
   :ensure t
   :config
   (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode)))
+
+(use-package jsx-mode
+  :ensure t)
+
+(use-package mmm-mode
+  :ensure t
+  :config
+  (progn
+    (setq mmm-global-mode 'maybe)
+    (setq mmm-parse-when-idle t)
+    (mmm-add-classes
+     '((jsx
+        :submode html-mode
+        :front "[([:space:]\n]*\\([([:space:]\n]\\)<"
+        :front-match 1
+        :back ">[[:space:]\n]*\\([)\n]\\)$"
+        :back-match 1)))
+    (mmm-add-mode-ext-class 'coffee-mode "\\.cjsx\\'" 'jsx)))
