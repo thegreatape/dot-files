@@ -309,6 +309,11 @@
     (setq enh-ruby-deep-indent-paren nil)
     (setq enh-ruby-add-encoding-comment-on-save nil)))
 
+(use-package ruby-electric
+  :ensure t
+  :config
+    (add-hook 'enh-ruby-mode-hook 'ruby-electric-mode))
+
 (use-package rspec-mode
   :ensure t
   :config
