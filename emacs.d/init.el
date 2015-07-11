@@ -349,7 +349,9 @@
   :config
   (progn
     (inf-ruby-switch-setup)
-    (evil-leader/set-key "ud" 'inf-ruby-switch-from-compilation)))
+    (evil-leader/set-key "ud" 'inf-ruby-switch-from-compilation)
+    (define-key inf-ruby-mode-map (kbd "<up>") 'comint-previous-input)
+    (define-key inf-ruby-mode-map (kbd "<down>") 'comint-next-input)))
 
 (use-package magit :ensure t
   :config
