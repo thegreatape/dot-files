@@ -328,7 +328,7 @@
     (defun add-vagrant-runner (orig-fun &rest args)
       (let ((result (apply orig-fun args)))
         (if (vagrant-file-present-p)
-            (concat "function v { ssh -t default \"/bin/bash -l -c '$*'\" }; v " result)
+            (concat "function v { ssh -t `cat .vname` \"/bin/bash -l -c '$*'\" }; v " result)
             result)))
 
     (advice-add 'rspec-runner :around #'add-vagrant-runner)

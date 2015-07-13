@@ -24,3 +24,4 @@ projections.json
 config/database.yml
 todos.txt
 .sass-cache*
+.vname

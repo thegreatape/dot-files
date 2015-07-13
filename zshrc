@@ -73,7 +73,7 @@ unsetopt correct_all
 [ -f /Users/tmayfield/.travis/travis.sh ] && source /Users/tmayfield/.travis/travis.sh
 
 # vagrant ssh prefix
-function v { ssh -t default "/bin/bash -l -c '$*'" }
+function v { ssh -t `cat .vname` "/bin/bash -l -c '$*'" }
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
