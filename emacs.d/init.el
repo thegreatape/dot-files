@@ -381,3 +381,5 @@
         :back ">[[:space:]\n]*\\([)\n]\\)$"
         :back-match 1)))
     (mmm-add-mode-ext-class 'coffee-mode "\\.cjsx\\'" 'jsx)))
+
+(use-package yaml-mode :ensure t)
