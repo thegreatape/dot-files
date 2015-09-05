@@ -160,6 +160,16 @@
 ; make control-W delete backwards in the minibuffer
 (define-key minibuffer-local-map (kbd "C-w") 'backward-kill-word)
 
+(use-package company
+  :ensure t
+  :config
+  (progn
+    (define-key evil-insert-state-map (kbd "C-p") 'company-complete)
+    (define-key company-active-map (kbd "C-p") 'company-complete-common-or-cycle)
+    (define-key company-active-map (kbd "C-n") 'company-select-previous)
+    (setq company-idle-delay nil) ;; don't begin completion after pausing typing
+    (global-company-mode)))
+
 (use-package evil-nerd-commenter :ensure t)
 
 (use-package atom-dark-theme
@@ -268,7 +278,7 @@
   :init
   (progn
     (define-key cider-repl-mode-map (kbd "C-h") 'cider-switch-to-last-clojure-buffer)
-    (evil-set-initial-state 'cider-repl-mode 'emacs)
+    ;; (evil-set-initial-state 'cider-repl-mode 'emacs)
     (evil-leader/set-key-for-mode 'clojure-mode "e" 'cider-eval-last-sexp-to-repl)))
 
 (use-package exec-path-from-shell
