@@ -272,6 +272,8 @@
 (use-package helm-projectile :ensure t)
 (use-package ag :ensure t)
 
+(use-package alchemist :ensure t)
+
 (use-package clojure-mode :ensure t)
 (use-package cider
   :ensure t
