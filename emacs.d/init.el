@@ -47,6 +47,10 @@
 ; set up us the fonts
 (setq my-font-size 13)
 
+; default gc thresholds are pretty low - we can
+;comfortably go much higher on modern hardware
+(setq gc-cons-threshold (* 100 1024 1024))
+
 (defun set-font (size)
   (let ((monaco (concat "Monaco:pixelsize=" (number-to-string size) ":weight=normal:slant=normal:width=normal:spacing=100:scalable=true")))
     (set-face-attribute 'default nil :font monaco)
