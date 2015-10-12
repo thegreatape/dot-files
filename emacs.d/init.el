@@ -276,7 +276,13 @@
 (use-package helm-projectile :ensure t)
 (use-package ag :ensure t)
 
-(use-package alchemist :ensure t)
+(use-package alchemist
+  :ensure t
+  :config
+  (progn
+    (evil-leader/set-key-for-mode 'elixir-mode "am" 'alchemist-mix)
+    (evil-leader/set-key-for-mode 'elixir-mode "rl" 'alchemist-mix-test-at-point)
+    (evil-leader/set-key-for-mode 'elixir-mode "rf" 'alchemist-mix-test-this-buffer)))
 
 (use-package clojure-mode :ensure t)
 (use-package cider
