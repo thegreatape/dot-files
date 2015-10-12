@@ -114,6 +114,7 @@
     (evil-leader/set-key "b" 'ibuffer)
     (evil-leader/set-key "kb" 'kill-buffer)
     (evil-leader/set-key "t" 'projectile-find-file)
+    (evil-leader/set-key "y" 'helm-etags-select)
     (evil-leader/set-key "ag" 'projectile-ag)
     (evil-leader/set-key "pp" 'projectile-switch-project)
     (evil-leader/set-key "pc" 'projectile-invalidate-cache)
@@ -138,6 +139,9 @@
     (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
     (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
     (define-key evil-insert-state-map (kbd "M-v") 'evil-paste-after)
+    (define-key evil-normal-state-map (kbd "gf") (lambda () (interactive) (find-tag (find-tag-default-as-regexp))))
+    (define-key evil-normal-state-map (kbd "gb") 'pop-tag-mark)
+    (define-key evil-normal-state-map (kbd "gn") (lambda () (interactive) (find-tag last-tag t)))
 
     ; Bind escape to quit minibuffers
     (defun minibuffer-keyboard-quit ()
@@ -163,6 +167,18 @@
 
 ; make control-W delete backwards in the minibuffer
 (define-key minibuffer-local-map (kbd "C-w") 'backward-kill-word)
+
+(use-package ctags-update
+  :ensure t
+  :config
+  (progn
+    (add-hook 'enh-ruby-mode-hook 'turn-on-ctags-auto-update-mode)))
+
+(defun regenerate-tags ()
+  (interactive)
+  (let ((tags-directory (directory-file-name (projectile-project-root))))
+    (shell-command
+     (format "ctags -f %s -e -R %s" tags-file-name tags-directory))))
 
 (use-package company
   :ensure t
