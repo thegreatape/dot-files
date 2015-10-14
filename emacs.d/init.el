@@ -288,7 +288,16 @@
 (add-hook 'find-file-hook (lambda ()
 			    (setq default-directory (projectile-project-root))))
 
-(use-package helm :ensure t)
+(use-package helm
+  :ensure t
+  :config
+  (progn
+    (defun my-etags-sort-function (candidates source)
+      (sort candidates (lambda (a b) (< (length a) (length b)))))
+    (defmethod helm-setup-user-source ((source helm-source))
+      (when (equal (oref source :name) "Etags")
+        (oset source :filtered-candidate-transformer 'my-etags-sort-function)))))
+
 (use-package helm-projectile :ensure t)
 (use-package ag :ensure t)
 
