@@ -1,0 +1,7 @@
+# key: code
+# --
+{% highlight $1 %}
+{% raw %}
+$0
+{% endraw %}
+{% endhighlight %}

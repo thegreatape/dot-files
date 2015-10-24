@@ -430,3 +430,8 @@
     (mmm-add-mode-ext-class 'coffee-mode "\\.cjsx\\'" 'jsx)))
 
 (use-package yaml-mode :ensure t)
+
+(use-package yasnippet
+  :ensure t
+  :config
+  (yas-global-mode 1))
