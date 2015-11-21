@@ -398,8 +398,15 @@
 (use-package magit :ensure t
   :config
   (progn
-    (setq magit-auto-revert-mode nil)
     (setq magit-last-seen-setup-instructions "1.4.0")))
+
+(use-package evil-magit
+  :ensure t
+  :config
+  (progn
+    (evil-leader/set-key "ms" 'magit-status)
+    (evil-leader/set-key "mh" 'magit-dispatch-popup)
+    (evil-leader/set-key "mb" 'magit-blame)))
 
 (use-package web-mode
   :ensure t
