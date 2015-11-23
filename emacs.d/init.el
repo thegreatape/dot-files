@@ -172,6 +172,7 @@
   :ensure t
   :config
   (progn
+    (setq tags-revert-without-query 1)
     (add-hook 'enh-ruby-mode-hook 'turn-on-ctags-auto-update-mode)))
 
 (defun regenerate-tags ()
