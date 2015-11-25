@@ -189,6 +189,8 @@
     (define-key company-active-map (kbd "C-p") 'company-complete-common-or-cycle)
     (define-key company-active-map (kbd "C-n") 'company-select-previous)
     (setq company-idle-delay nil) ;; don't begin completion after pausing typing
+    (setq company-dabbrev-downcase nil)
+    (setq company-dabbrev-ignore-case nil)
     (global-company-mode)))
 
 (use-package evil-nerd-commenter :ensure t)
