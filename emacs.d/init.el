@@ -444,6 +444,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(evil-shift-width tab-width)
+ '(magit-merge-arguments (quote ("--ff-only")))
  '(magit-pull-arguments (quote ("--rebase")))
  '(magit-push-arguments (quote ("--set-upstream")))
  '(selection-coding-system (quote mac-roman)))
