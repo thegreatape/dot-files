@@ -79,3 +79,5 @@ function v { ssh -t `cat .vname` "/bin/bash -l -c '$*'" }
 export PATH="/usr/local/heroku/bin:$PATH"
 
 export NODE_PATH=/usr/local/lib/node_modules
+
+export COLORTERM=xterm
