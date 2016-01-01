@@ -117,7 +117,7 @@ let g:VimuxUseNearestPane = 1
 let g:vimux_ruby_clear_console_on_run = 0
 
 " Navigating tmux/vim splits seamlessly
-Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'thegreatape/vim-tmux-navigator'
 
 " Elixir
 Plugin 'elixir-lang/vim-elixir'
