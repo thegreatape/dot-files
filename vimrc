@@ -146,6 +146,7 @@ Plugin 'kien/ctrlp.vim.git'
 Plugin 'tpope/vim-abolish'
 Plugin 'tommcdo/vim-lion'
 Plugin 'malkomalko/projections.vim'
+Plugin 'terryma/vim-multiple-cursors'
 
 Plugin 'terryma/vim-expand-region'
 vmap v <Plug>(expand_region_expand)
