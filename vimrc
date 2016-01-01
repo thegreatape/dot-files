@@ -129,6 +129,9 @@ autocmd Filetype go inoremap <C-n> <C-x><C-o>
 " Less
 Plugin 'groenewege/vim-less'
 
+" Elm
+Plugin 'lambdatoast/elm.vim'
+
 " Ctags
 Plugin 'vim-scripts/AutoTag'
 Plugin 'vim-scripts/taglist.vim'
