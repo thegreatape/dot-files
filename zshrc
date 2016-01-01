@@ -25,6 +25,21 @@ function track() {
   git branch --set-upstream-to=origin/$branch_name $branch_name;
 }
 
+# fuzzy git branch checkout with fzf
+gco() {
+  local tags branches target
+  tags=$(
+    git tag | awk '{print "\x1b[31;1mtag\x1b[m\t" $1}') || return
+  branches=$(
+    git branch --all | grep -v HEAD             |
+    sed "s/.* //"    | sed "s#remotes/[^/]*/##" |
+    sort -u          | awk '{print "\x1b[34;1mbranch\x1b[m\t" $1}') || return
+  target=$(
+    (echo "$tags"; echo "$branches") |
+    fzf-tmux -l30 -- --no-hscroll --ansi +m -d "\t" -n 2) || return
+  git checkout $(echo "$target" | awk '{print $2}')
+}
+
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -39,11 +54,6 @@ DISABLE_AUTO_UPDATE="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -81,3 +91,5 @@ export PATH="/usr/local/heroku/bin:$PATH"
 export NODE_PATH=/usr/local/lib/node_modules
 
 export COLORTERM=xterm
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

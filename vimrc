@@ -143,6 +143,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 Plugin 'godlygeek/tabular.git'
 Plugin 'kien/ctrlp.vim.git'
+Plugin 'junegunn/fzf'
 Plugin 'tpope/vim-abolish'
 Plugin 'tommcdo/vim-lion'
 Plugin 'malkomalko/projections.vim'
@@ -217,9 +218,8 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 " shortcut to source vimrc
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
-" open ctrl-p with leader-t
-let g:ctrlp_map = '<leader>t'
-let g:ctrlp_cmd = 'CtrlP'
+" open FZF with leader-t
+nnoremap <leader>t :FZF<cr>
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
