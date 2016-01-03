@@ -93,3 +93,9 @@ export NODE_PATH=/usr/local/lib/node_modules
 export COLORTERM=xterm
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Setting ag as the default source for fzf
+# So that fzf (w/o pipe) will use ag instead
+# of find, respecting .gitignore
+export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
