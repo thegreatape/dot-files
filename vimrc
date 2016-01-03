@@ -132,6 +132,10 @@ Plugin 'groenewege/vim-less'
 " Elm
 Plugin 'lambdatoast/elm.vim'
 
+ " fix backspace flicker caused by elm plugin mapping
+ " it to dedenting in insert mode
+let g:Haskell_no_mapping = 1
+
 " Ctags
 Plugin 'vim-scripts/AutoTag'
 Plugin 'vim-scripts/taglist.vim'
