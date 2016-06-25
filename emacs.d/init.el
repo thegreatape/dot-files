@@ -161,6 +161,7 @@
     (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
     (global-set-key [escape] 'evil-exit-emacs-state)
 
+    (setq evil-move-cursor-back nil)
     (evil-mode t)))
 
 (use-package emamux :ensure t)
@@ -186,6 +187,14 @@
 (defun move-down-pane ()
   (interactive)
   (tmux-aware-select-pane 'down "-D"))
+
+(unless (display-graphic-p)
+  (use-package evil-terminal-cursor-changer
+    :ensure t
+    :config
+    (progn
+      (setq evil-normal-state-cursor '("white" box))
+      (setq evil-insert-state-cursor '("white" bar)))))
 
 ; make control-W delete backwards in the minibuffer
 (define-key minibuffer-local-map (kbd "C-w") 'backward-kill-word)
