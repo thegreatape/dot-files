@@ -3,6 +3,9 @@
 ; show line numbers
 (global-linum-mode t)
 
+; add space after line number for some padding
+(setq linum-format "%d ")
+
 ; disable infernal beeping
 (setq ring-bell-function 'ignore)
 
