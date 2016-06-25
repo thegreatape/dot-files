@@ -18,6 +18,7 @@ alias gpr="git pull --rebase"
 alias gpoh="git push origin HEAD"
 alias heroku_restore="pg_restore --verbose --clean --no-acl --no-owner"
 alias git_local_cleanup="git branch --merged | grep -v \"\*\" | xargs -n 1 git branch -d"
+alias emacs="TERM=xterm-256color emacs"
 
 function track() {
   branch_name=$(git branch | grep "*");
