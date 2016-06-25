@@ -6,11 +6,9 @@
 ; disable infernal beeping
 (setq ring-bell-function 'ignore)
 
-; disable toolbar
-(tool-bar-mode -1)
-
-; disable scrollbars
-(set-scroll-bar-mode nil)
+(menu-bar-mode -1)        ; disable menu
+(tool-bar-mode -1)        ; disable toolbar
+(set-scroll-bar-mode nil) ; disable scrollbars
 
 ; don't blink the cursor
 (blink-cursor-mode 0)
@@ -48,7 +46,7 @@
 (setq my-font-size 13)
 
 ; default gc thresholds are pretty low - we can
-;comfortably go much higher on modern hardware
+; comfortably go much higher on modern hardware
 (setq gc-cons-threshold (* 100 1024 1024))
 
 (defun set-font (size)
