@@ -129,10 +129,10 @@
     ; changing indentation with < and > should use tab-width's worth of indent
     (custom-set-variables '(evil-shift-width tab-width))
 
-    (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
-    (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
-    (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
-    (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
+    (define-key evil-normal-state-map (kbd "C-h") 'move-left-pane)
+    (define-key evil-normal-state-map (kbd "C-j") 'move-down-pane)
+    (define-key evil-normal-state-map (kbd "C-k") 'move-up-pane)
+    (define-key evil-normal-state-map (kbd "C-l") 'move-right-pane)
 
     (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
     (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
@@ -162,6 +162,30 @@
     (global-set-key [escape] 'evil-exit-emacs-state)
 
     (evil-mode t)))
+
+(use-package emamux :ensure t)
+
+(defun tmux-aware-select-pane (emacs-direction tmux-direction)
+  (let ((left-emacs-window (windmove-find-other-window emacs-direction)))
+    (if (null left-emacs-window)
+        (emamux:tmux-run-command nil "select-pane" tmux-direction)
+      (select-window left-emacs-window))))
+
+(defun move-left-pane ()
+  (interactive)
+  (tmux-aware-select-pane 'left "-L"))
+
+(defun move-right-pane ()
+  (interactive)
+  (tmux-aware-select-pane 'right "-R"))
+
+(defun move-up-pane ()
+  (interactive)
+  (tmux-aware-select-pane 'up "-U"))
+
+(defun move-down-pane ()
+  (interactive)
+  (tmux-aware-select-pane 'down "-D"))
 
 ; make control-W delete backwards in the minibuffer
 (define-key minibuffer-local-map (kbd "C-w") 'backward-kill-word)
