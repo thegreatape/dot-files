@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+
+def unfocus(seconds)
+  `open focus://unfocus`
+  remaining = seconds
+  while remaining > 0
+    print ">> Unfocused, refocusing in #{format_time remaining}     \r"
+    remaining -= 1
+    sleep 1
+  end
+end
+
+def format_time(remaining)
+  "%02d:%02d" % remaining.divmod(60)
+end
+
+def refocus
+  puts "\nBreak over!"
+  `open focus://focus`
+end
+
+begin
+  unfocus((ARGV[0] || 15).to_i * 60)
+  refocus
+rescue Interrupt => e
+  refocus
+  exit
+end
+
+
