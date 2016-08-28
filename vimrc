@@ -29,6 +29,7 @@ Plugin 'pangloss/vim-javascript'
 " Markdown
 Plugin 'tpope/vim-markdown'
 augroup mkd
+  autocmd!
   autocmd BufRead *\.markdown,*\.md,*\.txt set ai formatoptions=tcroqn2 comments=n:>
   autocmd BufRead *\.markdown,*\.md,*\.txt setlocal formatoptions=l
   autocmd BufRead *\.markdown,*\.md,*\.txt setlocal lbr
@@ -97,19 +98,27 @@ let g:rbpt_colorpairs = [
   \ ]
 let g:rbpt_max = 16
 
-autocmd BufEnter *.cljs,*.clj,*.cljs.hl RainbowParenthesesActivate
-autocmd BufEnter *.cljs,*.clj,*.cljs.hl RainbowParenthesesLoadRound
-autocmd BufEnter *.cljs,*.clj,*.cljs.hl RainbowParenthesesLoadSquare
-autocmd BufEnter *.cljs,*.clj,*.cljs.hl RainbowParenthesesLoadBraces
-" autocmd BufEnter *.cljs,*.clj,*.cljs.hl setlocal iskeyword+=?,-,*,!,+,/,=,<,>,.,:
+augroup clojure
+  autocmd!
+  autocmd BufEnter *.cljs,*.clj,*.cljs.hl RainbowParenthesesActivate
+  autocmd BufEnter *.cljs,*.clj,*.cljs.hl RainbowParenthesesLoadRound
+  autocmd BufEnter *.cljs,*.clj,*.cljs.hl RainbowParenthesesLoadSquare
+  autocmd BufEnter *.cljs,*.clj,*.cljs.hl RainbowParenthesesLoadBraces
+  " autocmd BufEnter *.cljs,*.clj,*.cljs.hl setlocal iskeyword+=?,-,*,!,+,/,=,<,>,.,:
+augroup END
 
 " Vimux
 Plugin 'benmills/vimux'
 Plugin 'thegreatape/vimux-ruby-test'
-" Ruby test running shortcuts
-autocmd Filetype ruby nnoremap <leader>rl :RunRubyFocusedTest<cr>
-autocmd Filetype ruby nnoremap <leader>rf :RunAllRubyTests<cr>
-autocmd Filetype ruby nnoremap <leader>rc :VimuxClosePanes<cr>
+
+augroup ruby
+  autocmd!
+  " test running shortcuts
+  autocmd Filetype ruby nnoremap <leader>rl :RunRubyFocusedTest<cr>
+  autocmd Filetype ruby nnoremap <leader>rf :RunAllRubyTests<cr>
+  autocmd Filetype ruby nnoremap <leader>rc :VimuxClosePanes<cr>
+augroup end
+
 let g:VimuxOrientation = "h"
 let g:VimuxHeight = "30"
 let g:VimuxUseNearestPane = 1
@@ -123,7 +132,10 @@ Plugin 'elixir-lang/vim-elixir'
 
 " Go
 Plugin 'fatih/vim-go'
-autocmd Filetype go inoremap <C-n> <C-x><C-o>
+augroup go
+  autocmd!
+  autocmd Filetype go inoremap <C-n> <C-x><C-o>
+augroup END
 
 " Less
 Plugin 'groenewege/vim-less'
@@ -239,10 +251,14 @@ endif
 " Deal with trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
+
+augroup whitespace
+  autocmd!
+  autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+  autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+  autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+  autocmd BufWinLeave * call clearmatches()
+augroup end
 " clear trailing spaces with <space><space>
 nnoremap <silent> <space><space> :silent! %s/\s\+$//<CR>
 
@@ -286,10 +302,13 @@ command! -bang W w<bang>
 " (happens when dropping a file on gvim).
 " Also don't do it when the mark is in the first line, that is the default
 " position when opening a file.
-autocmd BufReadPost *
-  \ if line("'\"") > 1 && line("'\"") <= line("$") |
-  \   exe "normal! g`\"" |
-  \ endif
+augroup lastposition
+  autocmd!
+  autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
+augroup END
 
 call vundle#end()
 filetype plugin indent on
