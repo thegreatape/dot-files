@@ -29,16 +29,15 @@ Plugin 'pangloss/vim-javascript'
 " Markdown
 Plugin 'tpope/vim-markdown'
 augroup mkd
-  autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
-  autocmd BufRead *.md  set ai formatoptions=tcroqn2 comments=n:>
-  autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:>
+  autocmd BufRead *\.markdown,*\.md,*\.txt set ai formatoptions=tcroqn2 comments=n:>
   autocmd BufRead *\.markdown,*\.md,*\.txt setlocal formatoptions=l
   autocmd BufRead *\.markdown,*\.md,*\.txt setlocal lbr
   autocmd BufRead *\.markdown,*\.md,*\.txt map j gj
   autocmd BufRead *\.markdown,*\.md,*\.txt map k gk
   autocmd BufRead *\.markdown,*\.md,*\.txt setlocal smartindent
   autocmd BufRead *\.markdown,*\.md,*\.txt setlocal nolist
-  autocmd BufRead *\.markdown,*\.md,*\.txt nnoremap <leader>sp :setlocal spell! spelllang=en_gb<cr>
+  autocmd BufRead *\.markdown,*\.md,*\.txt nnoremap <buffer> <leader>sp :setlocal spell! spelllang=en_gb<cr>
+  autocmd BufRead *\.markdown,*\.md,*\.txt iabbrev <buffer> cblock {% raw FOO %}<cr>{% highlight %}<cr>{% endraw %}<cr>{% endhighlight %}<esc>?FOO<cr>cw
 augroup END
 
 " prose
@@ -296,3 +295,23 @@ call vundle#end()
 filetype plugin indent on
 syntax on
 set hlsearch
+
+" move line up
+nnoremap - ddp
+
+" move line down
+nnoremap _ ddkP
+
+" upper 'case' word
+nnoremap <c-u> viwU
+
+" typo proof my life
+iabbrev explict explicit
+
+" wrap current word in quotes
+nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
+nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
+
+" wrap selection in quotes
+vnoremap ' <esc>mz`<i'<esc>`>la'<esc>`z
+vnoremap " <esc>mz`<i"<esc>`>la"<esc>`z
