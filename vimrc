@@ -156,7 +156,6 @@ set tags+=./tags
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-scripts/bufkill.vim'
 Plugin 'godlygeek/csapprox'
-Plugin 'rking/ag.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 Plugin 'godlygeek/tabular.git'
@@ -170,6 +169,25 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'terryma/vim-expand-region'
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
+
+" searching
+Plugin 'rking/ag.vim'
+"nnoremap <leader>ag :
+nnoremap <leader>ag :set operatorfunc=AgOperator<cr>g@
+vnoremap <leader>ag :<c-u>call AgOperator(visualmode())<cr>
+
+function! AgOperator(type)
+  let saved_unamed_register = @@
+  if a:type ==# 'v'
+    execute "normal! `<v`>y"
+  elseif a:type ==# 'char'
+    execute "normal! `[v`]y"
+  else
+    return
+  endif
+  execute "Ag " . shellescape(@@)
+  let @@ = saved_unamed_register
+endfunction
 
 " highlight zsh-theme files as shell
 au BufNewFile,BufRead *.zsh-theme set filetype=zsh
