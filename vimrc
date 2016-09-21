@@ -128,6 +128,7 @@ let g:vimux_ruby_clear_console_on_run = 0
 Plugin 'thegreatape/vim-tmux-navigator'
 
 " Elixir
+Plugin 'elixir-lang/vim-elixir'
 Plugin 'slashmili/alchemist.vim'
 
 " Go
