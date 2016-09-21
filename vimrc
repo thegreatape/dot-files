@@ -349,9 +349,10 @@ iabbrev explict explicit
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
 
-" wrap selection in quotes
 " open last buffer in below + right split
 nnoremap <leader>pb :execute "rightbelow vsplit " . bufname('#')<cr>
 
+" ' or " to wrap selection in quotes in visual mode
 vnoremap ' <esc>mz`<i'<esc>`>la'<esc>`z
 vnoremap " <esc>mz`<i"<esc>`>la"<esc>`z
+
