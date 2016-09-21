@@ -10,7 +10,7 @@ Plugin 'gmarik/Vundle.vim'
 set autowriteall
 
 " Get correct $PATH from .bashrc
-set shell=bash\ -i
+set shell=bash
 
 " Disable .swp file creation
 set noswapfile
