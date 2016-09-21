@@ -128,13 +128,13 @@ let g:vimux_ruby_clear_console_on_run = 0
 Plugin 'thegreatape/vim-tmux-navigator'
 
 " Elixir
-Plugin 'elixir-lang/vim-elixir'
+Plugin 'slashmili/alchemist.vim'
 
 " Go
 Plugin 'fatih/vim-go'
 augroup go
-  autocmd!
-  autocmd Filetype go inoremap <C-n> <C-x><C-o>
+autocmd!
+autocmd Filetype go inoremap <C-n> <C-x><C-o>
 augroup END
 
 " Less
