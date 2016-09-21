@@ -356,3 +356,11 @@ nnoremap <leader>pb :execute "rightbelow vsplit " . bufname('#')<cr>
 vnoremap ' <esc>mz`<i'<esc>`>la'<esc>`z
 vnoremap " <esc>mz`<i"<esc>`>la"<esc>`z
 
+set noruler      " disable ruler that shows line + col of cursor
+set laststatus=2 " always show status line
+
+set statusline=%f   " path to file
+set statusline+=\   " separator
+set statusline+=%m  " modified flag
+set statusline+=%=  " switch to right side
+set statusline+=%y  " filetype of file
