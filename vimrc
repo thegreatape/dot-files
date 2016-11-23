@@ -27,7 +27,8 @@ Plugin 'vim-scripts/jade.vim'
 Plugin 'pangloss/vim-javascript'
 
 " Markdown
-Plugin 'tpope/vim-markdown'
+Plugin 'plasticboy/vim-markdown'
+let g:vim_markdown_folding_disabled = 1
 augroup mkd
   autocmd!
   autocmd BufRead *\.markdown,*\.md,*\.txt set ai formatoptions=tcroqn2 comments=n:>
@@ -38,6 +39,7 @@ augroup mkd
   autocmd BufRead *\.markdown,*\.md,*\.txt setlocal smartindent
   autocmd BufRead *\.markdown,*\.md,*\.txt setlocal nolist
   autocmd BufRead *\.markdown,*\.md,*\.txt nnoremap <buffer> <leader>sp :setlocal spell! spelllang=en_gb<cr>
+  autocmd BufRead *\.markdown,*\.md,*\.txt nnoremap <buffer> <leader>ft :TableFormat<cr>
   autocmd BufRead *\.markdown,*\.md,*\.txt iabbrev <buffer> cblock {% raw FOO %}<cr>{% highlight %}<cr>{% endraw %}<cr>{% endhighlight %}<esc>?FOO<cr>cw
 augroup END
 
