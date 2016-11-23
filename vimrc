@@ -169,6 +169,9 @@ Plugin 'groenewege/vim-less'
 " Elm
 Plugin 'lambdatoast/elm.vim'
 
+" Terraform
+Plugin 'hashivim/vim-terraform'
+
  " fix backspace flicker caused by elm plugin mapping
  " it to dedenting in insert mode
 let g:Haskell_no_mapping = 1
