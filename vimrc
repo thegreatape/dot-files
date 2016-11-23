@@ -74,6 +74,10 @@ nmap <leader>f <Plug>SlimeParagraphSend
 Plugin 'tpope/vim-classpath'
 Plugin 'tpope/vim-fireplace.git'
 Plugin 'guns/vim-clojure-static.git'
+
+" always only indent every subform with 2 spaces for these forms
+let g:clojure_special_indent_words = 'deftype,defrecord,reify,proxy,extend-type,extend-protocol,letfn,fact,facts'
+
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'guns/vim-sexp'
 Plugin 'tpope/vim-sexp-mappings-for-regular-people'
