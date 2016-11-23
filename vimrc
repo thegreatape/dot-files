@@ -107,7 +107,7 @@ function! NreplStatusLine()
     return 'nREPL Connected'
   else
     return 'No nREPL Connection'
-  end
+  endif
 endfunction
 
 augroup clojure
