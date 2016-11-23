@@ -60,7 +60,7 @@ source $ZSH/oh-my-zsh.sh
 
 # general environment variable setup
 export EDITOR=vim
-export PATH=~/.bin:~/dot-files/bin/:./bin:$HOME/.rbenv/bin:/usr/local/bin:$PATH
+export PATH=~/dot-files/bin/:~/.bin:./bin:$HOME/.rbenv/bin:/usr/local/bin:./node_modules/.bin/:$PATH
 eval "$(rbenv init - --no-rehash)"
 
 # tmuxinator setup
