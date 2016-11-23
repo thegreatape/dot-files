@@ -229,6 +229,7 @@ set list listchars=tab:\ \ ,trail:·
 colors jellybeans
 
 " for outside high-contrast use
+"Plugin "godlygeek/csapprox"
 "colors github
 
 " use system clipboard
