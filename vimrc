@@ -77,6 +77,7 @@ Plugin 'guns/vim-clojure-static.git'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'guns/vim-sexp'
 Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+Plugin 'guns/vim-slamhound'
 
 let g:rbpt_colorpairs = [
   \ ['blue',        '#FF6000'],
