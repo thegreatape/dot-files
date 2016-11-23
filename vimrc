@@ -55,6 +55,9 @@ Plugin 'tmhedberg/matchit'
 Plugin 'kana/vim-textobj-user'
 Plugin 'nelstrom/vim-textobj-rubyblock'
 
+" for active admin arb templates
+autocmd BufRead,BufNewFile *.arb setfiletype ruby
+
 " SCSS
 au BufRead,BufNewFile *.scss set filetype=scss
 " Guardfiles and axlsx are just ruby
