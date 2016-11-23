@@ -98,6 +98,18 @@ let g:rbpt_colorpairs = [
   \ ]
 let g:rbpt_max = 16
 
+function! IsFireplaceConnected()
+  return has_key(fireplace#platform(), 'connection')
+endfunction
+
+function! NreplStatusLine()
+  if has_key(fireplace#platform(), 'connection')
+    return 'nREPL Connected'
+  else
+    return 'No nREPL Connection'
+  end
+endfunction
+
 augroup clojure
   autocmd!
   autocmd BufEnter *.cljs,*.clj,*.cljs.hl RainbowParenthesesActivate
@@ -105,6 +117,9 @@ augroup clojure
   autocmd BufEnter *.cljs,*.clj,*.cljs.hl RainbowParenthesesLoadSquare
   autocmd BufEnter *.cljs,*.clj,*.cljs.hl RainbowParenthesesLoadBraces
   " autocmd BufEnter *.cljs,*.clj,*.cljs.hl setlocal iskeyword+=?,-,*,!,+,/,=,<,>,.,:
+
+  autocmd BufEnter *.cljs,*.clj,*.cljs.hl call SetBasicStatusLine()
+  autocmd BufEnter *.cljs,*.clj,*.cljs.hl set statusline+=\ [%{NreplStatusLine()}]  " REPL connection status
 augroup END
 
 " Vimux
@@ -360,8 +375,11 @@ vnoremap " <esc>mz`<i"<esc>`>la"<esc>`z
 set noruler      " disable ruler that shows line + col of cursor
 set laststatus=2 " always show status line
 
-set statusline=%f   " path to file
-set statusline+=\   " separator
-set statusline+=%m  " modified flag
-set statusline+=%=  " switch to right side
-set statusline+=%y  " filetype of file
+function! SetBasicStatusLine()
+  set statusline=%f   " path to file
+  set statusline+=\   " separator
+  set statusline+=%m  " modified flag
+  set statusline+=%=  " switch to right side
+  set statusline+=%y  " filetype of file
+endfunction
+call SetBasicStatusLine()
