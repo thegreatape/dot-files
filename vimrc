@@ -49,11 +49,17 @@ map gp :Goyo <bar> :TogglePencil <CR>
 
 " Ruby and Rails
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'kchmck/vim-coffee-script'
+Plugin 'mtscout6/vim-cjsx'
 Plugin 'tpope/vim-rails'
 Plugin 'tmhedberg/matchit'
 Plugin 'kana/vim-textobj-user'
 Plugin 'nelstrom/vim-textobj-rubyblock'
+
+" Javascript and friends
+Plugin 'kchmck/vim-coffee-script'
+
+" ES6 and linting
+Plugin 'isRuslan/vim-es6'
 
 " for active admin arb templates
 autocmd BufRead,BufNewFile *.arb setfiletype ruby
