@@ -79,22 +79,22 @@ Plugin 'guns/vim-sexp'
 Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 
 let g:rbpt_colorpairs = [
-  \ ['blue',      '#FF6000'],
-  \ ['cyan',      '#00FFFF'],
-  \ ['darkgreen', '#00FF00'],
-  \ ['LightYellow',     '#c0c0c0'],
-  \ ['blue',      '#FF6000'],
-  \ ['cyan',      '#00FFFF'],
-  \ ['darkgreen', '#00FF00'],
-  \ ['LightYellow',     '#c0c0c0'],
-  \ ['blue',      '#FF6000'],
-  \ ['cyan',      '#00FFFF'],
-  \ ['darkgreen', '#00FF00'],
-  \ ['LightYellow',     '#c0c0c0'],
-  \ ['blue',      '#FF6000'],
-  \ ['cyan',      '#00FFFF'],
-  \ ['darkgreen', '#00FF00'],
-  \ ['LightYellow',     '#c0c0c0'],
+  \ ['blue',        '#FF6000'],
+  \ ['cyan',        '#00FFFF'],
+  \ ['darkgreen',   '#00FF00'],
+  \ ['LightYellow', '#c0c0c0'],
+  \ ['blue',        '#FF6000'],
+  \ ['cyan',        '#00FFFF'],
+  \ ['darkgreen',   '#00FF00'],
+  \ ['LightYellow', '#c0c0c0'],
+  \ ['blue',        '#FF6000'],
+  \ ['cyan',        '#00FFFF'],
+  \ ['darkgreen',   '#00FF00'],
+  \ ['LightYellow', '#c0c0c0'],
+  \ ['blue',        '#FF6000'],
+  \ ['cyan',        '#00FFFF'],
+  \ ['darkgreen',   '#00FF00'],
+  \ ['LightYellow', '#c0c0c0'],
   \ ]
 let g:rbpt_max = 16
 
