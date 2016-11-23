@@ -120,6 +120,8 @@ augroup clojure
 
   autocmd BufEnter *.cljs,*.clj,*.cljs.hl call SetBasicStatusLine()
   autocmd BufEnter *.cljs,*.clj,*.cljs.hl set statusline+=\ [%{NreplStatusLine()}]  " REPL connection status
+
+  autocmd BufEnter *.cljs,*.clj,*.cljs.hl nmap <buffer> gf <Plug>FireplaceDjump
 augroup END
 
 " Vimux
