@@ -119,8 +119,8 @@ augroup clojure
   autocmd BufEnter *.cljs,*.clj,*.cljs.hl RainbowParenthesesLoadBraces
   " autocmd BufEnter *.cljs,*.clj,*.cljs.hl setlocal iskeyword+=?,-,*,!,+,/,=,<,>,.,:
 
-  autocmd BufEnter *.cljs,*.clj,*.cljs.hl call SetBasicStatusLine()
-  autocmd BufEnter *.cljs,*.clj,*.cljs.hl set statusline+=\ [%{NreplStatusLine()}]  " REPL connection status
+  autocmd Filetype clojure call SetBasicStatusLine()
+  autocmd Filetype clojure set statusline+=\ [%{NreplStatusLine()}]  " REPL connection status
 
   autocmd BufEnter *.cljs,*.clj,*.cljs.hl nmap <buffer> gf <Plug>FireplaceDjump
 augroup END
