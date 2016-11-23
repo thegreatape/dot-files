@@ -122,7 +122,9 @@ augroup clojure
   autocmd Filetype clojure call SetBasicStatusLine()
   autocmd Filetype clojure set statusline+=\ [%{NreplStatusLine()}]  " REPL connection status
 
-  autocmd BufEnter *.cljs,*.clj,*.cljs.hl nmap <buffer> gf <Plug>FireplaceDjump
+  autocmd Filetype clojure nmap <buffer> gf <Plug>FireplaceDjump
+  autocmd Filetype clojure nnoremap <buffer> <leader>sh :Slamhound<cr>
+
   autocmd BufLeave *.cljs,*.clj,*.cljs.hl  call SetBasicStatusLine()
 augroup END
 
