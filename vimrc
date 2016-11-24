@@ -88,6 +88,7 @@ nmap <leader>f <Plug>SlimeParagraphSend
 
 Plugin 'tpope/vim-classpath'
 Plugin 'tpope/vim-fireplace.git'
+Plugin 'tpope/vim-dispatch'
 Plugin 'guns/vim-clojure-static.git'
 
 " always only indent every subform with 2 spaces for these forms
@@ -97,6 +98,7 @@ Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'guns/vim-sexp'
 Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 Plugin 'guns/vim-slamhound'
+Plugin 'dgrnbrg/vim-redl'
 
 let g:rbpt_colorpairs = [
   \ ['blue',        '#FF6000'],
@@ -143,6 +145,8 @@ augroup clojure
 
   autocmd Filetype clojure nmap <buffer> gf <Plug>FireplaceDjump
   autocmd Filetype clojure nnoremap <buffer> <leader>sh :Slamhound<cr>
+  autocmd Filetype clojure imap <buffer> <Up> <Plug>clj_repl_uphist.
+  autocmd Filetype clojure imap <buffer> <Down> <Plug>clj_repl_downhist.
 
   autocmd BufLeave *.cljs,*.clj,*.cljs.hl  call SetBasicStatusLine()
 augroup END
