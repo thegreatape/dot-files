@@ -121,11 +121,15 @@ let g:rbpt_colorpairs = [
 let g:rbpt_max = 16
 
 function! IsFireplaceConnected()
-  return has_key(fireplace#platform(), 'connection')
+  try
+    return has_key(fireplace#platform(), 'connection')
+  catch /Fireplace: :Connect to a REPL or install classpath.vim/
+    return 0 " false
+  endtry
 endfunction
 
 function! NreplStatusLine()
-  if has_key(fireplace#platform(), 'connection')
+  if IsFireplaceConnected()
     return 'nREPL Connected'
   else
     return 'No nREPL Connection'
