@@ -149,6 +149,10 @@ augroup clojure
 
   autocmd Filetype clojure nmap <buffer> gf <Plug>FireplaceDjump
   autocmd Filetype clojure nnoremap <buffer> <leader>sh :Slamhound<cr>
+  autocmd Filetype clojure nnoremap <silent> <buffer> <leader>rf :Require<cr>:RunTests<cr>
+  autocmd Filetype clojure nnoremap <silent> <buffer> <leader>rl :Require<cr>:.RunTests<cr>
+  autocmd Filetype clojure nnoremap <silent> <buffer> <leader>eo :Eval<cr>
+  autocmd Filetype clojure nnoremap <silent> <buffer> <leader>e! :Eval!<cr>
   autocmd Filetype clojure imap <buffer> <Up> <Plug>clj_repl_uphist.
   autocmd Filetype clojure imap <buffer> <Down> <Plug>clj_repl_downhist.
 
