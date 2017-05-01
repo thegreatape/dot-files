@@ -18,3 +18,5 @@
 [heroku]
 [merge]
   tool = opendiff
+[pack]
+  packsizelimit=2g
