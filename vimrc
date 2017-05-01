@@ -25,6 +25,9 @@ Plugin 'vim-scripts/jade.vim'
 
 " Javascript
 Plugin 'pangloss/vim-javascript'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'mxw/vim-jsx'
+Plugin 'tpope/vim-jdaddy'
 
 " Markdown
 Plugin 'plasticboy/vim-markdown'
@@ -60,9 +63,6 @@ Plugin 'tpope/vim-rails'
 Plugin 'tmhedberg/matchit'
 Plugin 'kana/vim-textobj-user'
 Plugin 'nelstrom/vim-textobj-rubyblock'
-
-" Javascript and friends
-Plugin 'kchmck/vim-coffee-script'
 
 " ES6 and linting
 Plugin 'isRuslan/vim-es6'
