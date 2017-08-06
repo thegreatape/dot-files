@@ -28,6 +28,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mxw/vim-jsx'
 Plugin 'tpope/vim-jdaddy'
+Plugin 'isRuslan/vim-es6'
 
 " Markdown
 Plugin 'plasticboy/vim-markdown'
@@ -64,23 +65,8 @@ Plugin 'tmhedberg/matchit'
 Plugin 'kana/vim-textobj-user'
 Plugin 'nelstrom/vim-textobj-rubyblock'
 
-" ES6 and linting
-Plugin 'isRuslan/vim-es6'
-Plugin 'scrooloose/syntastic'
-
-" syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
-
-" enable eslint
-let g:syntastic_javascript_checkers = ['eslint']
+" Linting
+Plugin 'w0rp/ale'
 
 " force json files to use json linting instead of javascript
 au BufRead,BufNewFile *.json set filetype=json
