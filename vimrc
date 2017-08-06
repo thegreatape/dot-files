@@ -359,11 +359,8 @@ augroup end
 nnoremap <silent> <space><space> :silent! %s/\s\+$//<CR>
 
 
-" change cursor shape in insert mode. requires building master of
-" iTerm2, at least as of 11-22-12
-if has('nvim')
-  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-elseif exists('$TMUX')
+" change cursor shape in insert mode for regular vim
+if !has('nvim') && exists('$TMUX')
   " set block cursor in normal mode, vertical bar in insert mode
   let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
   let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
