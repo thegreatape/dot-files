@@ -229,6 +229,10 @@ Plugin 'tommcdo/vim-lion'
 Plugin 'malkomalko/projections.vim'
 Plugin 'terryma/vim-multiple-cursors'
 
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+let g:airline_theme='zenburn'
+
 Plugin 'terryma/vim-expand-region'
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
@@ -344,18 +348,12 @@ augroup end
 " clear trailing spaces with <space><space>
 nnoremap <silent> <space><space> :silent! %s/\s\+$//<CR>
 
+" short keycode timeout to avoid cursor shape-change lag
+" when leaving insert mode
+set timeout timeoutlen=1000 ttimeoutlen=10
 
-" change cursor shape in insert mode for regular vim
-if !has('nvim') && exists('$TMUX')
-  " set block cursor in normal mode, vertical bar in insert mode
-  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-
-  " short keycode timeout to avoid cursor shape-change lag
-  " when leaving insert mode
-  set timeout timeoutlen=1000 ttimeoutlen=10
-  set guicursor+=i:blinkwait0
-endif
+" don't blink cursor
+set guicursor=n-v-c:block-blinkwait0-blinkon0-blinkoff0,i-ci-ve:ver25,r-cr:hor20,o:hor50
 
 " Enable 256 colors to stop the CSApprox warning
 if &term == 'xterm' || &term == 'screen'
