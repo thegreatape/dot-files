@@ -232,6 +232,16 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 let g:airline_theme='zenburn'
+let g:airline#extensions#ale#enabled = 1
+
+function! AirlineInit()
+  let g:airline_section_a=''
+  let g:airline_section_b=airline#section#create(['%<', 'file', g:airline_symbols.space, 'readonly'])
+  let g:airline_section_c=''
+  let g:airline_section_y="%{airline#util#wrap(airline#extensions#branch#get_head(),0)}"
+  let g:airline_section_z=''
+endfunction
+autocmd User AirlineToggledOn call AirlineInit()
 
 Plugin 'terryma/vim-expand-region'
 vmap v <Plug>(expand_region_expand)
@@ -421,12 +431,3 @@ vnoremap " <esc>mz`<i"<esc>`>la"<esc>`z
 
 set noruler      " disable ruler that shows line + col of cursor
 set laststatus=2 " always show status line
-
-function! SetBasicStatusLine()
-  set statusline=%f   " path to file
-  set statusline+=\   " separator
-  set statusline+=%m  " modified flag
-  set statusline+=%=  " switch to right side
-  set statusline+=%y  " filetype of file
-endfunction
-call SetBasicStatusLine()
