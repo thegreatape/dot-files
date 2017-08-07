@@ -29,6 +29,10 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'mxw/vim-jsx'
 Plugin 'tpope/vim-jdaddy'
 Plugin 'isRuslan/vim-es6'
+augroup js
+  autocmd!
+  autocmd BufRead *.js,*.es6,*.jsx nmap <silent> <buffer> <leader>ja vi{gL:
+augroup END
 
 " Markdown
 Plugin 'plasticboy/vim-markdown'
