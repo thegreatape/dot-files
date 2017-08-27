@@ -170,6 +170,7 @@ augroup END
 " Vimux
 Plugin 'benmills/vimux'
 Plugin 'thegreatape/vimux-ruby-test'
+let g:vimux_ruby_file_relative_paths = 1
 
 augroup ruby
   autocmd!
