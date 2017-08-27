@@ -34,6 +34,16 @@ augroup js
   autocmd BufRead *.js,*.es6,*.jsx nmap <silent> <buffer> <leader>ja vi{gL:
 augroup END
 
+augroup js
+  autocmd!
+  " test running shortcuts
+  autocmd Filetype javascript nnoremap <leader>rf :call RunYarnTest()<cr>
+augroup end
+
+function! RunYarnTest()
+  VimuxRunCommand("yarn test " . expand("%"))
+endfunction
+
 " Markdown
 Plugin 'plasticboy/vim-markdown'
 let g:vim_markdown_folding_disabled = 1
