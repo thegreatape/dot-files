@@ -81,6 +81,11 @@ Plugin 'nelstrom/vim-textobj-rubyblock'
 
 " Linting
 Plugin 'w0rp/ale'
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+" only lint on save
+let g:ale_lint_on_text_changed = 'never'
 
 " force json files to use json linting instead of javascript
 au BufRead,BufNewFile *.json set filetype=json
