@@ -88,7 +88,7 @@ function v { ssh -t `cat .vname` "/bin/bash -l -c '$*'" }
 
 # docker command-running prefix
 unalias d
-function d { bk runcmd -c "'$*'" `cat .dockername` }
+function d { bk runcmd -c "$*" `cat .dockername` }
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
