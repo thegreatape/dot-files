@@ -104,3 +104,8 @@ export COLORTERM=xterm
 # of find, respecting .gitignore
 export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export BBWORKSPACE="/Users/tmayfield/Code"
+
+if [ -x "$(command -v git)" ]; then
+  eval $(dinghy env)
+fi
