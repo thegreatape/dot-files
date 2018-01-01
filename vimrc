@@ -67,6 +67,9 @@ Plugin 'reedes/vim-pencil'
 let g:pencil#wrapModeDefault = 'soft'
 map gp :Goyo <bar> :TogglePencil <CR>
 
+" Better SQL syntax highlighting
+Plugin 'shmup/vim-sql-syntax'
+
 " Use the old vim regex engine (version 1, as opposed to version 2, which was
 " introduced in Vim 7.3.969). The Ruby syntax highlighting is significantly
 " slower with the new regex engine.
