@@ -106,11 +106,6 @@ au BufRead,BufNewFile *.hamlc set ft=haml
 au BufRead,BufNewFile *.hamlbars set ft=haml
 
 " Clojure
-let g:slime_target = "tmux"
-let g:slime_default_config = {"socket_name": "default", "target_pane": "2"}
-Plugin 'jpalardy/vim-slime'
-xmap <leader>f <Plug>SlimeRegionSend
-nmap <leader>f <Plug>SlimeParagraphSend
 
 Plugin 'tpope/vim-classpath'
 Plugin 'tpope/vim-fireplace.git'
@@ -162,16 +157,26 @@ function! NreplStatusLine()
   endif
 endfunction
 
+function! VimuxSlime()
+  call VimuxRunCommand(@v, 0)
+endfunction
+
 augroup clojure
   autocmd!
+
+  " If text is selected, save it in the v buffer and send that buffer it to tmux
+  autocmd BufEnter *.cljs,*.clj,*.cljs.hl vmap <Leader>sl "vy :call VimuxSlime()<CR>
+  " Select current paragraph and send it to tmux
+  autocmd BufEnter *.cljs,*.clj,*.cljs.hl nmap <Leader>sl vip<Leader>sl<CR>
+
   autocmd BufEnter *.cljs,*.clj,*.cljs.hl RainbowParenthesesActivate
   autocmd BufEnter *.cljs,*.clj,*.cljs.hl RainbowParenthesesLoadRound
   autocmd BufEnter *.cljs,*.clj,*.cljs.hl RainbowParenthesesLoadSquare
   autocmd BufEnter *.cljs,*.clj,*.cljs.hl RainbowParenthesesLoadBraces
   " autocmd BufEnter *.cljs,*.clj,*.cljs.hl setlocal iskeyword+=?,-,*,!,+,/,=,<,>,.,:
 
-  autocmd Filetype clojure call SetBasicStatusLine()
-  autocmd Filetype clojure set statusline+=\ [%{NreplStatusLine()}]  " REPL connection status
+  " autocmd Filetype clojure call SetBasicStatusLine()
+  " autocmd Filetype clojure set statusline+=\ [%{NreplStatusLine()}]  " REPL connection status
 
   autocmd Filetype clojure nmap <buffer> gf <Plug>FireplaceDjump
   autocmd Filetype clojure nnoremap <buffer> <leader>sh :Slamhound<cr>
@@ -182,7 +187,7 @@ augroup clojure
   autocmd Filetype clojure imap <buffer> <Up> <Plug>clj_repl_uphist.
   autocmd Filetype clojure imap <buffer> <Down> <Plug>clj_repl_downhist.
 
-  autocmd BufLeave *.cljs,*.clj,*.cljs.hl  call SetBasicStatusLine()
+  " autocmd BufLeave *.cljs,*.clj,*.cljs.hl  call SetBasicStatusLine()
 augroup END
 
 " Vimux
@@ -447,10 +452,6 @@ nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
 
 " open last buffer in below + right split
 nnoremap <leader>pb :execute "rightbelow vsplit " . bufname('#')<cr>
-
-" ' or " to wrap selection in quotes in visual mode
-vnoremap ' <esc>mz`<i'<esc>`>la'<esc>`z
-vnoremap " <esc>mz`<i"<esc>`>la"<esc>`z
 
 set noruler      " disable ruler that shows line + col of cursor
 set laststatus=2 " always show status line
