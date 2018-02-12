@@ -90,9 +90,6 @@ function v { ssh -t `cat .vname` "/bin/bash -l -c '$*'" }
 unalias d
 function d { bk runcmd -c "$*" `cat .dockername` }
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
 export NODE_PATH=/usr/local/lib/node_modules
 
 export COLORTERM=xterm
