@@ -33,14 +33,15 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'mxw/vim-jsx'
 Plugin 'tpope/vim-jdaddy'
 Plugin 'isRuslan/vim-es6'
-augroup js
-  autocmd!
-  autocmd BufRead *.js,*.es6,*.jsx nmap <silent> <buffer> <leader>ja vi{gL:
-augroup END
+
+Plugin 'ruanyl/vim-fixmyjs'
+let g:fixmyjs_engine = 'eslint'
+let g:fixmyjs_rc_filename = ['.eslintrc.js']
 
 augroup js
   autocmd!
-  " test running shortcuts
+  autocmd BufRead *.js,*.es6,*.jsx nmap <silent> <buffer> <leader>ja vi{gL:
+  autocmd BufRead *.js,*.es6,*.jsx noremap <silent> <buffer> <leader>fj :Fixmyjs<cr>
   autocmd Filetype javascript nnoremap <leader>rf :call RunYarnTest()<cr>
 augroup end
 
