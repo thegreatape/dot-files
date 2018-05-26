@@ -1,6 +1,10 @@
 set nocompatible
 filetype off
 
+" map leader to ,
+let mapleader = ","
+let maplocalleader="\\"
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -239,9 +243,37 @@ Plugin 'chase/vim-ansible-yaml'
 let g:Haskell_no_mapping = 1
 
 " Ctags
-Plugin 'vim-scripts/AutoTag'
+Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'vim-scripts/taglist.vim'
-set tags+=./tags
+
+" Using FZF to search project tags, taken from
+" https://github.com/junegunn/fzf/wiki/Examples-%28vim%29#jump-to-tags
+" removed tag-generating call in s:tags(), since we want
+" to use the gutentags launched version
+function! s:tags_sink(line)
+  let parts = split(a:line, '\t\zs')
+  let excmd = matchstr(parts[2:], '^.*\ze;"\t')
+  execute 'silent e' parts[1][:-2]
+  let [magic, &magic] = [&magic, 0]
+  execute excmd
+  let &magic = magic
+endfunction
+
+function! s:tags()
+  call fzf#run({
+  \ 'source':  'cat '.join(map(tagfiles(), 'fnamemodify(v:val, ":S")')).
+  \            '| grep -v -a ^!',
+  \ 'options': '+m -d "\t" --with-nth 1,4.. -n 1 --tiebreak=index',
+  \ 'down':    '40%',
+  \ 'sink':    function('s:tags_sink')})
+endfunction
+
+command! Tags call s:tags()
+
+" gt to go to tag under cursor
+nnoremap gt <C-]>
+" <leader>gt to open fuzzy tag finder
+nnoremap <leader>gt :Tags<cr>
 
 " Utility plugins
 Plugin 'scrooloose/nerdcommenter'
@@ -267,7 +299,7 @@ function! AirlineInit()
   let g:airline_section_b=airline#section#create(['%<', 'file', g:airline_symbols.space, 'readonly'])
   let g:airline_section_c=''
   let g:airline_section_y="%{airline#util#wrap(airline#extensions#branch#get_head(),0)}"
-  let g:airline_section_z=''
+  let g:airline_section_z="%{gutentags#statusline()}"
 endfunction
 autocmd User AirlineToggledOn call AirlineInit()
 
@@ -326,7 +358,7 @@ set number
 " zsh-style tab completion
 set wildmenu
 set wildmode=longest,list
-set wildignore+=*/vendor/*,*/build/*,*/bower_components/*,*/node_modules/*,*/*.class
+set wildignore+=*vendor/*,*build/*,*bower_components/*,*node_modules/*,*-manifest.json,*.class
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -346,10 +378,6 @@ set hidden
 " search
 set ignorecase
 set smartcase
-
-" map leader to ,
-let mapleader = ","
-let maplocalleader="\\"
 
 " map \ to reverse character search
 noremap \ ,
