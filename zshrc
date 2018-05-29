@@ -35,6 +35,7 @@ gco() {
 
 # general environment variable setup
 export EDITOR=vim
+export GIT_EDITOR=nvim
 export PATH=~/dot-files/bin/:~/.bin:./bin:/usr/local/bin:./node_modules/.bin/:$PATH
 
 # tmuxinator setup
