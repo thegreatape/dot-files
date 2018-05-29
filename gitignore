@@ -26,3 +26,4 @@ todos.txt
 .sass-cache*
 .vname
 .dockername
+.gutctags
