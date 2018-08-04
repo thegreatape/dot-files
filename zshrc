@@ -1,12 +1,3 @@
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/dot-files/oh-my-zsh
-
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="thegreatape"
-
 # alias all the things
 alias desk="cd ~/Desktop"
 alias start_postgres="pg_ctl -D /usr/local/var/postgres9 -l /usr/local/var/postgres9/server.log start"
@@ -42,23 +33,6 @@ gco() {
   git checkout $(echo "$target" | awk '{print $2}')
 }
 
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
-
-# Comment this out to disable weekly auto-update checks
-DISABLE_AUTO_UPDATE="true"
-
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
-
-source $ZSH/oh-my-zsh.sh
-
 # general environment variable setup
 export EDITOR=vim
 export PATH=~/dot-files/bin/:~/.bin:./bin:/usr/local/bin:./node_modules/.bin/:$PATH
@@ -83,13 +57,6 @@ unsetopt correct_all
 # added by travis gem
 [ -f /Users/tmayfield/.travis/travis.sh ] && source /Users/tmayfield/.travis/travis.sh
 
-# vagrant ssh prefix
-function v { ssh -t `cat .vname` "/bin/bash -l -c '$*'" }
-
-# docker command-running prefix
-unalias d
-function d { bk runcmd -c "$*" `cat .dockername` }
-
 export NODE_PATH=/usr/local/lib/node_modules
 
 export COLORTERM=xterm
@@ -105,4 +72,9 @@ export BBWORKSPACE="/Users/tmayfield/Code"
 
 if [[ -x "$(command -v git)" && -x "$(command -v dinghy)" ]]; then
   eval $(dinghy env)
+fi
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
