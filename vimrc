@@ -87,6 +87,10 @@ Plugin 'tmhedberg/matchit'
 Plugin 'kana/vim-textobj-user'
 Plugin 'nelstrom/vim-textobj-rubyblock'
 
+" Rust
+Plugin 'rust-lang/rust.vim'
+let g:rustfmt_autosave = 1
+
 " Linting
 Plugin 'w0rp/ale'
 let g:ale_linters = {
