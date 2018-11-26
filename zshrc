@@ -56,7 +56,7 @@ export PATH=~/.bin/:$PATH:$GOPATH/bin
 unsetopt correct_all
 
 # added by travis gem
-[ -f /Users/tmayfield/.travis/travis.sh ] && source /Users/tmayfield/.travis/travis.sh
+[ -f /Users/thomas/.travis/travis.sh ] && source /Users/thomas/.travis/travis.sh
 
 export NODE_PATH=/usr/local/lib/node_modules
 
@@ -69,7 +69,7 @@ export COLORTERM=xterm
 # of find, respecting .gitignore
 export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export BBWORKSPACE="/Users/tmayfield/Code"
+export BBWORKSPACE="/Users/thomas/Code"
 
 if [[ -x "$(command -v git)" && -x "$(command -v dinghy)" ]]; then
   eval $(dinghy env)
@@ -79,3 +79,6 @@ fi
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
+
+# Add aws bin to path
+export PATH=~/Library/Python/3.7/bin:$PATH
