@@ -54,6 +54,7 @@ export PATH=~/.bin/:$PATH:$GOPATH/bin
 
 # disable zsh autocorrect
 unsetopt correct_all
+unsetopt correct
 
 # added by travis gem
 [ -f /Users/thomas/.travis/travis.sh ] && source /Users/thomas/.travis/travis.sh
