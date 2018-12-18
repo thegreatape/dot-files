@@ -81,5 +81,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+setopt NO_AUTOLIST BASH_AUTOLIST NO_MENUCOMPLETE
+
 # Add aws bin to path
 export PATH=~/Library/Python/3.7/bin:$PATH
