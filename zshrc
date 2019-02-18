@@ -85,3 +85,7 @@ setopt NO_AUTOLIST BASH_AUTOLIST NO_MENUCOMPLETE
 
 # Add aws bin to path
 export PATH=~/Library/Python/3.7/bin:$PATH
+
+# slightly less eyestraining ls colors
+export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+export LS_COLORS=$LSCOLORS
