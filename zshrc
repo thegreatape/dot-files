@@ -89,3 +89,6 @@ export PATH=~/Library/Python/3.7/bin:$PATH
 # slightly less eyestraining ls colors
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 export LS_COLORS=$LSCOLORS
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
