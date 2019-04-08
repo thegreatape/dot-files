@@ -75,6 +75,20 @@ map gp :Goyo <bar> :TogglePencil <CR>
 " Better SQL syntax highlighting
 Plugin 'shmup/vim-sql-syntax'
 
+" Python
+augroup python
+  autocmd!
+  autocmd BufNewFile,BufRead *.py set tabstop=4
+  autocmd BufNewFile,BufRead *.py set softtabstop=4
+  autocmd BufNewFile,BufRead *.py set shiftwidth=4
+  autocmd BufNewFile,BufRead *.py set textwidth=79
+  autocmd BufNewFile,BufRead *.py set expandtab
+  autocmd BufNewFile,BufRead *.py set autoindent
+  autocmd BufNewFile,BufRead *.py set fileformat=unix
+augroup END
+
+Plugin 'vim-scripts/indentpython.vim'
+
 " Use the old vim regex engine (version 1, as opposed to version 2, which was
 " introduced in Vim 7.3.969). The Ruby syntax highlighting is significantly
 " slower with the new regex engine.
