@@ -308,6 +308,7 @@ Plugin 'tpope/vim-abolish'
 Plugin 'tommcdo/vim-lion'
 Plugin 'malkomalko/projections.vim'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'wincent/ferret'
 
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
