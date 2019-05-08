@@ -81,7 +81,6 @@ augroup python
   autocmd BufNewFile,BufRead *.py set tabstop=4
   autocmd BufNewFile,BufRead *.py set softtabstop=4
   autocmd BufNewFile,BufRead *.py set shiftwidth=4
-  autocmd BufNewFile,BufRead *.py set textwidth=79
   autocmd BufNewFile,BufRead *.py set expandtab
   autocmd BufNewFile,BufRead *.py set autoindent
   autocmd BufNewFile,BufRead *.py set fileformat=unix
