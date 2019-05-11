@@ -516,7 +516,9 @@
   :ensure t)
 
 (defhydra hydra-org ()
-  ("l" org-insert-link "edit link" :exit t))
+  ("l" org-insert-link "edit link" :exit t)
+  ("a" org-agenda "agenda" :exit t)
+)
 
 (defhydra hydra-base ()
     ;; (evil-leader/set-key "x" 'helm-M-x)
