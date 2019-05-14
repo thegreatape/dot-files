@@ -178,6 +178,10 @@
     (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
     (global-set-key [escape] 'evil-exit-emacs-state)
 
+    (setq evil-emacs-state-modes nil)
+    (setq evil-insert-state-modes nil)
+    (setq evil-motion-state-modes nil)
+
     (setq evil-move-cursor-back nil)
     (evil-mode t)))
 
