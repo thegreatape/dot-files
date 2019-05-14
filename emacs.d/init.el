@@ -523,6 +523,7 @@
 (defhydra hydra-org ()
   ("l" org-insert-link "edit link" :exit t)
   ("a" org-agenda "agenda" :exit t)
+  ("s" org-schedule "schedule" :exit t)
 )
 
 (defhydra hydra-base ()
