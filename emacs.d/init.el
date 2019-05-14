@@ -497,6 +497,7 @@
 (use-package evil-org
   :ensure t
   :config
+  (setq org-agenda-files '("~/Dropbox/Org/"))
   (add-hook 'org-mode-hook 'evil-org-mode)
   (add-hook 'evil-org-mode-hook
             (lambda ()
