@@ -540,12 +540,13 @@
     (require 'evil-org-agenda)
     (evil-org-agenda-set-keys)
 
-
     (setq org-agenda-custom-commands
           '(("d" "Dashboard"
              ((agenda "" ((org-agenda-span 1)))
-              (alltodo "")))))
-    )
+              (alltodo ""
+                       ((org-agenda-overriding-header "All unscheduled tasks:")
+                        (org-agenda-skip-function
+                         '(org-agenda-skip-if nil '(scheduled deadline)))))))))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
