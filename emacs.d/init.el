@@ -118,6 +118,9 @@
 
 (require 'use-package)
 
+(use-package general
+  :ensure t)
+
 (use-package evil-leader
   :ensure t
   :init (global-evil-leader-mode)
@@ -139,6 +142,24 @@
     ; for opening init.el for quick changes
     (evil-leader/set-key "ev" (lambda () (interactive) (find-file-other-window "~/dot-files/emacs.d/init.el")))))
 
+(use-package hydra :ensure t)
+
+(defun my-org-archive-done-tasks ()
+  (interactive)
+  (org-map-entries 'org-archive-subtree "/DONE" 'file))
+
+(defhydra hydra-org ()
+  ("l" org-insert-link "edit link" :exit t)
+  ("a" org-agenda "agenda" :exit t)
+  ("s" org-schedule "schedule" :exit t)
+  ("A" my-org-archive-done-tasks "archive done tasks" :exit t)
+)
+
+(defhydra hydra-base ()
+  ""
+  ("<SPC>" helm-M-x "M-x" :exit t)
+  ("o" hydra-org/body "org" :exit t))
+
 (use-package evil
   :ensure t
   :init
@@ -146,10 +167,14 @@
     ; changing indentation with < and > should use tab-width's worth of indent
     (custom-set-variables '(evil-shift-width tab-width))
 
-    (define-key evil-normal-state-map (kbd "C-h") 'move-left-pane)
-    (define-key evil-normal-state-map (kbd "C-j") 'move-down-pane)
-    (define-key evil-normal-state-map (kbd "C-k") 'move-up-pane)
-    (define-key evil-normal-state-map (kbd "C-l") 'move-right-pane)
+    (general-define-key :states 'motion
+                        :keymaps 'override
+                        "C-h" 'move-left-pane
+                        "C-j" 'move-down-pane
+                        "C-k" 'move-up-pane
+                        "C-l" 'move-right-pane
+                        "SPC" 'hydra-base/body
+                      )
 
     (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
     (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
@@ -178,12 +203,9 @@
     (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
     (global-set-key [escape] 'evil-exit-emacs-state)
 
-    (setq evil-emacs-state-modes nil)
-    (setq evil-insert-state-modes nil)
-    (setq evil-motion-state-modes nil)
-
     (setq evil-move-cursor-back nil)
-    (evil-mode t)))
+    (evil-mode t)
+  ))
 
 (use-package emamux :ensure t)
 
@@ -498,6 +520,7 @@
   :ensure t
   :config
   (setq org-agenda-files '("~/Dropbox/Org/"))
+  (setq org-log-done 'time)
   (add-hook 'org-mode-hook 'evil-org-mode)
   (add-hook 'evil-org-mode-hook
             (lambda ()
@@ -515,37 +538,14 @@
               ))
 
     (require 'evil-org-agenda)
-  (evil-org-agenda-set-keys))
+    (evil-org-agenda-set-keys)
 
-(use-package hydra
-  :ensure t)
 
-(defhydra hydra-org ()
-  ("l" org-insert-link "edit link" :exit t)
-  ("a" org-agenda "agenda" :exit t)
-  ("s" org-schedule "schedule" :exit t)
-)
-
-(defhydra hydra-base ()
-    ;; (evil-leader/set-key "x" 'helm-M-x)
-    ;; (evil-leader/set-key-for-mode 'emacs-lisp-mode "e" 'eval-last-sexp)
-    ;; (evil-leader/set-key "b" 'ibuffer)
-    ;; (evil-leader/set-key "kb" 'kill-buffer)
-    ;; (evil-leader/set-key "t" 'projectile-find-file)
-    ;; (evil-leader/set-key "y" 'helm-etags-select)
-    ;; (evil-leader/set-key "ag" 'projectile-ag)
-    ;; (evil-leader/set-key "pp" 'projectile-switch-project)
-    ;; (evil-leader/set-key "pc" 'projectile-invalidate-cache)
-    ;; (evil-leader/set-key "cl" 'evilnc-comment-or-uncomment-lines)
-    ;; (evil-leader/set-key "n" 'rename-current-buffer-file)
-    ; for opening init.el for quick changes
-    ;; (evil-leader/set-key "ev" (lambda () (interactive) (find-file-other-window "~/dot-files/emacs.d/init.el")))))
-  ""
-  ("<SPC>" helm-M-x "M-x" :exit t)
-  ("o" hydra-org/body "org" :exit t))
-
-(define-key evil-normal-state-map (kbd "SPC") 'hydra-base/body)
-
+    (setq org-agenda-custom-commands
+          '(("d" "Dashboard"
+             ((agenda "" ((org-agenda-span 1)))
+              (alltodo "")))))
+    )
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -558,7 +558,7 @@
  '(magit-push-arguments (quote ("--set-upstream")))
  '(package-selected-packages
    (quote
-    (hydra evil-org evil-org-mode yasnippet yaml-mode mmm-mode jsx-mode web-mode evil-magit magit rspec-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline scss-mode restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-present org-pomodoro org-mime org-download org-bullets open-junk-file neotree move-text markdown-mode macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag haml-mode google-translate golden-ratio gnuplot flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-terminal-cursor-changer evil-surround evil-search-highlight-persist evil-rails evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-leader evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu enh-ruby-mode emamux elisp-slime-nav dumb-jump diminish define-word ctags-update column-enforce-mode coffee-mode clean-aindent-mode cider auto-highlight-symbol auto-compile atom-dark-theme alchemist aggressive-indent ag adaptive-wrap ace-window ace-link ace-jump-helm-line)))
+    (general hydra evil-org evil-org-mode yasnippet yaml-mode mmm-mode jsx-mode web-mode evil-magit magit rspec-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline scss-mode restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-present org-pomodoro org-mime org-download org-bullets open-junk-file neotree move-text markdown-mode macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag haml-mode google-translate golden-ratio gnuplot flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-terminal-cursor-changer evil-surround evil-search-highlight-persist evil-rails evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-leader evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu enh-ruby-mode emamux elisp-slime-nav dumb-jump diminish define-word ctags-update column-enforce-mode coffee-mode clean-aindent-mode cider auto-highlight-symbol auto-compile atom-dark-theme alchemist aggressive-indent ag adaptive-wrap ace-window ace-link ace-jump-helm-line)))
  '(selection-coding-system (quote mac-roman)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
