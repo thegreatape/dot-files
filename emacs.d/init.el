@@ -153,7 +153,8 @@
   ("a" org-agenda "agenda" :exit t)
   ("s" org-schedule "schedule" :exit t)
   ("A" my-org-archive-done-tasks "archive done tasks" :exit t)
-)
+  ("c" org-capture "capture" :exit t)
+  ("f" deft "find or new note" :exit t))
 
 (defhydra hydra-base ()
   ""
@@ -176,6 +177,7 @@
                         "SPC" 'hydra-base/body
                       )
 
+    ; TODO migrate these to general
     (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
     (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
     (define-key evil-insert-state-map (kbd "M-v") 'evil-paste-after)
@@ -205,6 +207,8 @@
 
     (setq evil-move-cursor-back nil)
     (evil-mode t)
+
+    (add-to-list 'evil-emacs-state-modes 'deft-mode)
   ))
 
 (use-package emamux :ensure t)
@@ -516,11 +520,28 @@
   :config
   (yas-global-mode 1))
 
+(use-package deft
+  :ensure t
+  :config
+  (setq deft-recursive t)
+  (setq deft-extensions '("org"))
+  (setq deft-default-extension "org")
+  (setq deft-use-filename-as-title t)
+  (setq deft-directory "~/Dropbox/Org/"))
+
 (use-package evil-org
   :ensure t
   :config
   (setq org-agenda-files '("~/Dropbox/Org/"))
   (setq org-log-done 'time)
+
+  (setq org-capture-templates
+        '(("t" "Todo" entry (file "~/Dropbox/Org/todo.org")
+           "* TODO %? %i\n")
+          ("n" "Note" entry (file "~/Dropbox/Org/inbox.org")
+           "* %?\n\nEntered on %U\n  %i")
+          ))
+
   (add-hook 'org-mode-hook 'evil-org-mode)
   (add-hook 'evil-org-mode-hook
             (lambda ()
@@ -547,6 +568,7 @@
                        ((org-agenda-overriding-header "All unscheduled tasks:")
                         (org-agenda-skip-function
                          '(org-agenda-skip-if nil '(scheduled deadline)))))))))
+    )
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -559,7 +581,7 @@
  '(magit-push-arguments (quote ("--set-upstream")))
  '(package-selected-packages
    (quote
-    (general hydra evil-org evil-org-mode yasnippet yaml-mode mmm-mode jsx-mode web-mode evil-magit magit rspec-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline scss-mode restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-present org-pomodoro org-mime org-download org-bullets open-junk-file neotree move-text markdown-mode macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag haml-mode google-translate golden-ratio gnuplot flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-terminal-cursor-changer evil-surround evil-search-highlight-persist evil-rails evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-leader evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu enh-ruby-mode emamux elisp-slime-nav dumb-jump diminish define-word ctags-update column-enforce-mode coffee-mode clean-aindent-mode cider auto-highlight-symbol auto-compile atom-dark-theme alchemist aggressive-indent ag adaptive-wrap ace-window ace-link ace-jump-helm-line)))
+    (deft general hydra evil-org evil-org-mode yasnippet yaml-mode mmm-mode jsx-mode web-mode evil-magit magit rspec-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline scss-mode restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-present org-pomodoro org-mime org-download org-bullets open-junk-file neotree move-text markdown-mode macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag haml-mode google-translate golden-ratio gnuplot flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-terminal-cursor-changer evil-surround evil-search-highlight-persist evil-rails evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-leader evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu enh-ruby-mode emamux elisp-slime-nav dumb-jump diminish define-word ctags-update column-enforce-mode coffee-mode clean-aindent-mode cider auto-highlight-symbol auto-compile atom-dark-theme alchemist aggressive-indent ag adaptive-wrap ace-window ace-link ace-jump-helm-line)))
  '(selection-coding-system (quote mac-roman)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
