@@ -148,18 +148,28 @@
   (interactive)
   (org-map-entries 'org-archive-subtree "/DONE" 'file))
 
+(defun my-deft ()
+  (interactive)
+  (deft)
+  (deft-filter-clear))
+
+(defhydra hydra-themes ()
+  ("l" (load-theme 'doom-nord-light t) "light theme" :exit t)
+  ("d" (load-theme 'doom-vibrant t) "dark theme" :exit t))
+
 (defhydra hydra-org ()
   ("l" org-insert-link "edit link" :exit t)
   ("a" org-agenda "agenda" :exit t)
   ("s" org-schedule "schedule" :exit t)
   ("A" my-org-archive-done-tasks "archive done tasks" :exit t)
   ("c" org-capture "capture" :exit t)
-  ("f" deft "find or new note" :exit t))
+  ("f" my-deft "find or new note" :exit t))
 
 (defhydra hydra-base ()
   ""
   ("<SPC>" helm-M-x "M-x" :exit t)
-  ("o" hydra-org/body "org" :exit t))
+  ("o" hydra-org/body "org" :exit t)
+  ("T" hydra-themes/body "themes" :exit t))
 
 (use-package evil
   :ensure t
@@ -273,10 +283,10 @@
 
 (use-package evil-nerd-commenter :ensure t)
 
-(use-package atom-dark-theme
+(use-package doom-themes
   :ensure t
   :config
-  (set-face-attribute font-lock-variable-name-face nil :foreground "#C6C5FE" ))
+  (load-theme 'doom-vibrant t))
 
 ;;
 ;; writing mode stuff to emulate vim's goyo plugin
@@ -527,6 +537,8 @@
   (setq deft-extensions '("org"))
   (setq deft-default-extension "org")
   (setq deft-use-filename-as-title t)
+  (setq deft-use-filter-string-for-filename t)
+  (setq deft-file-limit 20)
   (setq deft-directory "~/Dropbox/Org/"))
 
 (use-package evil-org
@@ -570,18 +582,27 @@
                          '(org-agenda-skip-if nil '(scheduled deadline)))))))))
     )
 
+(use-package org-download
+  :ensure t
+  :config
+  (setq-default org-download-image-dir "~/Dropbox/Org/images")
+  (add-hook 'dired-mode-hook 'org-download-enable))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("43c808b039893c885bdeec885b4f7572141bd9392da7f0bd8d8346e02b2ec8da" "6d589ac0e52375d311afaa745205abb6ccb3b21f6ba037104d71111e7e76a3fc" "93a0885d5f46d2aeac12bf6be1754faa7d5e28b27926b8aa812840fe7d0b7983" "d1b4990bd599f5e2186c3f75769a2c5334063e9e541e37514942c27975700370" "f0dc4ddca147f3c7b1c7397141b888562a48d9888f1595d69572db73be99a024" "d2e9c7e31e574bf38f4b0fb927aaff20c1e5f92f72001102758005e53d77b8c9" "90d329edc17c6f4e43dbc67709067ccd6c0a3caa355f305de2041755986548f2" "fe666e5ac37c2dfcf80074e88b9252c71a22b6f5d2f566df9a7aa4f9bea55ef8" default)))
  '(evil-shift-width tab-width)
  '(magit-merge-arguments (quote ("--ff-only")))
  '(magit-pull-arguments (quote ("--rebase")))
  '(magit-push-arguments (quote ("--set-upstream")))
  '(package-selected-packages
    (quote
-    (deft general hydra evil-org evil-org-mode yasnippet yaml-mode mmm-mode jsx-mode web-mode evil-magit magit rspec-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline scss-mode restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-present org-pomodoro org-mime org-download org-bullets open-junk-file neotree move-text markdown-mode macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag haml-mode google-translate golden-ratio gnuplot flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-terminal-cursor-changer evil-surround evil-search-highlight-persist evil-rails evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-leader evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu enh-ruby-mode emamux elisp-slime-nav dumb-jump diminish define-word ctags-update column-enforce-mode coffee-mode clean-aindent-mode cider auto-highlight-symbol auto-compile atom-dark-theme alchemist aggressive-indent ag adaptive-wrap ace-window ace-link ace-jump-helm-line)))
+    (doom-themes deft general hydra evil-org evil-org-mode yasnippet yaml-mode mmm-mode jsx-mode web-mode evil-magit magit rspec-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline scss-mode restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-present org-pomodoro org-mime org-download org-bullets open-junk-file neotree move-text markdown-mode macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag haml-mode google-translate golden-ratio gnuplot flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-terminal-cursor-changer evil-surround evil-search-highlight-persist evil-rails evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-leader evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu enh-ruby-mode emamux elisp-slime-nav dumb-jump diminish define-word ctags-update column-enforce-mode coffee-mode clean-aindent-mode cider auto-highlight-symbol auto-compile atom-dark-theme alchemist aggressive-indent ag adaptive-wrap ace-window ace-link ace-jump-helm-line)))
  '(selection-coding-system (quote mac-roman)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
