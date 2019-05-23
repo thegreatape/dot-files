@@ -539,6 +539,7 @@
   (setq deft-use-filename-as-title t)
   (setq deft-use-filter-string-for-filename t)
   (setq deft-file-limit 20)
+  (setq deft-auto-save-interval 0)
   (setq deft-directory "~/Dropbox/Org/"))
 
 (use-package evil-org
