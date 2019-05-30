@@ -580,6 +580,15 @@
               (alltodo ""
                        ((org-agenda-overriding-header "All unscheduled tasks:")
                         (org-agenda-skip-function
+                         '(org-agenda-skip-if nil '(scheduled deadline)))))))
+            ("b" "BookBub"
+             ((agenda ""
+                      ((org-agenda-span 1)
+                       (org-agenda-files '("~/Dropbox/Org/bookbub.org"))))
+              (alltodo ""
+                       ((org-agenda-overriding-header "All unscheduled tasks:")
+                        (org-agenda-files '("~/Dropbox/Org/bookbub.org"))
+                        (org-agenda-skip-function
                          '(org-agenda-skip-if nil '(scheduled deadline)))))))))
     )
 
