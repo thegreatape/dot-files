@@ -146,7 +146,11 @@
 
 (defun my-org-archive-done-tasks ()
   (interactive)
-  (org-map-entries 'org-archive-subtree "/DONE" 'file))
+  (org-map-entries
+   (lambda ()
+     (org-archive-subtree)
+     (setq org-map-continue-from (outline-previous-heading)))
+   "/DONE" 'file))
 
 (defun my-deft ()
   (interactive)
