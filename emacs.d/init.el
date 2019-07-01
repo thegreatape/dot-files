@@ -52,6 +52,8 @@
 ; comfortably go much higher on modern hardware
 (setq gc-cons-threshold (* 100 1024 1024))
 
+(setq ns-use-native-fullscreen nil)
+
 ;; OS specific settings
 (when (eq system-type 'darwin)
   ;; set left command to meta
