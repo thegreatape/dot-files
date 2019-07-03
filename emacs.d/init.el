@@ -159,6 +159,11 @@
   (deft)
   (deft-filter-clear))
 
+(defun my-writing-mode ()
+  (interactive)
+  (olivetti-mode 'toggle)
+  (linum-mode 'toggle))
+
 (defhydra hydra-themes ()
   ("l" (load-theme 'doom-nord-light t) "light theme" :exit t)
   ("d" (load-theme 'doom-vibrant t) "dark theme" :exit t))
@@ -175,6 +180,7 @@
   ""
   ("<SPC>" helm-M-x "M-x" :exit t)
   ("o" hydra-org/body "org" :exit t)
+  ("W" my-writing-mode "writing mode" :exit t)
   ("T" hydra-themes/body "themes" :exit t))
 
 (use-package evil
@@ -293,32 +299,6 @@
   :ensure t
   :config
   (load-theme 'doom-vibrant t))
-
-;;
-;; writing mode stuff to emulate vim's goyo plugin
-;;
-(setq writing-mode-settings-enabled nil)
-
-(defun set-writing-fringe ()
-  (let ((padding (/ (- (window-pixel-width)
-		       (* 80 (frame-char-width)))
-		    2)))
-    (set-window-fringes (selected-window) padding padding)))
-
-(defun toggle-writing-mode-settings ()
-  (interactive)
-  (if writing-mode-settings-enabled
-	(progn
-	  (set-window-fringes nil 10) ; reset window margins
-	  (linum-mode 1)              ; enable line numbering
-    (visual-line-mode 0)        ; disable soft word wrapping
-	  (setq writing-mode-settings-enabled nil))
-	(progn
-	  (set-writing-fringe)        ; set nice writing margins
-	  (linum-mode 0)              ; disable line numbering
-    (visual-line-mode 1)        ; enable soft word wrapping
-	  (setq writing-mode-settings-enabled t))))
-(evil-leader/set-key "gp" 'toggle-writing-mode-settings)
 
 (use-package markdown-mode :ensure t)
 
@@ -553,6 +533,11 @@
    :keymaps 'deft-mode-map
    "<C-return>" 'deft-new-file))
 
+(use-package olivetti
+  :ensure t
+  :config
+  (setq olivetti-body-width 100))
+
 (use-package evil-org
   :ensure t
   :config
@@ -623,7 +608,9 @@
  '(magit-push-arguments (quote ("--set-upstream")))
  '(package-selected-packages
    (quote
-    (doom-themes deft general hydra evil-org evil-org-mode yasnippet yaml-mode mmm-mode jsx-mode web-mode evil-magit magit rspec-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline scss-mode restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-present org-pomodoro org-mime org-download org-bullets open-junk-file neotree move-text markdown-mode macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag haml-mode google-translate golden-ratio gnuplot flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-terminal-cursor-changer evil-surround evil-search-highlight-persist evil-rails evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-leader evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu enh-ruby-mode emamux elisp-slime-nav dumb-jump diminish define-word ctags-update column-enforce-mode coffee-mode clean-aindent-mode cider auto-highlight-symbol auto-compile atom-dark-theme alchemist aggressive-indent ag adaptive-wrap ace-window ace-link ace-jump-helm-line)))
+    ((progn t
+            (setq olivetti-body-width 100))
+     olivetti doom-themes deft general hydra evil-org evil-org-mode yasnippet yaml-mode mmm-mode jsx-mode web-mode evil-magit magit rspec-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline scss-mode restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-present org-pomodoro org-mime org-download org-bullets open-junk-file neotree move-text markdown-mode macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag haml-mode google-translate golden-ratio gnuplot flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-terminal-cursor-changer evil-surround evil-search-highlight-persist evil-rails evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-leader evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu enh-ruby-mode emamux elisp-slime-nav dumb-jump diminish define-word ctags-update column-enforce-mode coffee-mode clean-aindent-mode cider auto-highlight-symbol auto-compile atom-dark-theme alchemist aggressive-indent ag adaptive-wrap ace-window ace-link ace-jump-helm-line)))
  '(selection-coding-system (quote mac-roman)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
