@@ -542,11 +542,16 @@
   (setq deft-recursive t)
   (setq deft-extensions '("org"))
   (setq deft-default-extension "org")
-  (setq deft-use-filename-as-title t)
+  (setq deft-use-filename-as-title nil)
   (setq deft-use-filter-string-for-filename t)
+  (setq deft-org-mode-title-prefix nil)
   (setq deft-file-limit 20)
   (setq deft-auto-save-interval 0)
-  (setq deft-directory "~/Dropbox/Org/"))
+  (setq deft-directory "~/Dropbox/Org/")
+
+  (general-define-key
+   :keymaps 'deft-mode-map
+   "<C-return>" 'deft-new-file))
 
 (use-package evil-org
   :ensure t
