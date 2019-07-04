@@ -175,10 +175,16 @@
   ("c" org-capture "capture" :exit t)
   ("f" my-deft "find or new note" :exit t))
 
+(defhydra hydra-magit ()
+  ("s" magit-status "status" :exit t)
+  ("h" magit-dispatch-popup "help" :exit t)
+  ("b" magit-blame "blame" :exit t))
+
 (defhydra hydra-base ()
   ""
   ("<SPC>" helm-M-x "M-x" :exit t)
   ("o" hydra-org/body "org" :exit t)
+  ("m" hydra-magit/body "magit" :exit t)
   ("W" my-writing-mode "writing mode" :exit t)
   ("T" hydra-themes/body "themes" :exit t))
 
@@ -195,8 +201,7 @@
                         "C-j" 'move-down-pane
                         "C-k" 'move-up-pane
                         "C-l" 'move-right-pane
-                        "SPC" 'hydra-base/body
-                      )
+                        "SPC" 'hydra-base/body)
 
     ; TODO migrate these to general
     (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
@@ -478,12 +483,7 @@
     (setq magit-last-seen-setup-instructions "1.4.0")))
 
 (use-package evil-magit
-  :ensure t
-  :config
-  (progn
-    (evil-leader/set-key "ms" 'magit-status)
-    (evil-leader/set-key "mh" 'magit-dispatch-popup)
-    (evil-leader/set-key "mb" 'magit-blame)))
+  :ensure t)
 
 (use-package web-mode
   :ensure t
@@ -607,9 +607,7 @@
  '(magit-push-arguments (quote ("--set-upstream")))
  '(package-selected-packages
    (quote
-    ((progn t
-            (setq olivetti-body-width 100))
-     olivetti doom-themes deft general hydra evil-org evil-org-mode yasnippet yaml-mode mmm-mode jsx-mode web-mode evil-magit magit rspec-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline scss-mode restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-present org-pomodoro org-mime org-download org-bullets open-junk-file neotree move-text markdown-mode macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag haml-mode google-translate golden-ratio gnuplot flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-terminal-cursor-changer evil-surround evil-search-highlight-persist evil-rails evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-leader evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu enh-ruby-mode emamux elisp-slime-nav dumb-jump diminish define-word ctags-update column-enforce-mode coffee-mode clean-aindent-mode cider auto-highlight-symbol auto-compile atom-dark-theme alchemist aggressive-indent ag adaptive-wrap ace-window ace-link ace-jump-helm-line)))
+    (olivetti doom-themes deft general hydra evil-org evil-org-mode yasnippet yaml-mode mmm-mode jsx-mode web-mode evil-magit magit rspec-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline scss-mode restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-present org-pomodoro org-mime org-download org-bullets open-junk-file neotree move-text markdown-mode macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag haml-mode google-translate golden-ratio gnuplot flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-terminal-cursor-changer evil-surround evil-search-highlight-persist evil-rails evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-leader evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu enh-ruby-mode emamux elisp-slime-nav dumb-jump diminish define-word ctags-update column-enforce-mode coffee-mode clean-aindent-mode cider auto-highlight-symbol auto-compile atom-dark-theme alchemist aggressive-indent ag adaptive-wrap ace-window ace-link ace-jump-helm-line)))
  '(selection-coding-system (quote mac-roman)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
