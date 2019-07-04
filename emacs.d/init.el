@@ -161,8 +161,7 @@
 
 (defun my-writing-mode ()
   (interactive)
-  (olivetti-mode 'toggle)
-  (linum-mode 'toggle))
+  (olivetti-mode 'toggle))
 
 (defhydra hydra-themes ()
   ("l" (load-theme 'doom-nord-light t) "light theme" :exit t)
