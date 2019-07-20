@@ -549,7 +549,7 @@
   (setq org-log-done 'time)
 
   (setq org-capture-templates
-        '(("t" "Todo" entry (file "~/Dropbox/Org/todo.org")
+        '(("t" "Todo" entry (file+headline "~/Dropbox/Org/todo.org" "Todo")
            "* TODO %? %i\n")
           ("n" "Note" entry (file "~/Dropbox/Org/inbox.org")
            "* %?\n\nEntered on %U\n  %i")
