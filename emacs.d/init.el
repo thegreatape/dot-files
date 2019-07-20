@@ -540,7 +540,11 @@
 (use-package evil-org
   :ensure t
   :config
-  (setq org-agenda-files '("~/Dropbox/Org/"))
+  (setq org-agenda-files '("~/Dropbox/Org/todo.org"
+                           "~/Dropbox/Org/habits.org"
+                           "~/Dropbox/Org/bookbub.org"
+                           "~/Dropbox/Org/inbox.org"
+                           ))
   (setq org-log-done 'time)
 
   (setq org-capture-templates
