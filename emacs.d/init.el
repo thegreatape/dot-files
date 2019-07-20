@@ -129,6 +129,7 @@
   :config
   (progn
     (evil-leader/set-leader ",")
+    (evil-leader/set-key "," 'org-ctrl-c-ctrl-c)
     (evil-leader/set-key "x" 'helm-M-x)
     (evil-leader/set-key-for-mode 'emacs-lisp-mode "e" 'eval-last-sexp)
     (evil-leader/set-key "b" 'ibuffer)
