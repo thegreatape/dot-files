@@ -566,8 +566,6 @@
               (evil-define-key 'normal evil-org-mode-map
                 "H" 'org-shiftmetaleft  ;; promote subtree / delete column
                 "L" 'org-shiftmetaright ;; demote subtree / insert column
-                "J" 'org-next-visible-heading
-                "K" 'org-previous-visible-heading
                 )
               ))
 
