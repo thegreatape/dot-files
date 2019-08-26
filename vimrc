@@ -87,6 +87,7 @@ augroup python
 augroup END
 
 Plugin 'vim-scripts/indentpython.vim'
+Plugin 'raimon49/requirements.txt.vim'
 
 " Use the old vim regex engine (version 1, as opposed to version 2, which was
 " introduced in Vim 7.3.969). The Ruby syntax highlighting is significantly
