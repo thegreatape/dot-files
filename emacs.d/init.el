@@ -171,6 +171,7 @@
 (defhydra hydra-org ()
   ("l" org-insert-link "edit link" :exit t)
   ("a" org-agenda "agenda" :exit t)
+  ("t" org-table-create-or-convert-from-region "table" :exit t)
   ("s" org-schedule "schedule" :exit t)
   ("A" my-org-archive-done-tasks "archive done tasks" :exit t)
   ("c" org-capture "capture" :exit t)
