@@ -540,12 +540,14 @@
   :config
   (setq olivetti-body-width 100))
 
+(use-package rust-mode
+  :ensure t)
+
 (use-package evil-org
   :ensure t
   :config
   (setq org-agenda-files '("~/Dropbox/Org/todo.org"
                            "~/Dropbox/Org/habits.org"
-                           "~/Dropbox/Org/bookbub.org"
                            "~/Dropbox/Org/inbox.org"
                            ))
   (setq org-log-done 'time)
@@ -615,7 +617,7 @@
     (ox-gfm
      (progn t
             (setq olivetti-body-width 100))
-     olivetti doom-themes deft general hydra evil-org evil-org-mode yasnippet yaml-mode mmm-mode jsx-mode web-mode evil-magit magit rspec-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline scss-mode restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-present org-pomodoro org-mime org-download org-bullets open-junk-file neotree move-text markdown-mode macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag haml-mode google-translate golden-ratio gnuplot flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-terminal-cursor-changer evil-surround evil-search-highlight-persist evil-rails evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-leader evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu enh-ruby-mode emamux elisp-slime-nav dumb-jump diminish define-word ctags-update column-enforce-mode coffee-mode clean-aindent-mode cider auto-highlight-symbol auto-compile atom-dark-theme alchemist aggressive-indent ag adaptive-wrap ace-window ace-link ace-jump-helm-line)))
+     rust-mode olivetti doom-themes deft general hydra evil-org evil-org-mode yasnippet yaml-mode mmm-mode jsx-mode web-mode evil-magit magit rspec-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline scss-mode restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-present org-pomodoro org-mime org-download org-bullets open-junk-file neotree move-text markdown-mode macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag haml-mode google-translate golden-ratio gnuplot flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-terminal-cursor-changer evil-surround evil-search-highlight-persist evil-rails evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-leader evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu enh-ruby-mode emamux elisp-slime-nav dumb-jump diminish define-word ctags-update column-enforce-mode coffee-mode clean-aindent-mode cider auto-highlight-symbol auto-compile atom-dark-theme alchemist aggressive-indent ag adaptive-wrap ace-window ace-link ace-jump-helm-line)))
  '(selection-coding-system (quote mac-roman)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
