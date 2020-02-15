@@ -101,6 +101,7 @@ Plugin 'tpope/vim-rails'
 Plugin 'tmhedberg/matchit'
 Plugin 'kana/vim-textobj-user'
 Plugin 'nelstrom/vim-textobj-rubyblock'
+Plugin 'danchoi/ruby_bashrockets.vim'
 
 " Rust
 Plugin 'rust-lang/rust.vim'
