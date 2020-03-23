@@ -85,6 +85,7 @@ augroup python
   autocmd BufNewFile,BufRead *.py set expandtab
   autocmd BufNewFile,BufRead *.py set autoindent
   autocmd BufNewFile,BufRead *.py set fileformat=unix
+  autocmd BufNewFile,BufRead *.py iabbrev pydb import ipdb; ipdb.set_trace()
 augroup END
 
 Plugin 'vim-scripts/indentpython.vim'
