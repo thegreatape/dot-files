@@ -330,6 +330,9 @@ Plugin 'terryma/vim-expand-region'
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
+" nix
+Plugin 'LnL7/vim-nix'
+
 " searching
 Plugin 'rking/ag.vim'
 "nnoremap <leader>ag :
