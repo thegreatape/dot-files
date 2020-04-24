@@ -95,3 +95,4 @@ export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 export PATH="/usr/local/opt/ruby@2.5/bin:/usr/local/lib/ruby/gems/2.5.0/bin:$PATH"
+source ~/.nix-profile/etc/profile.d/nix.sh
