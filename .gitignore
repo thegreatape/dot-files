@@ -2,3 +2,10 @@
 emacs.d/elpa
 vim/bundle
 *~
+emacs.d/transient/history.el
+emacs.d/projectile.cache
+emacs.d/projectile-bookmarks.eld
+emacs.d/network-security.data
+karabiner_*.json
+config/configstore/update-notifier-npm.json
+config/nvim/.netrwhist
