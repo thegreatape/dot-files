@@ -86,6 +86,7 @@ augroup python
   autocmd BufNewFile,BufRead *.py set autoindent
   autocmd BufNewFile,BufRead *.py set fileformat=unix
   autocmd BufNewFile,BufRead *.py iabbrev pydb import ipdb; ipdb.set_trace()
+  autocmd BufNewFile,BufRead *.py let b:ale_fixers = []
 augroup END
 
 Plugin 'vim-scripts/indentpython.vim'
@@ -115,6 +116,7 @@ let g:ale_linters = {
 \}
 " only lint on save
 let g:ale_lint_on_text_changed = 'never'
+let g:ale_linters_explicit = 1
 
 " force json files to use json linting instead of javascript
 au BufRead,BufNewFile *.json set filetype=json
