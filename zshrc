@@ -12,6 +12,8 @@ alias git_local_cleanup="git branch --merged | grep -v \"\*\" | xargs -n 1 git b
 alias emacs="TERM=xterm-256color emacs"
 alias vim="TERM=screen-256color nvim"
 
+alias pn="note-search ~/Dropbox/Org/markdown/"
+
 function track() {
   branch_name=$(git branch | grep "*");
   branch_name="${branch_name/\* /}";
