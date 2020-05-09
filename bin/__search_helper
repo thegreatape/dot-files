@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# require at least two characters to start searching
+if [[ ${#1} -ge 2 ]]
+then
+  escaped_path=$(echo $2 | sed 's~/~\\\\/~g')
+  mispipe "rg --no-line-number --no-heading --no-column --color=always --smart-case $1 $2" "sed s/$escaped_path//g"
+else
+  echo 'search notes or enter new note title...'
+fi

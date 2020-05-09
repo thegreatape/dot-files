@@ -1,0 +1,29 @@
+#!/bin/bash
+#
+# deps: fzf, rg, mdless, moreutils
+#
+
+notes_path=$1
+
+selected=$(
+  FZF_DEFAULT_COMMAND="__search_helper '' $notes_path" \
+    fzf --bind "change:reload:__search_helper {q} $notes_path || echo '{q}.md: -- new note --'" \
+        --ansi \
+        --phony \
+        --delimiter=":" \
+        --preview="mdless $notes_path{1}"
+)
+
+if [[ -n $selected ]]
+then
+  filename="$(echo ${notes_path}${selected} | cut -f 1 -d:)"
+  if [[ "$selected" == *"-- new note --"* ]]
+  then 
+    if [[ -f "$filename" ]]
+    then
+      filename="$(sed 's/\.md//' <<< $filename)-$(date +%s).md"
+    fi
+    echo "# $(sed 's/\.md\: -- new note --//' <<< $selected)" >> $filename
+  fi
+  TERM=screen-256color AUTO_GOYO_MARKDOWN=1 nvim "$filename"
+fi

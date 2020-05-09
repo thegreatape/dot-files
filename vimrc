@@ -56,6 +56,7 @@ let g:vim_markdown_conceal = 0
 augroup mkd
   autocmd!
   autocmd BufRead *\.markdown,*\.md,*\.txt set ai formatoptions=tcroqn2 comments=n:>
+  autocmd BufRead *\.markdown,*\.md,*\.txt setlocal conceallevel=0
   autocmd BufRead *\.markdown,*\.md,*\.txt setlocal formatoptions=l
   autocmd BufRead *\.markdown,*\.md,*\.txt setlocal lbr
   autocmd BufRead *\.markdown,*\.md,*\.txt map j gj
@@ -65,7 +66,23 @@ augroup mkd
   autocmd BufRead *\.markdown,*\.md,*\.txt nnoremap <buffer> <leader>sp :setlocal spell! spelllang=en_gb<cr>
   autocmd BufRead *\.markdown,*\.md,*\.txt nnoremap <buffer> <leader>ft :TableFormat<cr>
   autocmd BufRead *\.markdown,*\.md,*\.txt iabbrev <buffer> cblock {% raw FOO %}<cr>{% highlight %}<cr>{% endraw %}<cr>{% endhighlight %}<esc>?FOO<cr>cw
+  autocmd BufEnter *\.markdown,*\.md,*\.txt call AutoGoyoEnable()
+  autocmd BufEnter *\.markdown,*\.md,*\.txt call pencil#init()
+  autocmd BufEnter *\.markdown,*\.md,*\.txt nnoremap <leader>t :call GoyoToggleAndFind()<cr>
 augroup END
+
+function! GoyoToggleAndFind()
+  if $AUTO_GOYO_MARKDOWN
+    :Goyo
+  endif
+  :FZF
+endfunction
+
+function! AutoGoyoEnable()
+  if $AUTO_GOYO_MARKDOWN
+    Goyo 100
+  endif
+endfunction
 
 " prose
 Plugin 'junegunn/goyo.vim'
