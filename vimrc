@@ -65,7 +65,15 @@ augroup mkd
   autocmd BufRead *\.markdown,*\.md,*\.txt nnoremap <buffer> <leader>sp :setlocal spell! spelllang=en_gb<cr>
   autocmd BufRead *\.markdown,*\.md,*\.txt nnoremap <buffer> <leader>ft :TableFormat<cr>
   autocmd BufRead *\.markdown,*\.md,*\.txt iabbrev <buffer> cblock {% raw FOO %}<cr>{% highlight %}<cr>{% endraw %}<cr>{% endhighlight %}<esc>?FOO<cr>cw
+  autocmd BufRead *\.markdown,*\.md,*\.txt call pencil#init()
+  autocmd BufEnter *\.markdown,*\.md,*\.txt call AutoGoyoEnable()
 augroup END
+
+function! AutoGoyoEnable()
+  if $AUTO_GOYO_MARKDOWN
+    Goyo 100
+  endif
+endfunction
 
 " prose
 Plugin 'junegunn/goyo.vim'
