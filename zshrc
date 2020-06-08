@@ -12,6 +12,7 @@ alias git_local_cleanup="git branch --merged | grep -v \"\*\" | xargs -n 1 git b
 alias emacs="TERM=xterm-256color emacs"
 alias vim="TERM=screen-256color nvim"
 alias nnvim="TERM=screen-256color ~/Code/nvim-osx64/bin/nvim"
+alias ns="nix-shell --run zsh"
 
 alias pn="note-search ~/Dropbox/Notes/Personal/"
 alias wn="note-search ~/Dropbox/Notes/Work/"
