@@ -77,8 +77,48 @@ map gp :Goyo <bar> :TogglePencil <CR>
 Plugin 'shmup/vim-sql-syntax'
 
 " Python
+
+"
+" vimux for pytest, adapted from https://github.com/pitluga/vimux-nose-test/blob/master/plugin/vimux-nose-test.vim
+"
+
+command! RunPytestTestBuffer :call RunPytestTestBuffer()
+command! RunPytestTestFocused :call RunPytestTestFocused()
+
+function! RunPytestTestBuffer()
+  call _run_pytesttests(expand("%"))
+endfunction
+
+function! RunPytestTestFocused()
+  let test_name = _pytest_test_search("def test_")
+
+  if test_name == ""
+    echoerr "Couldn't find class and test name to run focused test."
+    return
+  endif
+
+  call _run_pytesttests(expand("%") . "::" . test_name)
+endfunction
+
+function! _pytest_test_search(fragment)
+  let line_num = search(a:fragment, "bs")
+  if line_num > 0
+    ''
+    return split(split(getline(line_num), " ")[1], "(")[0]
+  else
+    return ""
+  endif
+endfunction
+
+function! _run_pytesttests(test)
+  call VimuxRunCommand("python -m pytest -s " . a:test)
+endfunction
+
 augroup python
   autocmd!
+  autocmd Filetype python nnoremap <leader>rl :RunPytestTestFocused<cr>
+  autocmd Filetype python nnoremap <leader>rf :RunPytestTestBuffer<cr>
+
   autocmd BufNewFile,BufRead *.py set tabstop=4
   autocmd BufNewFile,BufRead *.py set softtabstop=4
   autocmd BufNewFile,BufRead *.py set shiftwidth=4
