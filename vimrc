@@ -170,6 +170,7 @@ let g:rustfmt_autosave = 1
 Plugin 'w0rp/ale'
 let g:ale_linters = {
 \   'javascript': ['eslint'],
+\   'rust': ['cargo'],
 \}
 " only lint on save
 let g:ale_lint_on_text_changed = 'never'
