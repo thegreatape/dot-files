@@ -177,19 +177,23 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_linters_explicit = 1
 
 " force json files to use json linting instead of javascript
-au BufRead,BufNewFile *.json set filetype=json
-
-" for active admin arb templates
-autocmd BufRead,BufNewFile *.arb setfiletype ruby
+augroup json
+  autocmd!
+  au BufRead,BufNewFile *.json set filetype=json
+augroup END
 
 " SCSS
-au BufRead,BufNewFile *.scss set filetype=scss
-" Guardfiles and axlsx are just ruby
-au BufRead,BufNewFile *.axlsx set filetype=ruby
-au BufRead,BufNewFile Guardfile set filetype=ruby
-" treat hamlbars and hamlc the same as haml
-au BufRead,BufNewFile *.hamlc set ft=haml
-au BufRead,BufNewFile *.hamlbars set ft=haml
+augroup scss
+  autocmd!
+  au BufRead,BufNewFile *.scss set filetype=scss
+augroup END
+
+augroup haml
+  autocmd!
+  " treat hamlbars and hamlc the same as haml
+  au BufRead,BufNewFile *.hamlc set ft=haml
+  au BufRead,BufNewFile *.hamlbars set ft=haml
+augroup END
 
 " Clojure
 
@@ -287,6 +291,12 @@ augroup ruby
   autocmd Filetype ruby nnoremap <leader>rl :RunRubyFocusedTest<cr>
   autocmd Filetype ruby nnoremap <leader>rf :RunAllRubyTests<cr>
   autocmd Filetype ruby nnoremap <leader>rc :VimuxClosePanes<cr>
+
+  " for active admin arb templates
+  autocmd BufRead,BufNewFile *.arb setfiletype ruby
+  " Guardfiles and axlsx are just ruby
+  autocmd BufRead,BufNewFile *.axlsx set filetype=ruby
+  autocmd BufRead,BufNewFile Guardfile set filetype=ruby
 augroup end
 
 let g:VimuxOrientation = "h"
@@ -304,8 +314,8 @@ Plugin 'slashmili/alchemist.vim'
 " Go
 Plugin 'fatih/vim-go'
 augroup go
-autocmd!
-autocmd Filetype go inoremap <C-n> <C-x><C-o>
+  autocmd!
+  autocmd Filetype go inoremap <C-n> <C-x><C-o>
 augroup END
 
 " Less
@@ -385,7 +395,10 @@ function! AirlineInit()
   let g:airline_section_y="%{airline#util#wrap(airline#extensions#branch#get_head(),0)}"
   let g:airline_section_z="%{gutentags#statusline()}"
 endfunction
-autocmd User AirlineToggledOn call AirlineInit()
+augroup airfline
+  autocmd!
+  autocmd User AirlineToggledOn call AirlineInit()
+augroup end
 
 Plugin 'terryma/vim-expand-region'
 vmap v <Plug>(expand_region_expand)
