@@ -166,15 +166,32 @@ Plugin 'danchoi/ruby_bashrockets.vim'
 Plugin 'rust-lang/rust.vim'
 let g:rustfmt_autosave = 1
 
-" Linting
-Plugin 'w0rp/ale'
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'rust': ['cargo'],
-\}
-" only lint on save
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_linters_explicit = 1
+
+if has('nvim-0.5')
+  Plugin 'neovim/nvim-lsp'
+  nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+  nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+  nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+  nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+  "nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+  nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+  nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+  nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+  nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+  set omnifunc=v:lua.vim.lsp.omnifunc
+
+else
+  " LSP / Linting stuff
+  "   disabled for 0.5.0 nightly build that has native LSP
+  Plugin 'w0rp/ale'
+  let g:ale_linters = {
+  \   'javascript': ['eslint'],
+  \   'rust': ['cargo'],
+  \}
+  " only lint on save
+  let g:ale_lint_on_text_changed = 'never'
+  let g:ale_linters_explicit = 1
+endif
 
 " force json files to use json linting instead of javascript
 augroup json
@@ -483,10 +500,10 @@ set smartcase
 noremap \ ,
 
 " shortcut to edit vimrc
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>ev :vsplit ~/.vimrc<cr>
 
 " shortcut to source vimrc
-nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>sv :source ~/.vimrc<cr>
 
 " open FZF with leader-t
 nnoremap <leader>t :FZF<cr>
@@ -531,12 +548,12 @@ function! RenameFile()
   let old_name = expand('%')
   let new_name = input('New file name: ', expand('%'), 'file')
   if new_name != '' && new_name != old_name
-    exec ':saveas ' . new_name
-    exec ':silent !rm ' . old_name
+    execute ':saveas ' . new_name
+    execute ':silent !rm ' . old_name
     redraw!
   endif
 endfunction
-map <leader>n :call RenameFile()<cr>
+noremap <leader>n :call RenameFile()<cr>
 
 " expand %% to current buffer's path in command line mode
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
@@ -555,9 +572,17 @@ augroup lastposition
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
     \   exe "normal! g`\"" |
     \ endif
-augroup END
+augroup end
 
 call vundle#end()
+
+" has to come after vundle#end(), since that modifies the runtime path
+if has('nvim-0.5')
+  lua << EOF
+  require'nvim_lsp'.pyls.setup{}
+EOF
+endif
+
 filetype plugin indent on
 syntax on
 set hlsearch
@@ -583,3 +608,32 @@ nnoremap <leader>pb :execute "rightbelow vsplit " . bufname('#')<cr>
 
 set noruler      " disable ruler that shows line + col of cursor
 set laststatus=2 " always show status line
+
+"
+" LVSTHW
+"
+
+" wrap current word in single quotes
+nnoremap <leader>' bi'<esc>ei'<esc>
+
+noremap <leader>- ddp
+noremap <leader>_ ddkP
+
+" uppercase current word in insert mode
+inoremap <c-u> <esc>bgUwea
+"
+" uppercase current word in normal mode
+inoremap <c-u> bgUwe
+
+function Varg(foo, ...)
+  echom a:foo
+  echom a:1
+  echo a:000
+endfunction
+
+" foo-bar;ls
+" that's
+
+"nnoremap <leader>g :silent execute ":grep! " . shellescape(expand("<cWORD>")) . "  . " <cr>:copen<cr>
+
+echo ">^.^<"

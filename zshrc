@@ -11,6 +11,7 @@ alias heroku_restore="pg_restore --verbose --clean --no-acl --no-owner"
 alias git_local_cleanup="git branch --merged | grep -v \"\*\" | xargs -n 1 git branch -d"
 alias emacs="TERM=xterm-256color emacs"
 alias vim="TERM=screen-256color nvim"
+alias nnvim="TERM=screen-256color ~/Code/nvim-osx64/bin/nvim"
 
 alias pn="note-search ~/Dropbox/Notes/Personal/"
 alias wn="note-search ~/Dropbox/Notes/Work/"
