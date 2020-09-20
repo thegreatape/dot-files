@@ -169,15 +169,15 @@ let g:rustfmt_autosave = 1
 
 if has('nvim-0.5')
   Plugin 'neovim/nvim-lsp'
-  nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-  nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-  nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
-  nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-  "nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-  nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-  nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-  nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-  nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+  nnoremap <silent> gd        <cmd>lua vim.lsp.buf.declaration()<CR>
+  nnoremap <silent> <c-]>     <cmd>lua vim.lsp.buf.definition()<CR>
+  nnoremap <silent> K         <cmd>lua vim.lsp.buf.hover()<CR>
+  nnoremap <silent> gD        <cmd>lua vim.lsp.buf.implementation()<CR>
+  nnoremap <silent> <leader>k <cmd>lua vim.lsp.buf.signature_help()<CR>
+  nnoremap <silent> 1gD       <cmd>lua vim.lsp.buf.type_definition()<CR>
+  nnoremap <silent> gr        <cmd>lua vim.lsp.buf.references()<CR>
+  nnoremap <silent> g0        <cmd>lua vim.lsp.buf.document_symbol()<CR>
+  nnoremap <silent> gW        <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
   set omnifunc=v:lua.vim.lsp.omnifunc
 
 else
@@ -579,7 +579,29 @@ call vundle#end()
 " has to come after vundle#end(), since that modifies the runtime path
 if has('nvim-0.5')
   lua << EOF
-  require'nvim_lsp'.pyls.setup{}
+  -- require'nvim_lsp'.pyls.setup{}
+
+local configs = require 'nvim_lsp/configs'
+
+configs.sillylsp = {
+  default_config = {
+    cmd = {"sillylsp"};
+    filetypes = {"sql"};
+    root_dir = function(fname)
+      return vim.fn.getcwd()
+    end;
+  };
+  docs = {
+    description = [[
+      WORDS HERE
+    ]];
+    default_config = {
+      root_dir = "vim's starting directory";
+    };
+  };
+};
+
+require'nvim_lsp'.sillylsp.setup{}
 EOF
 endif
 
