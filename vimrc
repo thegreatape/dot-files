@@ -88,7 +88,7 @@ endfunction
 Plugin 'junegunn/goyo.vim'
 Plugin 'reedes/vim-pencil'
 let g:pencil#wrapModeDefault = 'soft'
-map gp :Goyo <bar> :TogglePencil <CR>
+map gp :Goyo <bar> :TogglePencil<cr> <bar> :set conceallevel=0<CR>
 
 " Better SQL syntax highlighting
 Plugin 'shmup/vim-sql-syntax'
