@@ -32,9 +32,9 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mxw/vim-jsx'
 Plugin 'tpope/vim-jdaddy'
-Plugin 'isRuslan/vim-es6'
+"Plugin 'isRuslan/vim-es6'
 
-Plugin 'ruanyl/vim-fixmyjs'
+"Plugin 'ruanyl/vim-fixmyjs'
 let g:fixmyjs_engine = 'eslint'
 let g:fixmyjs_rc_filename = ['.eslintrc.js']
 
@@ -166,7 +166,6 @@ Plugin 'danchoi/ruby_bashrockets.vim'
 Plugin 'rust-lang/rust.vim'
 let g:rustfmt_autosave = 1
 
-
 if has('nvim-0.5')
   Plugin 'neovim/nvim-lsp'
   nnoremap <silent> gd        <cmd>lua vim.lsp.buf.declaration()<CR>
@@ -181,16 +180,21 @@ if has('nvim-0.5')
   set omnifunc=v:lua.vim.lsp.omnifunc
 
 else
-  " LSP / Linting stuff
+  " LSP / Linting
   "   disabled for 0.5.0 nightly build that has native LSP
-  Plugin 'w0rp/ale'
+  Plugin 'dense-analysis/ale'
   let g:ale_linters = {
-  \   'javascript': ['eslint'],
+  \   'javascript': ['eslint', 'prettier'],
   \   'rust': ['cargo'],
+  \}
+
+  let g:ale_fixers = {
+  \   'javascript': ['prettier'],
   \}
   " only lint on save
   let g:ale_lint_on_text_changed = 'never'
   let g:ale_linters_explicit = 1
+  let g:ale_fix_on_save = 1
 endif
 
 " force json files to use json linting instead of javascript
