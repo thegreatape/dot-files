@@ -102,3 +102,24 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 export PATH="/usr/local/opt/ruby@2.5/bin:/usr/local/lib/ruby/gems/2.5.0/bin:$PATH"
 source ~/.nix-profile/etc/profile.d/nix.sh
+
+# wrapper for aws-vault
+# usage: awsv ROLE AWSCLI-COMMAND AWSCLI-ARGS
+#   e.g. `awsv ro s3 ls s3://foobucket`
+function awsv () {
+    local role="$1"
+    shift
+    aws-vault exec "$role" -- aws "$@"
+}
+
+alias aws="aws-vault exec ro -- aws"
+alias aws-rw="aws-vault exec rw -- aws"
+alias aws-superadmin="aws-vault exec superadmin -- aws"
+
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+[ -f ~/.secrets.zsh ] && source ~/.secrets.zsh
