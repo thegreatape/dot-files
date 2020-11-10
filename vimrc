@@ -428,6 +428,15 @@ vmap <C-v> <Plug>(expand_region_shrink)
 " nix
 Plugin 'LnL7/vim-nix'
 
+" kotlin
+Plugin 'udalov/kotlin-vim'
+
+" swift
+Plugin 'keith/swift.vim'
+
+" applescript
+Plugin 'dearrrfish/vim-applescript'
+
 " searching
 Plugin 'rking/ag.vim'
 "nnoremap <leader>ag :
