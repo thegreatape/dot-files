@@ -488,7 +488,7 @@ set number
 " zsh-style tab completion
 set wildmenu
 set wildmode=longest,list
-set wildignore+=*vendor/*,*build/*,*bower_components/*,*node_modules/*,*-manifest.json,*.class
+set wildignore+=*vendor/*,*build/*,*bower_components/*,*node_modules/*,*-manifest.json,*.class,*ios/Pods/*
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
