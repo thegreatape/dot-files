@@ -97,10 +97,8 @@ export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 export LS_COLORS=$LSCOLORS
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$PATH:$HOME/.rbenv/bin"
 eval "$(rbenv init -)"
-export PATH="/usr/local/opt/ruby@2.5/bin:/usr/local/lib/ruby/gems/2.5.0/bin:$PATH"
 source ~/.nix-profile/etc/profile.d/nix.sh
 
 # wrapper for aws-vault
