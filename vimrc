@@ -644,6 +644,8 @@ nnoremap <leader>pb :execute "rightbelow vsplit " . bufname('#')<cr>
 set noruler      " disable ruler that shows line + col of cursor
 set laststatus=2 " always show status line
 
+nnoremap <leader>jpp :%!python -m json.tool<cr>
+
 "
 " LVSTHW
 "
