@@ -33,6 +33,7 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'mxw/vim-jsx'
 Plugin 'tpope/vim-jdaddy'
 "Plugin 'isRuslan/vim-es6'
+Plugin 'leafgarland/typescript-vim'
 
 "Plugin 'ruanyl/vim-fixmyjs'
 let g:fixmyjs_engine = 'eslint'
@@ -166,36 +167,20 @@ Plugin 'danchoi/ruby_bashrockets.vim'
 Plugin 'rust-lang/rust.vim'
 let g:rustfmt_autosave = 1
 
-if has('nvim-0.5')
-  Plugin 'neovim/nvim-lsp'
-  nnoremap <silent> gd        <cmd>lua vim.lsp.buf.declaration()<CR>
-  nnoremap <silent> <c-]>     <cmd>lua vim.lsp.buf.definition()<CR>
-  nnoremap <silent> K         <cmd>lua vim.lsp.buf.hover()<CR>
-  nnoremap <silent> gD        <cmd>lua vim.lsp.buf.implementation()<CR>
-  nnoremap <silent> <leader>k <cmd>lua vim.lsp.buf.signature_help()<CR>
-  nnoremap <silent> 1gD       <cmd>lua vim.lsp.buf.type_definition()<CR>
-  nnoremap <silent> gr        <cmd>lua vim.lsp.buf.references()<CR>
-  nnoremap <silent> g0        <cmd>lua vim.lsp.buf.document_symbol()<CR>
-  nnoremap <silent> gW        <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-  set omnifunc=v:lua.vim.lsp.omnifunc
+" LSP / Linting
+Plugin 'dense-analysis/ale'
+let g:ale_linters = {
+\   'javascript': ['eslint', 'prettier'],
+\   'rust': ['cargo'],
+\}
 
-else
-  " LSP / Linting
-  "   disabled for 0.5.0 nightly build that has native LSP
-  Plugin 'dense-analysis/ale'
-  let g:ale_linters = {
-  \   'javascript': ['eslint', 'prettier'],
-  \   'rust': ['cargo'],
-  \}
-
-  let g:ale_fixers = {
-  \   'javascript': ['prettier'],
-  \}
-  " only lint on save
-  let g:ale_lint_on_text_changed = 'never'
-  let g:ale_linters_explicit = 1
-  let g:ale_fix_on_save = 1
-endif
+let g:ale_fixers = {
+\   'javascript': ['prettier'],
+\}
+" only lint on save
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_linters_explicit = 1
+let g:ale_fix_on_save = 1
 
 " force json files to use json linting instead of javascript
 augroup json
@@ -300,6 +285,10 @@ augroup clojure
 
   " autocmd BufLeave *.cljs,*.clj,*.cljs.hl  call SetBasicStatusLine()
 augroup END
+
+
+" Profiling Rabbithole Macro
+nnoremap <leader>pf Oconst start=Date.now();<esc>joconsole.log(`--- abc : ${Date.now() - start}ms`);<esc>:s/abc/\=expand('%:p').':'.line('.')/<cr>
 
 " Vimux
 Plugin 'benmills/vimux'
@@ -588,35 +577,6 @@ augroup lastposition
 augroup end
 
 call vundle#end()
-
-" has to come after vundle#end(), since that modifies the runtime path
-if has('nvim-0.5')
-  lua << EOF
-  -- require'nvim_lsp'.pyls.setup{}
-
-local configs = require 'nvim_lsp/configs'
-
-configs.sillylsp = {
-  default_config = {
-    cmd = {"sillylsp"};
-    filetypes = {"sql"};
-    root_dir = function(fname)
-      return vim.fn.getcwd()
-    end;
-  };
-  docs = {
-    description = [[
-      WORDS HERE
-    ]];
-    default_config = {
-      root_dir = "vim's starting directory";
-    };
-  };
-};
-
-require'nvim_lsp'.sillylsp.setup{}
-EOF
-endif
 
 filetype plugin indent on
 syntax on
