@@ -19,6 +19,8 @@ set shell=bash
 " Disable .swp file creation
 set noswapfile
 
+Plugin 'ms-jpq/coq_nvim'
+
 Plugin 'tpope/vim-repeat'
 
 " RTF copying for Keynote copy + paste
@@ -632,4 +634,3 @@ endfunction
 
 "nnoremap <leader>g :silent execute ":grep! " . shellescape(expand("<cWORD>")) . "  . " <cr>:copen<cr>
 
-echo ">^.^<"

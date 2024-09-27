@@ -33,3 +33,8 @@ vim.keymap.set("n", "gr", vim.lsp.buf.references)
 
 -- format on save
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
+
+-- coq config
+vim.g.coq_settings = {
+  auto_start = true,
+}
