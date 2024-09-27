@@ -150,24 +150,24 @@ augroup END
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'raimon49/requirements.txt.vim'
 
-" Use the old vim regex engine (version 1, as opposed to version 2, which was
-" introduced in Vim 7.3.969). The Ruby syntax highlighting is significantly
-" slower with the new regex engine.
-set re=1
 " Ruby and Rails
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'mtscout6/vim-cjsx'
-Plugin 'tpope/vim-rails'
-Plugin 'tmhedberg/matchit'
-Plugin 'kana/vim-textobj-user'
-Plugin 'nelstrom/vim-textobj-rubyblock'
-Plugin 'danchoi/ruby_bashrockets.vim'
+
+" Plugin 'vim-ruby/vim-ruby'
+" Plugin 'mtscout6/vim-cjsx'
+" Plugin 'tpope/vim-rails'
+" Plugin 'tmhedberg/matchit'
+" Plugin 'kana/vim-textobj-user'
+" Plugin 'nelstrom/vim-textobj-rubyblock'
+" Plugin 'danchoi/ruby_bashrockets.vim'
 
 " Rust
 Plugin 'rust-lang/rust.vim'
 let g:rustfmt_autosave = 1
 
 " LSP / Linting
+" ~/.config/nvim/lsp-setup.lua has the LSP config
+Plugin 'neovim/nvim-lspconfig'
+
 Plugin 'dense-analysis/ale'
 let g:ale_linters = {
 \   'javascript': ['eslint', 'prettier'],
@@ -345,8 +345,8 @@ Plugin 'chase/vim-ansible-yaml'
 let g:Haskell_no_mapping = 1
 
 " Ctags
-Plugin 'ludovicchabant/vim-gutentags'
-Plugin 'vim-scripts/taglist.vim'
+" Plugin 'ludovicchabant/vim-gutentags'
+" Plugin 'vim-scripts/taglist.vim'
 
 " Using FZF to search project tags, taken from
 " https://github.com/junegunn/fzf/wiki/Examples-%28vim%29#jump-to-tags
@@ -402,7 +402,7 @@ function! AirlineInit()
   let g:airline_section_b=airline#section#create(['%<', 'file', g:airline_symbols.space, 'readonly'])
   let g:airline_section_c=''
   let g:airline_section_y="%{airline#util#wrap(airline#extensions#branch#get_head(),0)}"
-  let g:airline_section_z="%{gutentags#statusline()}"
+  "let g:airline_section_z="%{gutentags#statusline()}"
 endfunction
 augroup airfline
   autocmd!
